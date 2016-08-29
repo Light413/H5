@@ -19,10 +19,12 @@
 			<h1 class="mui-title">TEST</h1>
 		</header>	
 
+		<button id="checkDetail_btn" type="button" class="mui-btn mui-btn-block" style="margin-bottom: 0px; position: absolute; bottom: 1px;">确定</button>
+		
 		<script type="text/javascript" charset="utf-8">
       		mui.init({
 				swipeBack: false,
-				statusBarBackground: '#f7f7f7',
+				statusBarBackground: '#F7F7F7',
 				
 				gestureConfig: {
 					doubletap: true
@@ -31,22 +33,35 @@
 					id: 'list',
 					url: 'list.html',
 					styles: {
-						top: '145px',
-						bottom: 40,
+						top: '45px',
+						bottom: '58px',
 						bounce: 'vertical',
 					}
 				}]
 			});
       		
-   		 </script>
-
-		<div class="mui-content">
-		    <div class="mui-content-padded">
-		        <button type="button" class="mui-btn mui-btn-block">Block button</button>
-
-		    </div>
-		</div>
+      	document.getElementById("checkDetail_btn").addEventListener('tap', function(e) {
+			console.log("00000");
+			//显示启动导航
+			mui.openWindow({
+				id: 'checkDetail',
+				url: 'checkDetail.html',
+				styles: {
+							popGesture: 'close'
+					},
+							
+				show: {
+					aniShow: 'pop-in',
+					duration: 300
+				},
+				waiting: {
+					autoShow: false
+				}
+			});
+		});
 		
+   		 </script>
+	
 	</body>
 
 </html>
