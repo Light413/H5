@@ -91,9 +91,9 @@
     else
     {
         _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-        [_device lockForConfiguration:nil];
-        [_device setFocusMode:AVCaptureFocusModeAutoFocus];
-        [_device unlockForConfiguration];
+//        [_device lockForConfiguration:nil];
+//        [_device setFocusMode:AVCaptureFocusModeAutoFocus];
+//        [_device unlockForConfiguration];
         
         _input = [AVCaptureDeviceInput deviceInputWithDevice:_device error:nil];
         
@@ -113,7 +113,8 @@
         _output.metadataObjectTypes = @[AVMetadataObjectTypeQRCode];
         
         _previewLayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:_session];
-        _previewLayer.videoGravity = AVLayerVideoGravityResize;
+        [_previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+        
         _previewLayer.frame = self.view.bounds;
         [self.view.layer insertSublayer:_previewLayer atIndex:0];
         

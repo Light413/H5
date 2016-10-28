@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="mui.min.css">
+		<link rel="stylesheet" type="text/css" href="app.css" />
+
+		<style type="text/css">
+			.title {
+				margin: 15px 15px 5px 10px;
+				/*color: #6d6d72;*/
+				font-size: 16px;
+				/*background: #e6e6e6;*/
+				font-weight: bold;
+				height: 25px;
+				line-height: 30px;
+				padding-left: 0px;
+			}
+			
+			.head-title {
+				padding-left: 10px;
+				font-size: 15px;
+				white-space: nowrap;
+				width: "25%";
+				height: 30px;
+				margin: 10px;
+			}
+			
+			.content {
+				font-size: 14px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">查看信息</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="title">
+				输出信息
+			</div>
+
+			<table class="mui-table-view" width="100%">
+
+				<tr>
+					<td class="head-title">上报时间：</td>
+					<td>
+						<span class="content">2015-12-16 22:03:39</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">发现时间：</td>
+					<td>
+						<span class="content">2015-12-16 22:03:39</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">机车类型：</td>
+					<td>
+						<span class="content">DF4</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">机车号码：</td>
+					<td>
+						<span class="content">3570</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">车次：</td>
+					<td>
+						<span class="content">K11 </span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">上报单位：</td>
+					<td>
+						<span class="content">广州供电段/广州供电段</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">发现（信息）人：</td>
+					<td>
+						<span class="content">蔡朝</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">线类型：</td>
+					<td>
+						<span class="content">普铁</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">线路：</td>
+					<td>
+						<span class="content">北东联络线 </span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">信息源点：</td>
+					<td>
+						<span class="content">株洲西</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">专业：</td>
+					<td>
+						<span class="content">工务</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">信息代码：</td>
+					<td>
+						<span class="content">工1.3</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">信息内容：</td>
+					<td>
+						<span class="content">轨道车司机发生机1-12各项的</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">违标单位：</td>
+					<td>
+						<span class="content">长沙工务段</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">具体部门：</td>
+					<td>
+						<span class="content">常德线路车间</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">违标人：</td>
+					<td>
+						<span class="content">张宇</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">信息核查结果：</td>
+					<td>
+						<span class="content">车次不对</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">信息处理结果：</td>
+					<td>
+						<span class="content">材质不良</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">扣奖金（元）：</td>
+					<td>
+						<span class="content">11</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">扣分：</td>
+					<td>
+						<span class="content">5</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">核查上报时间：</td>
+					<td>
+						<span class="content">2015-12-16 00:00:00</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">核查人：</td>
+					<td>
+						<span class="content">常德线路车间安全用户</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="head-title">意见：</td>
+					<td>
+						<span class="content">意见。。。</span>
+					</td>
+				</tr>
+			</table>
+
+			<!--状态信息-->
+			<div class="title">
+				状态信息
+			</div>
+
+			<ul id="statueInfo" class="mui-table-view">
+
+			</ul>
+
+			<div style="margin-bottom: 20px;"></div>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true
+			});
+		</script>
+
+		<script>
+			var obj = {
+				zt: "已完结",
+				time: "2015-12-16 22:03:39",
+				company: "常德线路车间",
+				usr: "长沙工务段安全用户",
+				yj: "没有意见内容。。。"
+			};
+			var table = document.getElementById("statueInfo");
+			for(var i = 0, len = i + 3; i < len; i++) {
+				var li = document.createElement('li');
+				li.innerHTML = '<table class="mui-table-view" width="100%">' +
+					'<tr><td class = "head-title" >状态：</td><td><span class="content">' + obj.zt + (i + 1) +
+					'</span > </td></tr>' +
+					'<tr><td class = "head-title" >时间：</td><td><span class="content">' + obj.time +
+					'</span > </td></tr>' +
+					'<tr><td class = "head-title" >单位名称：</td><td><span class="content">' + obj.company +
+					'</span > </td></tr>' +
+					'<tr><td class = "head-title" >用户名：</td><td><span class="content">' + obj.usr +
+					'</span > </td></tr>' +
+					'<tr><td class = "head-title" >意见：</td><td><span class="content">' + obj.yj +
+					'</span > </td></tr>' +
+					'</table>';
+
+				table.appendChild(li, table.lastChild);
+			}
+
+		</script>
+
+	</body>
+
+</html>

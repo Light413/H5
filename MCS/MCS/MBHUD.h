@@ -11,10 +11,13 @@
 
 @interface MBHUD : NSObject
 
+//progerss
 +(void)showStatueInView:(UIView *)view WithMsg:(NSString *)msg;
 
+//success
 +(void)showSuccessInView:(UIView *)view WithMsg:(NSString *)msg;
 
+//error
 +(void)showErrorInView:(UIView *)view WithMsg:(NSString *)msg;
 
 //只显示文本

@@ -15,5 +15,6 @@
 #define CURRENT_SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 
 #import "BaseUtils.h"
+#import "UIViewExt.h"
 
 #endif /* constants_h */

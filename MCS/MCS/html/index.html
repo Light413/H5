@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>web</title>
+    
+    <script src="mui.min.js"></script>
+    <link href="mui.min.css" rel="stylesheet"/>
+    
+</head>
+
+	<body>
+
+		<button id="checkDetail_btn" type="button" class="mui-btn mui-btn-block" style="margin-bottom: 0px; position: absolute; bottom: 64px;">确定</button>
+		
+		<script type="text/javascript" charset="utf-8">
+      		mui.init({
+				swipeBack: false,
+				statusBarBackground: '#F7F7F7',
+				
+				gestureConfig: {
+					doubletap: true
+				},
+				subpages: [{
+					url: 'list.html',
+					styles: {
+						top: '0px',
+						bottom: '128px',
+						bounce: 'vertical',
+					}
+				}]
+			});
+      		
+      	document.getElementById("checkDetail_btn").addEventListener('tap', function(e) {
+			console.log("00000");
+
+			mui.openWindow({
+				id: 'checkDetail',
+				url: 'checkDetail.html',
+				styles: {
+							popGesture: 'close'
+					},
+							
+				show: {
+					aniShow: 'pop-in',
+					duration: 300
+				},
+				waiting: {
+					autoShow: false
+				}
+			});
+		});
+		
+   		 </script>
+	
+	</body>
+
+</html>

@@ -30,10 +30,49 @@
     
     self.navigationItem.rightBarButtonItem =  _item;
     
-    [self testVfl];
-    [self testbezierPath];
+//    [self testVfl];
+//    [self testbezierPath];
+
+    /*
+    UIWebView * web = [[UIWebView alloc]initWithFrame:self.view.bounds];
+    NSURL * url = [NSURL URLWithString:[[NSBundle mainBundle]pathForResource:@"index_d" ofType:@"html"]];
+//    [web loadRequest:[NSURLRequest requestWithURL:url]];
+    [web loadRequest:[NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10]];
+    [self.view addSubview:web];
+    */
 }
 
+#pragma mark - test btn action
+- (IBAction)btnAction:(id)sender {
+    GanttViewController * vc = [[GanttViewController alloc]init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+- (IBAction)loadsvg:(id)sender {
+    SVGViewController * vc = [[SVGViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (IBAction)webviewjs:(id)sender {
+    webViewController * vc = [[webViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (IBAction)fleetInfo:(UIButton*)sender {
+    NSArray *arr = @[@"FleetInfoViewController",@"FleetMapVC"];
+    Class cls = NSClassFromString(arr[sender.tag]);
+
+    id vc = [cls new];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+
+
+
+
+
+#pragma mark 
 -(void)click
 {
 //        [MBHUD showStatueInView:self.view WithMsg:@"数据加载中..."];
@@ -44,6 +83,25 @@
 
 -(void)testbezierPath
 {
+    //演员初始化
+    CALayer *scaleLayer = [[CALayer alloc] init];
+    scaleLayer.backgroundColor = [UIColor blueColor].CGColor;
+    scaleLayer.frame = CGRectMake(100, 20 + 100, 50, 50);
+    scaleLayer.cornerRadius = 10;
+    [self.view.layer addSublayer:scaleLayer];
+    
+    //设定剧本
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnimation.fromValue = [NSNumber numberWithFloat:1.0];
+    scaleAnimation.toValue = [NSNumber numberWithFloat:5];
+    scaleAnimation.autoreverses = NO;
+    scaleAnimation.fillMode = kCAFillModeBackwards;
+    scaleAnimation.repeatCount = MAXFLOAT;
+    scaleAnimation.duration = 2;
+    
+    //开演
+    [scaleLayer addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+  /*
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(10, 10, 100, 100) cornerRadius:10];
 //    [path moveToPoint:CGPointMake(10, 0)];
 //    [path addLineToPoint:CGPointMake(100, 50)];
@@ -61,7 +119,7 @@
     
     [self.view.layer addSublayer:layer];
     
-    
+   */
     /*
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.frame = CGRectMake(0, 50, CURRNET_SCREEN_WIDTH, 300);
