@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>id</key>
+		<string>id_hbdt</string>
+		<key>title</key>
+		<string>Flight Info Board</string>
+		<key>icon_y</key>
+		<string>menu_1_yes</string>
+		<key>icon_n</key>
+		<string>menu_1_no</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>id_ssjk</string>
+		<key>title</key>
+		<string>Health Monitoring</string>
+		<key>icon_y</key>
+		<string>menu_2_yes</string>
+		<key>icon_n</key>
+		<string>menu_2_no</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>id_wxkz</string>
+		<key>title</key>
+		<string>Maintenance Control</string>
+		<key>icon_y</key>
+		<string>menu_3_yes</string>
+		<key>icon_n</key>
+		<string>menu_3_no</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>id_gzqx</string>
+		<key>title</key>
+		<string>Fault and Defect</string>
+		<key>icon_y</key>
+		<string>menu_4_yes</string>
+		<key>icon_n</key>
+		<string>menu_4_no</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>id_cj</string>
+		<key>title</key>
+		<string>C Check</string>
+		<key>icon_y</key>
+		<string>menu_5_yes</string>
+		<key>icon_n</key>
+		<string>menu_5_no</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>id_fjzt</string>
+		<key>title</key>
+		<string>Aircraft Technical Status</string>
+		<key>icon_y</key>
+		<string>menu_6_yes</string>
+		<key>icon_n</key>
+		<string>menu_6_no</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>id_kucun</string>
+		<key>title</key>
+		<string>Tools and Parts</string>
+		<key>icon_y</key>
+		<string>menu_7_yes</string>
+		<key>icon_n</key>
+		<string>menu_7_no</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>id_paiban</string>
+		<key>title</key>
+		<string>Roster Plan</string>
+		<key>icon_y</key>
+		<string>menu_8_yes</string>
+		<key>icon_n</key>
+		<string>menu_8_no</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>id_more</string>
+		<key>title</key>
+		<string>Reserve</string>
+		<key>icon_y</key>
+		<string>menu_9_yes</string>
+		<key>icon_n</key>
+		<string>menu_9_no</string>
+	</dict>
+</array>
+</plist>

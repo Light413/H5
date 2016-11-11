@@ -35,21 +35,36 @@
             case 5:cnt +=1.0;break;
             default:break;
         }
-        
-        UILabel * l = [[UILabel alloc]init];
-        l.frame = CGRectMake(_w * cnt - 5, 30 , 30, 20);
-        l.font = [UIFont systemFontOfSize:13];
-        l.text = titleArr[i];
-        l.textColor = [UIColor darkGrayColor];
-        //        l.backgroundColor = [UIColor lightGrayColor];
-        [self addSubview:l];
-        
+
         UILabel * ltime = [[UILabel alloc]init];
-        ltime.frame = CGRectMake(l.left, l.bottom+3, 40, l.height);
-        ltime.font = [UIFont systemFontOfSize:10];
+        float tmp =0,tmp2 = 0;
+        if (i<3) {
+            tmp = (_w+ 2) * cnt +10 - 18;
+            tmp2 = (_w+ 3) * cnt +10 - 25;
+        }
+        else
+        {
+            tmp = (_w+ 2) * cnt +10 - 18 - 12;
+            tmp2 = (_w+ 2) * cnt +10 - 20 - 15;
+        }
+        
+        ltime.frame = CGRectMake(tmp, 28 , 35, 20);
+        ltime.font = [UIFont systemFontOfSize:12];
         ltime.tag = 20 + i;
-//        ltime.text = timeArr[i];
+        ltime.textColor = [UIColor colorWithRed:0.537 green:0.537 blue:0.537 alpha:1];
         [self addSubview:ltime];
+//        ltime.backgroundColor = [UIColor lightGrayColor];
+        
+        UILabel * titleL = [[UILabel alloc]init];
+        titleL.frame = CGRectMake(tmp2, ltime.bottom+5, 40, ltime.height);
+        titleL.font = [UIFont systemFontOfSize:13];
+        titleL.text = titleArr[i];
+        titleL.textColor = [UIColor darkGrayColor];
+        titleL.textAlignment = NSTextAlignmentCenter;
+//        titleL.backgroundColor = [UIColor lightGrayColor];
+        [self addSubview:titleL];
+        
+
     }
 }
 
@@ -121,7 +136,7 @@
     shapLayer.strokeColor = [UIColor colorWithRed:30/255.0 green:170/255.0 blue:240/255.0 alpha:1].CGColor;
     shapLayer.fillColor = [UIColor clearColor].CGColor;
     shapLayer.fillRule = kCAFillRuleEvenOdd;
-    shapLayer.lineWidth = 3.0f;
+    shapLayer.lineWidth = 2.0f;
     shapLayer.path = path.CGPath;
     shapLayer.strokeEnd = 1;
     [self.layer addSublayer:shapLayer];
@@ -135,7 +150,7 @@
 {
     float _ff = 30;
     CGContextRef ctx =  UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(ctx, 1.3f);
+    CGContextSetLineWidth(ctx, 1.5f);
     CGContextSetRGBStrokeColor(ctx, 221/255.0, 221/255.0, 230/255.0, 1);
     CGContextSetRGBFillColor(ctx, 221/255.0, 221/255.0, 221/255.0, 1);
     
@@ -164,7 +179,7 @@
             point[i+3] = CGPointMake(5 + _w * cnt, self.height - _ff);
         }
         
-        CGContextAddArc(ctx, 5 + _w * cnt , self.height - _ff, 2, 0, 360, 0);
+        CGContextAddArc(ctx, 5 + _w * cnt , self.height - _ff, 3, 0, 360, 0);
         CGContextFillPath(ctx);
     }
 

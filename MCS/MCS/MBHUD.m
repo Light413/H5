@@ -9,7 +9,7 @@
 #import "MBHUD.h"
 
 #import <MBProgressHUD/MBProgressHUD.h>
-#define kDelayTime 3
+#define kDelayTime 0.8
 
 @implementation MBHUD
 {

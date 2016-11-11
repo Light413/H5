@@ -9,9 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "FleetStatusLineView.h"
 
+@protocol FleetInfoCellEventDelegate <NSObject>
+
+-(void)faultAnalysis;//故障分析
+
+
+@end
+
+
 @interface FleetIInfoCell : UICollectionViewCell
 
 @property(nonatomic,assign)NSInteger fleetStatus;
+
+@property(nonatomic,assign) id<FleetInfoCellEventDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet FleetStatusLineView *lineView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImg;

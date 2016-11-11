@@ -11,7 +11,7 @@
 
  static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifier";
 
-@interface FleetInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface FleetInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,FleetInfoCellEventDelegate>
 {
     UICollectionView * _collectionView;
     
@@ -22,22 +22,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Fleet Status";
-    
-    // Do any additional setup after loading the view.
     [self initSubviews];
 }
 
 -(void)initSubviews
 {
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
-    layout.minimumLineSpacing = 5;
-    layout.minimumInteritemSpacing = 5;
-    layout.itemSize = CGSizeMake(240, 160);
+    layout.minimumLineSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
+    layout.itemSize = CGSizeMake(250, 160);
+    float _offsetx = (CURRNET_SCREEN_WIDTH - 250 * 4 - 0)/2.0;
     
     _collectionView =[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, CURRENT_SCREEN_HEIGHT - 64) collectionViewLayout:layout];
-    [_collectionView setContentInset:UIEdgeInsetsMake(5, 5, 5, 5)];
+    [_collectionView setContentInset:UIEdgeInsetsMake(20, _offsetx, 20, _offsetx)];
     _collectionView.delegate = self;
+    
     _collectionView.dataSource = self;
 
     [_collectionView registerNib:[UINib nibWithNibName:@"FleetIInfoCell" bundle:nil]forCellWithReuseIdentifier:collectionCellReuseIdentifier];
@@ -56,14 +55,26 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     FleetIInfoCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionCellReuseIdentifier forIndexPath:indexPath];
-    cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    cell.layer.borderWidth = 1;
+    cell.delegate = self;
     
     cell.fleetStatus  = arc4random()%7;
     //...时间和一些其他数据填充
     
     return cell;
 }
+
+
+#pragma mark FleetInfoCellEventDelegate
+-(void)faultAnalysis
+{
+    NSLog(@"2222");
+    UIStoryboard * sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    FleetFaultDesVC * vc = [sb instantiateViewControllerWithIdentifier:@"FleetFaultDesVCSBID"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

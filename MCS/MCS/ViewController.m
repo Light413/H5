@@ -23,11 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"首页";
+    self.title = @"test";
     // Do any additional setup after loading the view, typically from a nib.
 
-    UIBarButtonItem * _item = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self  action:@selector(click)];
+    UIBarButtonItem * _item0 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self  action:@selector(login)];
+    self.navigationItem.leftBarButtonItem =  _item0;
     
+    UIBarButtonItem * _item = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self  action:@selector(click)];
     self.navigationItem.rightBarButtonItem =  _item;
     
 //    [self testVfl];
@@ -43,6 +45,17 @@
 }
 
 #pragma mark - test btn action
+-(void)login
+{
+#if 1
+    LoginVCSwift * vc = [[LoginVCSwift alloc]init];
+#else
+    LoginViewController *vc = [[LoginViewController alloc]init];
+#endif
+    [self presentViewController:vc animated:YES completion:nil];
+
+}
+
 - (IBAction)btnAction:(id)sender {
     GanttViewController * vc = [[GanttViewController alloc]init];
     
@@ -59,7 +72,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (IBAction)fleetInfo:(UIButton*)sender {
-    NSArray *arr = @[@"FleetInfoViewController",@"FleetMapVC"];
+    NSArray *arr = @[@"FleetInfoViewController",@"FleetMapVC",@"LoginViewController"];
     Class cls = NSClassFromString(arr[sender.tag]);
 
     id vc = [cls new];
@@ -79,6 +92,8 @@
         [MBHUD showSuccessInView:self.view WithMsg:@"加载完成" ];
 //        [MBHUD showErrorInView:self.view WithMsg:@"请求失败"];
 //        [MBHUD showTextInView:self.view WithMsg:@"请检查网络设置"];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)testbezierPath

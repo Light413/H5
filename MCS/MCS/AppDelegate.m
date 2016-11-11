@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "BaseNavigationVC.h"
+#import "HomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    [self.window makeKeyAndVisible];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    BaseNavigationVC *nav = [[BaseNavigationVC alloc]initWithRootViewController:[[HomeViewController alloc]init]];
+    self.window.rootViewController = nav;
     
     [self initSys];
     NSLog(@"XXX  :%@",NSHomeDirectory());
@@ -26,7 +34,11 @@
 
 -(void)initSys
 {
+    //检测网络
     [[BaseUtils share] startMonitorNet];
+    
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

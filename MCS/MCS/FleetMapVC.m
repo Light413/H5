@@ -93,7 +93,8 @@
 //        a1.title=@"蓝天绿地商务广场";
 //        a1.subtitle=@"地址：共和新路1301号b幢 坐标：121.467243,31.269513";
         a1.coordinate=location1;
-        a1.image = [UIImage imageNamed:@"shoplist-navi"];
+//        a1.image = [UIImage imageNamed:@"shoplist-navi"];
+        a1.image = [UIImage imageNamed:@"plane_5"];
         [_mapView addAnnotation:a1];
     }
 
@@ -138,6 +139,7 @@
 -(void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
     [MBHUD showErrorInView:self.view WithMsg:@"locate failure"];
+    [MBHUD dismiss];
 }
 -(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray<MKAnnotationView *> *)views
 {

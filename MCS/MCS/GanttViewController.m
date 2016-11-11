@@ -36,9 +36,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self initData];
     
-    [self addheadView];
+    [self addTopView];
     [self addBackgroundView];
-    [self addColumn];
+    [self addLeftColumn];
     [self addContentView];
 }
 
@@ -56,7 +56,7 @@
     [self.view addSubview:backScrollView];
 }
 
--(void)addheadView
+-(void)addTopView
 {
     topHeadScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(kRowWidth + 5, 0, CURRNET_SCREEN_WIDTH - 10, 50)];
     topHeadScrollView.layer.borderColor = [UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:1].CGColor;
@@ -81,7 +81,7 @@
 }
 
 
--(void)addColumn
+-(void)addLeftColumn
 {
     for (int i=0; i < rows; i++) {
         UILabel * _lab = [[UILabel alloc]init];

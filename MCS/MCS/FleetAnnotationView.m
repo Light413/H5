@@ -12,6 +12,7 @@
 
 -(void)awakeFromNib
 {
+    [super awakeFromNib];
     self.layer.borderColor = DefaultBgColor.CGColor;
     self.layer.borderWidth = 2;
     self.layer.cornerRadius = 10;

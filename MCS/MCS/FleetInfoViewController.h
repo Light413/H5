@@ -7,6 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "FleetFaultDesVC.h"
+
 
 @interface FleetInfoViewController : BaseViewController
 
