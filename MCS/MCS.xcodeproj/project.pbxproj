@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		42CAA8D6346A0174654B2B61 /* libPods-MCS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A26BDCABF99605CF22118DA7 /* libPods-MCS.a */; };
+		0C189F6C926C016B3183B5A4 /* Pods_MCS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7788B2D106A22398C6285560 /* Pods_MCS.framework */; };
 		A10A35ED1DAB987800CE568B /* AppleSucksDOMImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A35011DAB987800CE568B /* AppleSucksDOMImplementation.m */; };
 		A10A35EE1DAB987800CE568B /* Attr.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A35031DAB987800CE568B /* Attr.m */; };
 		A10A35EF1DAB987800CE568B /* CDATASection.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A35051DAB987800CE568B /* CDATASection.m */; };
@@ -108,8 +108,6 @@
 		A10A364E1DAB987800CE568B /* SVGKLayeredImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A35E71DAB987800CE568B /* SVGKLayeredImageView.m */; };
 		A10A364F1DAB987800CE568B /* SVGKPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A35EA1DAB987800CE568B /* SVGKPattern.m */; };
 		A10A36501DAB987800CE568B /* SVGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A35EC1DAB987800CE568B /* SVGUtils.m */; };
-		A10A36621DAB98AE00CE568B /* C8F542F0-5DE9-3E06-AD55-EFC5E64C6D06.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = A10A36531DAB98AE00CE568B /* C8F542F0-5DE9-3E06-AD55-EFC5E64C6D06.bcsymbolmap */; };
-		A10A36631DAB98AE00CE568B /* CBCCBFAB-2074-328B-96C3-72FF2F15563F.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = A10A36541DAB98AE00CE568B /* CBCCBFAB-2074-328B-96C3-72FF2F15563F.bcsymbolmap */; };
 		A156326F1DB49F830021C215 /* FleetMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A156326E1DB49F830021C215 /* FleetMapVC.m */; };
 		A15632711DB4A1210021C215 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15632701DB4A1210021C215 /* MapKit.framework */; };
 		A15632731DB4A8FD0021C215 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15632721DB4A8FD0021C215 /* CoreLocation.framework */; };
@@ -132,6 +130,8 @@
 		A188CA3B1D8FC2BE0076C4C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A188CA3A1D8FC2BE0076C4C9 /* Foundation.framework */; };
 		A188CA3D1D8FC2C80076C4C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A188CA3C1D8FC2C80076C4C9 /* CoreGraphics.framework */; };
 		A18FA1BF1D926D000017DF49 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A18FA1BE1D926D000017DF49 /* UIViewExt.m */; };
+		A19211EA1DE81B01004029BA /* XMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A19211E91DE81B01004029BA /* XMPPManager.m */; };
+		A19277CA1DE7FDA500A990E5 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A19277C91DE7FDA500A990E5 /* libresolv.tbd */; };
 		A19B6C3A1D90DFB20026FA2C /* GanttViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19B6C391D90DFB20026FA2C /* GanttViewController.m */; };
 		A19B6C3D1D90DFD50026FA2C /* GanttView.m in Sources */ = {isa = PBXBuildFile; fileRef = A19B6C3C1D90DFD50026FA2C /* GanttView.m */; };
 		A19CA2C91DADDA9000AA2428 /* FleetInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19CA2C81DADDA9000AA2428 /* FleetInfoViewController.m */; };
@@ -180,8 +180,6 @@
 		A1D5CD5E1DCC7CA900794B3B /* WarnHandleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D5CD5C1DCC7CA900794B3B /* WarnHandleCell.xib */; };
 		A1D5CD601DCC8B0200794B3B /* WarnHandleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D5CD5F1DCC8B0200794B3B /* WarnHandleHeader.xib */; };
 		A1D638F61DBE09E1008A8FC8 /* web.html in Resources */ = {isa = PBXBuildFile; fileRef = A1D638F51DBE09E1008A8FC8 /* web.html */; };
-		A1D638F71DBE0BCB008A8FC8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10A36551DAB98AE00CE568B /* CocoaLumberjack.framework */; };
-		A1D638F81DBE0BCB008A8FC8 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A10A36551DAB98AE00CE568B /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A1D72B2A1DC6DA440027A960 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D72B281DC6DA440027A960 /* LoginViewController.m */; };
 		A1D72B2E1DC6E0450027A960 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D72B2D1DC6E0450027A960 /* LoginView.m */; };
 		A1D72B321DC6E0B50027A960 /* LoginInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D72B311DC6E0B50027A960 /* LoginInfoView.xib */; };
@@ -213,7 +211,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A1D638F81DBE0BCB008A8FC8 /* CocoaLumberjack.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,6 +220,7 @@
 /* Begin PBXFileReference section */
 		0FA297197692DBC9B6005221 /* Pods-MCS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MCS/Pods-MCS.debug.xcconfig"; sourceTree = "<group>"; };
 		5A82ED8FA690238F7ABD2DBF /* libPods-MCSUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MCSUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7788B2D106A22398C6285560 /* Pods_MCS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C10E5B4A1F1DF7B71875CC /* Pods-MCS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCS/Pods-MCS.release.xcconfig"; sourceTree = "<group>"; };
 		A10A35001DAB987800CE568B /* AppleSucksDOMImplementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleSucksDOMImplementation.h; sourceTree = "<group>"; };
 		A10A35011DAB987800CE568B /* AppleSucksDOMImplementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleSucksDOMImplementation.m; sourceTree = "<group>"; };
@@ -452,9 +450,6 @@
 		A10A35EA1DAB987800CE568B /* SVGKPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKPattern.m; sourceTree = "<group>"; };
 		A10A35EB1DAB987800CE568B /* SVGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGUtils.h; sourceTree = "<group>"; };
 		A10A35EC1DAB987800CE568B /* SVGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGUtils.m; sourceTree = "<group>"; };
-		A10A36531DAB98AE00CE568B /* C8F542F0-5DE9-3E06-AD55-EFC5E64C6D06.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C8F542F0-5DE9-3E06-AD55-EFC5E64C6D06.bcsymbolmap"; sourceTree = "<group>"; };
-		A10A36541DAB98AE00CE568B /* CBCCBFAB-2074-328B-96C3-72FF2F15563F.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CBCCBFAB-2074-328B-96C3-72FF2F15563F.bcsymbolmap"; sourceTree = "<group>"; };
-		A10A36551DAB98AE00CE568B /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
 		A156326D1DB49F830021C215 /* FleetMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FleetMapVC.h; sourceTree = "<group>"; };
 		A156326E1DB49F830021C215 /* FleetMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FleetMapVC.m; sourceTree = "<group>"; };
 		A15632701DB4A1210021C215 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -484,6 +479,9 @@
 		A188CA3C1D8FC2C80076C4C9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A18FA1BD1D926D000017DF49 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		A18FA1BE1D926D000017DF49 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		A19211E81DE81B01004029BA /* XMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPManager.h; sourceTree = "<group>"; };
+		A19211E91DE81B01004029BA /* XMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPManager.m; sourceTree = "<group>"; };
+		A19277C91DE7FDA500A990E5 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		A19B6C381D90DFB20026FA2C /* GanttViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanttViewController.h; sourceTree = "<group>"; };
 		A19B6C391D90DFB20026FA2C /* GanttViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanttViewController.m; sourceTree = "<group>"; };
 		A19B6C3B1D90DFD50026FA2C /* GanttView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanttView.h; sourceTree = "<group>"; };
@@ -573,7 +571,6 @@
 		A1D72B311DC6E0B50027A960 /* LoginInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginInfoView.xib; sourceTree = "<group>"; };
 		A1D72B351DC725730027A960 /* loginbg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginbg.jpg; sourceTree = "<group>"; };
 		A1D72B371DC733BD0027A960 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		A26BDCABF99605CF22118DA7 /* libPods-MCS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MCS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50972EE26AB714E7830BD34 /* libPods-MCSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MCSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -582,17 +579,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A19277CA1DE7FDA500A990E5 /* libresolv.tbd in Frameworks */,
 				A1813C221DAA1CAB00BBB01B /* libxml2.tbd in Frameworks */,
 				A15632731DB4A8FD0021C215 /* CoreLocation.framework in Frameworks */,
 				A15632711DB4A1210021C215 /* MapKit.framework in Frameworks */,
 				A1813C241DAA1CB500BBB01B /* QuartzCore.framework in Frameworks */,
 				A1813C201DAA1C9B00BBB01B /* CoreImage.framework in Frameworks */,
-				A1D638F71DBE0BCB008A8FC8 /* CocoaLumberjack.framework in Frameworks */,
 				A1813C1E1DAA1C9000BBB01B /* CoreText.framework in Frameworks */,
 				A188CA3D1D8FC2C80076C4C9 /* CoreGraphics.framework in Frameworks */,
 				A188CA3B1D8FC2BE0076C4C9 /* Foundation.framework in Frameworks */,
 				A188CA391D8FC2AE0076C4C9 /* UIKit.framework in Frameworks */,
-				42CAA8D6346A0174654B2B61 /* libPods-MCS.a in Frameworks */,
+				0C189F6C926C016B3183B5A4 /* Pods_MCS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +613,7 @@
 		50BEF9FFE69FFC7B1434E4CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A19277C91DE7FDA500A990E5 /* libresolv.tbd */,
 				A15632721DB4A8FD0021C215 /* CoreLocation.framework */,
 				A15632701DB4A1210021C215 /* MapKit.framework */,
 				A1813C231DAA1CB500BBB01B /* QuartzCore.framework */,
@@ -625,9 +623,9 @@
 				A188CA3C1D8FC2C80076C4C9 /* CoreGraphics.framework */,
 				A188CA3A1D8FC2BE0076C4C9 /* Foundation.framework */,
 				A188CA381D8FC2AE0076C4C9 /* UIKit.framework */,
-				A26BDCABF99605CF22118DA7 /* libPods-MCS.a */,
 				A50972EE26AB714E7830BD34 /* libPods-MCSTests.a */,
 				5A82ED8FA690238F7ABD2DBF /* libPods-MCSUITests.a */,
+				7788B2D106A22398C6285560 /* Pods_MCS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -635,7 +633,6 @@
 		A10A34FD1DAB987800CE568B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A10A36511DAB98AE00CE568B /* CocoaLumberjack-2.2.0 */,
 				A10A34FE1DAB987800CE568B /* DOM classes */,
 				A10A359F1DAB987800CE568B /* Exporters */,
 				A10A35A81DAB987800CE568B /* Parsers */,
@@ -956,24 +953,6 @@
 			path = Unsorted;
 			sourceTree = "<group>";
 		};
-		A10A36511DAB98AE00CE568B /* CocoaLumberjack-2.2.0 */ = {
-			isa = PBXGroup;
-			children = (
-				A10A36521DAB98AE00CE568B /* iOS */,
-			);
-			path = "CocoaLumberjack-2.2.0";
-			sourceTree = "<group>";
-		};
-		A10A36521DAB98AE00CE568B /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				A10A36531DAB98AE00CE568B /* C8F542F0-5DE9-3E06-AD55-EFC5E64C6D06.bcsymbolmap */,
-				A10A36541DAB98AE00CE568B /* CBCCBFAB-2074-328B-96C3-72FF2F15563F.bcsymbolmap */,
-				A10A36551DAB98AE00CE568B /* CocoaLumberjack.framework */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
 		A133A2CC1DCB399F00F08014 /* third */ = {
 			isa = PBXGroup;
 			children = (
@@ -1014,6 +993,15 @@
 				A18FA1BE1D926D000017DF49 /* UIViewExt.m */,
 			);
 			name = category;
+			sourceTree = "<group>";
+		};
+		A19211E71DE81ACB004029BA /* xmpp */ = {
+			isa = PBXGroup;
+			children = (
+				A19211E81DE81B01004029BA /* XMPPManager.h */,
+				A19211E91DE81B01004029BA /* XMPPManager.m */,
+			);
+			name = xmpp;
 			sourceTree = "<group>";
 		};
 		A1A69D4C1D7EB7800068CA53 /* others */ = {
@@ -1164,6 +1152,7 @@
 		A1B4603D1D7E90E30008D554 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A19211E71DE81ACB004029BA /* xmpp */,
 				A18FA1BC1D926CE90017DF49 /* category */,
 				A183E2BF1D86567800246600 /* QRScane */,
 				A1A69D4C1D7EB7800068CA53 /* others */,
@@ -1415,11 +1404,9 @@
 				A1D5CD5E1DCC7CA900794B3B /* WarnHandleCell.xib in Resources */,
 				A1AF0E0D1D93C08E00B604A5 /* docs.css in Resources */,
 				A1A7FDFD1D7D1AB00024EEF4 /* Assets.xcassets in Resources */,
-				A10A36621DAB98AE00CE568B /* C8F542F0-5DE9-3E06-AD55-EFC5E64C6D06.bcsymbolmap in Resources */,
 				A1AF0E051D93832C00B604A5 /* checkDetail.html in Resources */,
 				A1D72B381DC733BD0027A960 /* LoginViewController.xib in Resources */,
 				A1A7FDFB1D7D1AB00024EEF4 /* Main.storyboard in Resources */,
-				A10A36631DAB98AE00CE568B /* CBCCBFAB-2074-328B-96C3-72FF2F15563F.bcsymbolmap in Resources */,
 				A1D3AB681DB76A79006CF96C /* air-icon.png in Resources */,
 				A1D437351DD19CE4007DC05B /* MWilldoVC.xib in Resources */,
 			);
@@ -1652,6 +1639,7 @@
 				A1C113641DAC7FFE002BEB82 /* SVGViewController.m in Sources */,
 				A10A36291DAB987800CE568B /* SVGSVGElement.m in Sources */,
 				A10A36501DAB987800CE568B /* SVGUtils.m in Sources */,
+				A19211EA1DE81B01004029BA /* XMPPManager.m in Sources */,
 				A10A36101DAB987800CE568B /* SVGHelperUtilities.m in Sources */,
 				A1D437391DD19D0A007DC05B /* MWOVC.m in Sources */,
 				A10A360D1DAB987800CE568B /* SVGElementInstance.m in Sources */,
@@ -1870,37 +1858,17 @@
 					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
 					"\"${PODS_ROOT}/Headers/Public/ReactiveCocoa\"",
 					/usr/include/libxml2,
+					"$(PROJECT_DIR)/MCS/MCS/XMPPFramework/module",
 				);
 				INFOPLIST_FILE = MCS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = (
+				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"-ObjC",
-					"-l\"AFNetworking\"",
-					"-l\"FMDB\"",
-					"-l\"LKDBHelper\"",
-					"-l\"MBProgressHUD\"",
-					"-l\"MJExtension\"",
-					"-l\"MJRefresh\"",
-					"-l\"Masonry\"",
-					"-l\"ReactiveCocoa\"",
-					"-l\"sqlite3\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-framework",
-					"\"UIKit\"",
-					"-lxml2",
+					"$(PROJECT_DIR)/MCS/XMPPFramework/Vendor/libidn",
 				);
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Light99.MCS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1908,7 +1876,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "MCS/MCS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1945,43 +1913,23 @@
 					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
 					"\"${PODS_ROOT}/Headers/Public/ReactiveCocoa\"",
 					/usr/include/libxml2,
+					"$(PROJECT_DIR)/MCS/MCS/XMPPFramework/module",
 				);
 				INFOPLIST_FILE = MCS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = (
+				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"-ObjC",
-					"-l\"AFNetworking\"",
-					"-l\"FMDB\"",
-					"-l\"LKDBHelper\"",
-					"-l\"MBProgressHUD\"",
-					"-l\"MJExtension\"",
-					"-l\"MJRefresh\"",
-					"-l\"Masonry\"",
-					"-l\"ReactiveCocoa\"",
-					"-l\"sqlite3\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-framework",
-					"\"UIKit\"",
-					"-lxml2",
+					"$(PROJECT_DIR)/MCS/XMPPFramework/Vendor/libidn",
 				);
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Light99.MCS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MCS/MCS-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -82,3 +82,36 @@ strip_invalid_archs() {
   fi
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CocoaAsyncSocket/CocoaAsyncSocket.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CocoaLumberjack/CocoaLumberjack.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/KissXML/KissXML.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/LKDBHelper/LKDBHelper.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MJExtension/MJExtension.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Masonry/Masonry.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ReactiveCocoa/ReactiveCocoa.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SAMKeychain/SAMKeychain.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/WebViewJavascriptBridge/WebViewJavascriptBridge.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/XMPPFramework/XMPPFramework.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CocoaAsyncSocket/CocoaAsyncSocket.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CocoaLumberjack/CocoaLumberjack.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/KissXML/KissXML.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/LKDBHelper/LKDBHelper.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MJExtension/MJExtension.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Masonry/Masonry.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ReactiveCocoa/ReactiveCocoa.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SAMKeychain/SAMKeychain.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/WebViewJavascriptBridge/WebViewJavascriptBridge.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/XMPPFramework/XMPPFramework.framework"
+fi

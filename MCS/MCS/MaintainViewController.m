@@ -27,12 +27,15 @@
 
 -(void)initSubviews
 {
-    UISegmentedControl *seg = [[UISegmentedControl alloc]initWithItems:@[@"待安排工作",@"待办工作"]];
-    seg.frame = CGRectMake((CURRNET_SCREEN_WIDTH - 400)/2.0, 10, 400, 35);
+    UISegmentedControl *seg = [[UISegmentedControl alloc]initWithItems:@[@"待安排工作",@"待办工作",@"WO",@"待接收",@"待创建",@"待安排",@"待关闭",@"已参与"]];
+    seg.frame = CGRectMake(20, 10, 800, 35);
+    
     seg.selectedSegmentIndex = 0;
-    [seg setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateNormal];
+    [seg setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:[UIColor colorWithRed:0.220 green:0.325 blue:0.478 alpha:1]} forState:UIControlStateNormal];
     [seg setTintColor:DefaultBgColor];
-    [seg addTarget:self action:@selector(changeVC:) forControlEvents:UIControlEventValueChanged];
+    seg.backgroundColor = [UIColor whiteColor];
+    
+//    [seg addTarget:self action:@selector(changeVC:) forControlEvents:UIControlEventValueChanged];
 
     
     [self.view addSubview:seg];

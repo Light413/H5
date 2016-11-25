@@ -178,13 +178,21 @@
 - (void)loginAction:(id)sender {
     [MBHUD showStatueInView:self.view WithMsg:@"正在登陆..."];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 3), dispatch_get_main_queue(), ^{
-        [MBHUD dismiss];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    });
+
+    NSDictionary *_d = [NSDictionary dictionaryWithObjectsAndKeys:@"wangyiwen",@"userName",@"069684",@"password", nil];
+    
+    RequestTaskHandle * task = [RequestTaskHandle taskWith:@"/adp-osm/rest/login" parms:_d andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+
+         [MBHUD dismiss];
+
+         [self dismissViewControllerAnimated:YES completion:nil];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
     
     
-    
+    [HttpManager doPostWithTask:task];
 }
 
 - (void)didReceiveMemoryWarning {

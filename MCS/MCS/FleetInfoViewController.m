@@ -9,6 +9,9 @@
 #import "FleetInfoViewController.h"
 #import "FleetIInfoCell.h"
 
+#import "BaseNavigationVC.h"
+#import <objc/runtime.h>
+
  static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifier";
 
 @interface FleetInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,FleetInfoCellEventDelegate>
@@ -23,7 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initSubviews];
+    
+//    Method old = class_getInstanceMethod([BaseNavigationVC class], @selector(viewControllerBackAction:));
+//    Method new = class_getInstanceMethod([self class], @selector(testBack));
+//    
+//    method_exchangeImplementations(old, new);
+
 }
+
 
 -(void)initSubviews
 {
@@ -65,13 +75,12 @@
 
 
 #pragma mark FleetInfoCellEventDelegate
--(void)faultAnalysis
+-(void)faultAnalysis:(id)index
 {
-    NSLog(@"2222");
     UIStoryboard * sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    FleetFaultDesVC * vc = [sb instantiateViewControllerWithIdentifier:@"FleetFaultDesVCSBID"];
-    
+    NSString *  str = [index integerValue] == 1 ? @"FleetFaultDesVCSBID" : @"FleetStatueInfoVCSBID";
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:str];
+    if(vc)
     [self.navigationController pushViewController:vc animated:YES];
 }
 

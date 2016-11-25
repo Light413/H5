@@ -9,6 +9,9 @@
 #import "FleetAnnotationView.h"
 
 @implementation FleetAnnotationView
+{
+    NSArray * timeArr;
+}
 
 -(void)awakeFromNib
 {
@@ -17,7 +20,16 @@
     self.layer.borderWidth = 2;
     self.layer.cornerRadius = 10;
     self.layer.masksToBounds = YES;
+    
 }
+
+
+- (IBAction)btn_status:(UIButton *)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(faultAnalysis:)]) {
+        [self.delegate performSelector:@selector(faultAnalysis:) withObject:@(sender.tag)];
+    }
+}
+
 
 
 +(FleetAnnotationView *)annotationViewFromMap:(MKMapView *)mapview
@@ -25,19 +37,27 @@
     static NSString * fleetAnnotationviewIdentifier = @"fleetAnnotationviewIdentifier";
     FleetAnnotationView * view = (FleetAnnotationView *)[mapview dequeueReusableAnnotationViewWithIdentifier:fleetAnnotationviewIdentifier];
     if (!view) {
-        view  =[[[NSBundle mainBundle]loadNibNamed:@"FleetAnnotationView" owner:self options:nil] lastObject];
+        view  =[[[NSBundle mainBundle]loadNibNamed:@"FleetAnnotationView" owner:nil options:nil] lastObject];
         view.enabled = NO;
-        view.centerOffset = CGPointMake(0, -(view.height+30)/2.0);
+        view.centerOffset = CGPointMake(0, -(view.height+45)/2.0);
+ 
     }
     
     return view;
 }
 
--(void)drawRect:(CGRect)rect
+
+
+////////
+////////
+-(void)setFleetStatus:(NSInteger)fleetStatus
 {
-
-
+    timeArr = @[@"09:50",@"09:55",@"10:15",@"10:55",@"11:10",@"12:05"];
+    
+    [_lineView setFleetStatus:fleetStatus withTime:timeArr];
+    
 }
+
 
 @end
 

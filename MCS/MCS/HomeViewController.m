@@ -9,14 +9,19 @@
 #import "HomeViewController.h"
 #import "HomeCollectionViewCell.h"
 
+#import <XMPPFramework/XMPPFramework.h>
+
 static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifier";
 
-@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,XMPPStreamDelegate>
 {
     UICollectionView * _collectionView;
     NSArray * _menuArray;
     NSDictionary * _vcDic;
     NSDictionary * _limiDic;
+    
+    //...test
+    XMPPStream * _xmppStream;
 }
 
 @end
@@ -55,23 +60,86 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     UIDevice * dev = [UIDevice currentDevice];
     
     UIButton * testBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    testBtn.frame = CGRectMake(CURRNET_SCREEN_WIDTH - 80, 30, 50, 55);
+    testBtn.frame = CGRectMake(CURRNET_SCREEN_WIDTH - 80 - 100, 30, 50, 55);
     [testBtn setTitle:@"TEST" forState:UIControlStateNormal];
     [testBtn addTarget:self action:@selector(testVC) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:testBtn];
+    
+    _xmppStream = [[XMPPStream alloc]init];
+    [_xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
+    XMPPJID * _jid = [XMPPJID jidWithUser:@"wangyiwen" domain:@"119.15.136.39" resource:@"iPad"];
+    
+    _xmppStream.myJID = _jid;
+    _xmppStream.hostName = @"119.15.136.39";
+    _xmppStream.hostPort = 5222;
+    
+    
+    NSError * error = nil;
+    
+    if (![_xmppStream isConnected]) {
+        [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error];
+    }
+    
+}
+
+-(void)xmppStream:(XMPPStream *)sender socketDidConnect:(GCDAsyncSocket *)socket
+{
+    NSLog(@"########:%s",__func__);
+}
+
+-(void)xmppStreamDidConnect:(XMPPStream *)sender
+{
+    NSLog(@"########:%s",__func__);
+}
+
+-(void)xmppStreamConnectDidTimeout:(XMPPStream *)sender
+{
+    NSLog(@"########:%s",__func__);
+}
+
+
+-(void)exitAction:(UIButton*)sender
+{
+    UIAlertController * alertvc = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定退出登录?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction * action1 =[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertvc addAction:action1];
+    
+    __weak typeof(self)weakSelf = self;
+    UIAlertAction * action2 =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+#if 0
+        LoginVCSwift * vc = [[LoginVCSwift alloc]init];
+#else
+        LoginViewController *vc = [[LoginViewController alloc]init];
+#endif
+        [weakSelf presentViewController:vc animated:YES completion:nil];
+    }];
+    
+    [alertvc addAction:action2];
+    
+    [self presentViewController:alertvc animated:YES completion:nil];
 
 }
 
+
 -(void)testVC
 {
+    
+    /*
     ViewController * vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"ViewControllerSBID"];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushViewController:vc animated:YES];*/
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear: animated];
+    
+//     LoginViewController *vc = [[LoginViewController alloc]init];
+//    [self presentViewController:vc animated:animated completion:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -94,8 +162,6 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     UIImageView *logo = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"logo_icon"]];
     logo.frame = CGRectMake(30, 25, 220, 55);
     [self.view addSubview:logo];
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:logo];
-    
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     layout.minimumLineSpacing = 15;
     layout.minimumInteritemSpacing = _space/3.0 ;
@@ -108,9 +174,13 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     [_collectionView registerNib:[UINib nibWithNibName:@"HomeCollectionViewCell" bundle:nil]forCellWithReuseIdentifier:collectionCellReuseIdentifier];
     _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.backgroundView = nil;
-    
-    
     [self.view addSubview:_collectionView];
+    
+    UIButton * exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    exitBtn.frame = CGRectMake(CURRNET_SCREEN_WIDTH - 80, 32, 50, 50);
+    [exitBtn addTarget:self action:@selector(exitAction:) forControlEvents:UIControlEventTouchUpInside];
+    [exitBtn setImage:[UIImage imageNamed:@"icon_exit2"] forState:UIControlStateNormal];
+    [self.view addSubview:exitBtn];
 }
 
 - (UIImage *)imageWithColor:(UIColor *)color

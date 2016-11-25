@@ -40,8 +40,6 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please allow MCS access to your location in use</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -34,10 +34,17 @@
 
 -(void)checkFault :(UITapGestureRecognizer *)ges
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(faultAnalysis)]) {
-        [self.delegate performSelector:@selector(faultAnalysis)];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(faultAnalysis:)]) {
+        [self.delegate performSelector:@selector(faultAnalysis:) withObject:@1];
     }
 }
+
+- (IBAction)btn_status:(UIButton *)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(faultAnalysis:)]) {
+        [self.delegate performSelector:@selector(faultAnalysis:) withObject:@2];
+    }
+}
+
 
 -(void)setFleetStatus:(NSInteger)fleetStatus
 {

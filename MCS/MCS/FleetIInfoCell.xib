@@ -28,13 +28,6 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PFR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hj8-hB-GEP">
-                        <frame key="frameInset" minX="194" minY="62" width="37" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                        <color key="textColor" red="0.10980392160000001" green="0.59999999999999998" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NX225" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Yd-Fn-wiJ">
                         <frame key="frameInset" minX="82" minY="39" width="52" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -61,7 +54,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plane_1" translatesAutoresizingMaskIntoConstraints="NO" id="qU7-X7-o1J">
+                    <imageView tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plane_1" translatesAutoresizingMaskIntoConstraints="NO" id="qU7-X7-o1J">
                         <frame key="frameInset" minX="8" minY="47" width="50" height="50"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -105,6 +98,16 @@
                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edG-cH-swr">
+                        <frame key="frameInset" minX="180" minY="53" width="70" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="PFR">
+                            <color key="titleColor" red="0.10980392160000001" green="0.59999999999999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="btn_status:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Ay4-ys-fzl"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <size key="customSize" width="463" height="87"/>
@@ -118,7 +121,6 @@
                 <outlet property="planTime" destination="1sM-ny-WuU" id="HYX-cS-rb7"/>
                 <outlet property="planeNo" destination="gIa-kA-y3I" id="jCf-ns-YIY"/>
                 <outlet property="start" destination="NAs-0T-v5p" id="Msx-sa-bVz"/>
-                <outlet property="status" destination="Hj8-hB-GEP" id="y5y-0o-lBA"/>
             </connections>
             <point key="canvasLocation" x="1116" y="526"/>
         </collectionViewCell>

@@ -11,7 +11,7 @@
 
 @protocol FleetInfoCellEventDelegate <NSObject>
 
--(void)faultAnalysis;//故障分析
+-(void)faultAnalysis :(id)obj;//故障分析
 
 
 @end

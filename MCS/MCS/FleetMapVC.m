@@ -12,6 +12,7 @@
 
 @interface MAnimation : NSObject<MKAnnotation>
 
+//默认视图
 @property(nonatomic)CLLocationCoordinate2D coordinate;
 
 @property(nonatomic,copy)NSString * title;
@@ -40,7 +41,7 @@
 @end
 
 
-@interface FleetMapVC ()<MKMapViewDelegate>
+@interface FleetMapVC ()<MKMapViewDelegate,FleetInfoCellEventDelegate>
 {
     MKMapView *_mapView;
     CLLocationManager * _locationManager;
@@ -189,36 +190,23 @@ NSLog(@"%s",__FUNCTION__);
     {
         FleetAnnotationView * v = [FleetAnnotationView annotationViewFromMap:mapView];
         v.annotation = annotation;
+        v.fleetStatus = 3;
+        v.delegate = self;
         return v;
     }
     else
     return nil;
 }
 
-
-//- (void)mapViewWillStartLoadingMap:(MKMapView *)mapView
-//{
-//    NSLog(@"%s",__FUNCTION__);
-//}
-//- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
-//{
-//    NSLog(@"%s",__FUNCTION__);
-//}
-//- (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error
-//{
-//    NSLog(@"%s",__FUNCTION__);
-//}
-//- (void)mapViewWillStartRenderingMap:(MKMapView *)mapView
-//{
-//    NSLog(@"%s",__FUNCTION__);
-//}
-//- (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered
-//{
-//    NSLog(@"%s",__FUNCTION__);
-//}
-
-
-
+#pragma mark FleetInfoCellEventDelegate
+-(void)faultAnalysis:(id)index
+{
+    UIStoryboard * sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSString *  str = [index integerValue] == 1 ? @"FleetFaultDesVCSBID" : @"FleetStatueInfoVCSBID";
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:str];
+    if(vc)
+        [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 

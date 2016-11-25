@@ -36,13 +36,13 @@ static NSString * warnHandleCellIdentifierId = @"warnHandleCellIdentifierId";
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.dataArray.count;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataArray.count;
+}
 //
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -51,8 +51,8 @@ static NSString * warnHandleCellIdentifierId = @"warnHandleCellIdentifierId";
     // Configure the cell...
     
     
-    cell.backgroundColor = indexPath.row %2 ? cellBgGrapColor:cellBgLightColor;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = indexPath.row %2 ? kTableViewCellBgColorDeep:cellBgLightColor;
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -71,6 +71,14 @@ static NSString * warnHandleCellIdentifierId = @"warnHandleCellIdentifierId";
     return [[[NSBundle mainBundle]loadNibNamed:@"WarnHandleHeader" owner:self options:nil]lastObject];
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard * sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    NSString *  str = [index integerValue] == 1 ? @"FleetFaultDesVCSBID" : @"FleetStatueInfoVCSBID";
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"FleetFaultDesVCSBID"];
+    if(vc)
+        [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

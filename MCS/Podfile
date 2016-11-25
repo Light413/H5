@@ -1,5 +1,5 @@
-
-platform :ios, '7.0'
+#use_frameworks!
+platform :ios, '8.0'
 
 target 'MCS' do
 pod 'AFNetworking','3.1.0'
@@ -12,4 +12,6 @@ pod 'ReactiveCocoa', '2.5'
 pod 'WebViewJavascriptBridge', '~> 5.0.5'
 pod 'SAMKeychain', '1.5.2'
 
+use_frameworks!
+pod 'XMPPFramework', :git => "https://github.com/robbiehanson/XMPPFramework.git", :branch => 'master'
 end

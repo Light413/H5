@@ -7,7 +7,7 @@
 //
 
 #import "webViewController.h"
-#import <WebViewJavascriptBridge.h>
+#import "WebViewJavascriptBridge.h"
 
 @interface webViewController ()<UIWebViewDelegate>
 {

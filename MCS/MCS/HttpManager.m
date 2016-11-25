@@ -7,7 +7,7 @@
 //
 
 #import "HttpManager.h"
-#import <AFNetworkActivityIndicatorManager.h>
+#import "AFNetworkActivityIndicatorManager.h"
 @implementation RequestTaskHandle
 
 +(RequestTaskHandle *)taskWith:(NSString *)url parms:(NSDictionary*)parms andSuccess:(requestSucessBlock)success failure:(requestFailureBlock)faile
@@ -26,7 +26,7 @@
 
 @implementation HttpManager
 {
-    AFHTTPSessionManager * _sessionManager;
+    AFHTTPSessionManager * _httpSessionManager;
 }
 
 -(instancetype)init
@@ -36,12 +36,11 @@
         [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
         
         NSString * _baseUrl = [self baseUrl];
-        _sessionManager = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString: _baseUrl]];
-        _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-        _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        _httpSessionManager = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString: _baseUrl]];
+        _httpSessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        _httpSessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
         
     }
-    
     return self;
 }
 
@@ -49,7 +48,6 @@
 {
     static HttpManager * _httpManager = nil;
     static dispatch_once_t dispatch_one;
-    
     dispatch_once(&dispatch_one, ^{
         _httpManager  = [[self alloc]init];
     });
@@ -59,17 +57,17 @@
 
 -(NSString *)baseUrl
 {
-    return @"http://gtzj.imsp.cn:80";
+    return @"http://osm.myfleets.com";
 }
 
 
-
+#pragma mark - methods
 -(NSURLSessionDataTask*)doPostWithTask:(RequestTaskHandle *)taskHandle
 {
     NSParameterAssert(taskHandle.url);
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    return [_sessionManager POST:taskHandle.url parameters:taskHandle.params progress:^(NSProgress * _Nonnull uploadProgress) {
+    return [_httpSessionManager POST:taskHandle.url parameters:taskHandle.params progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (taskHandle.success) {

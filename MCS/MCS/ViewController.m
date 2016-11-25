@@ -42,7 +42,43 @@
     [web loadRequest:[NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10]];
     [self.view addSubview:web];
     */
+    
+    
+    [self testTouchID];
 }
+
+
+-(void)testTouchID
+{
+    if ([[UIDevice currentDevice].systemVersion floatValue] < 8.0) {
+        NSLog(@"不支持指纹识别");
+        return;
+    }
+    
+    LAContext * ctx = [[LAContext alloc]init];
+    if ([ctx canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil]) {
+        NSLog(@"is support");
+        
+        [ctx evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"需要验证你的指纹信息" reply:^(BOOL success, NSError * _Nullable error) {
+            if (success) {
+                NSLog(@"is success");
+            }
+            else
+            {
+                NSLog(@"is cancle");
+            }
+            
+        }];
+    }
+    else
+    {
+        NSLog(@"not support");
+    }
+}
+
+
+
+
 
 #pragma mark - test btn action
 -(void)login
@@ -224,16 +260,9 @@
     };
     
     [self.navigationController pushViewController:vc animated:YES];
-/*
-    NSDictionary *_d = [NSDictionary dictionaryWithObjectsAndKeys:@{},@"params", nil];
-    RequestTaskHandle * task = [RequestTaskHandle taskWith:@"/nes-server/rs/room/directory/list" parms:_d andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
-    
-    [HttpManager doPostWithTask:task];
- */
+
+
+ 
 
     
 //    UIPopoverController * pop = [[UIPopoverController alloc]initWithContentViewController:self];
