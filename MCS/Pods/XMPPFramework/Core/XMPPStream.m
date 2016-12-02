@@ -1109,6 +1109,7 @@ enum XMPPStreamConfig
 		}
 
 		// Notify delegates
+        //[asyncSocket enableBackgroundingOnSocket];
 		[multicastDelegate xmppStreamWillConnect:self];
 
 		if ([hostName length] == 0)
