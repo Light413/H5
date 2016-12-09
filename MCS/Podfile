@@ -14,4 +14,6 @@ pod 'SAMKeychain', '1.5.2'
 
 use_frameworks!
 pod 'XMPPFramework', :git => "https://github.com/robbiehanson/XMPPFramework.git", :branch => 'master'
+pod 'Alamofire', '4.2.0'
+
 end

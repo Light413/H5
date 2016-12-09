@@ -14,6 +14,19 @@
 #define ServerBaseUrl @"http://osm.myfleets.com/adp-osm/rest/login"
 
 
+#define MY_DEBUG
+#ifdef MY_DEBUG
+#define test_username   @"xiaoming"
+#define test_userpwd    @"123"
+#define XMPP_SERVER     @"192.168.90.121"
+#define XMPP_SRC        @"iPad"
+#else
+#define test_username   @"wangyiwen"
+#define test_userpwd    @"wangyiwen"
+#define XMPP_SERVER     @@"119.15.136.39"
+#define XMPP_SRC        @"iPad"
+#endif
+
 
 #define DefaultBgColor [UIColor colorWithRed:30/255.0 green:170/255.0 blue:240/255.0 alpha:1]
 #define kTableViewCellBgColorDeep [UIColor colorWithRed:0.855 green:0.929 blue:0.965 alpha:1]

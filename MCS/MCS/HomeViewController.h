@@ -15,7 +15,10 @@
 #import "ViewController.h"
 #import "LoginViewController.h"
 
+#import "XMPPManager.h"
 
+
+#import <AFNetworking/AFNetworking.h>
 
 @interface HomeViewController : BaseViewController
 

@@ -36,15 +36,26 @@
 -(void)initSys
 {
     //检测网络
-    [[BaseUtils share] startMonitorNet];
+    [[BaseUtils share] startMonitorNet:^{
+        NSLog(@"net changed and reachability");
+    }];
     
+    if ([[UIApplication sharedApplication] currentUserNotificationSettings].types ==UIUserNotificationTypeNone) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil]];
+    }
     
     
 }
 
+-(void)xmppStreamdidReceiveMessage
+{
+    NSLog(@"###### xmppStreamdidReceiveMessage");
+}
 
-
-
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    NSLog(@"%s",__func__);
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

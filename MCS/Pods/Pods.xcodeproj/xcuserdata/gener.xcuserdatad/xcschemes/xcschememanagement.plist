@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CocoaAsyncSocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,7 +87,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0F818AFE9DFD13473789FEC660CBC900</key>
+		<key>16255811850E2CB02BCE12C518615E2A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,22 +107,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38CD858F775C6AA29F831DB817BF9078</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>47C013FBD5D263EFEC8A7A4CA217AD9D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>67603A96A2B33B98593E0A62F76917FE</key>
+		<key>6A2BF980B5B550735515B649CE47246C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F36340D24B1767236EE0A6BC9EF571E</key>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,12 +127,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>864CD0FFF9D622681958F26A713491DE</key>
+		<key>9341A4EA2E1211609736A33B1A69EBC7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9341A4EA2E1211609736A33B1A69EBC7</key>
+		<key>A2B169B06D82F0C36EF46C54BDF462BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -148,6 +148,16 @@
 			<true/>
 		</dict>
 		<key>B37E19CA872A7535725D1E1946E5C271</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BA36BBD241FB8951BF3334B48AC4833B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DB2A1AC4C542429D984A91E71C677A77</key>
 		<dict>
 			<key>primary</key>
 			<true/>

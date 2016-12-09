@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
  class LoginVCSwift:UIViewController,UITextFieldDelegate {
     
@@ -101,7 +102,7 @@ import UIKit
         button.tintColor = UIColor.red;
         button.frame = CGRect(x:0, y:bgview.frame.height-44, width:bgview.frame.width, height:44)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.addTarget(self, action:#selector(buttonAction(sender:)), for: .touchUpInside);
+        button.addTarget(self, action:#selector(loginButtonAction(sender:)), for: .touchUpInside);
         button.backgroundColor = UIColor.init(colorLiteralRed: 0.318, green: 0.243, blue: 0.533, alpha: 1);
         button.setTitle("Login", for: .normal)
         bgview.addSubview(button);
@@ -110,6 +111,7 @@ import UIKit
         userpwd.text = "123456"
     }
     
+    //MARK: -
     func tapAction(tap:UITapGestureRecognizer) {
         if username.isFirstResponder{
             username.resignFirstResponder()
@@ -120,14 +122,42 @@ import UIKit
     }
     
     
-    func buttonAction(sender:UIButton) -> Void {
+    func loginButtonAction(sender:UIButton) -> Void {
         MBHUD.showStatue(in: self.view, withMsg: "Logining...")
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.8) {
-            MBHUD.dismiss()
-            self.dismiss(animated: true, completion: nil)
+        let parameters: Parameters = [
+            "foo": [1,2,3],
+            "bar": [
+                "baz": "qux"
+            ]
+        ]
+        Alamofire.request("http://localhost/testpost.php",method:.post,parameters: ["name":"111"]).responseJSON { (response) in
+          
+            print(response)
+            
+            switch response.result {
+                case .success:
+                    print("###response successful")
+                    print(response.result.value);
+                
+                case .failure(let error):
+                    print(error)
+            }
+            
+
+           MBHUD.dismiss()
+            
         }
+    
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.8) {
+//            MBHUD.dismiss()
+//            self.dismiss(animated: true, completion: nil)
+//        }
+        
+        
     }
     
+
+    // MARK: -
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == username {
             userpwd.becomeFirstResponder()

@@ -13,6 +13,7 @@
 {
     Reachability * _reachability;
     
+    void(^_netchangedBlock)();
 }
 
 -(instancetype)init
@@ -43,9 +44,10 @@
 
 
 #pragma mark - 网络监测
--(void)startMonitorNet
+-(void)startMonitorNet:(void(^)())changed
 {
     [_reachability startNotifier];
+    _netchangedBlock = changed;
 }
 
 -(BOOL)isReachable
@@ -60,6 +62,8 @@
 
 -(void)netStateChanged:(NSNotification*)notification
 {
+    if([self isReachable])_netchangedBlock();
+    
     Reachability *_r = notification.object;
     switch (_r.currentReachabilityStatus) {
         case NotReachable:

@@ -9,35 +9,15 @@
 #import "HomeViewController.h"
 #import "HomeCollectionViewCell.h"
 
-#import <XMPPFramework/XMPPFramework.h>
-
 static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifier";
 
-#define MY_DEBUG
-#ifdef MY_DEBUG
-NSString *name = @"lisi";
-NSString *pwd = @"123";
-//NSString *server = @"127.0.0.1";
-NSString *server = @"192.168.90.121";
-NSString *src = @"iPad";
-#else
-NSString *name = @"wangyiwen";
-NSString *pwd = @"wangyiwen";
-NSString *server = @"119.15.136.39";
-NSString *src = @"iPad";
-#endif
-
-@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,XMPPStreamDelegate,XMPPReconnectDelegate>
+@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
     UICollectionView * _collectionView;
     NSArray * _menuArray;
     NSDictionary * _vcDic;
     NSDictionary * _limiDic;
-    
-    //...test
-    XMPPStream * _xmppStream;
-    XMPPReconnect * _xmppReconnect;
-    dispatch_queue_t _queue;
+
 }
 
 @end
@@ -57,10 +37,26 @@ NSString *src = @"iPad";
     UIButton * testBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     testBtn.frame = CGRectMake(CURRNET_SCREEN_WIDTH - 80 - 100, 30, 50, 55);
     [testBtn setTitle:@"TEST" forState:UIControlStateNormal];
-    [testBtn addTarget:self action:@selector(testVC) forControlEvents:UIControlEventTouchUpInside];
+    [testBtn addTarget:self action:@selector(testBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:testBtn];
 
-    [self initXMPP];
+    dispatch_queue_t serialQueue=dispatch_queue_create("serial", NULL);
+    //将读取plist文档的线程加入串行线程队列serialQueue中并执行
+    dispatch_async(serialQueue, ^{
+        for (int i=0; i<10; i++) {
+            NSLog(@"%d - 读取plist文档并获取url",i);
+        }
+        
+    });
+    //将通过url加载图片的线程加入串行线程队列serialQueue中，并等在这前一个加入串行线程队列的读取plist文档线程执行完毕后执行
+    dispatch_async(serialQueue, ^{
+        for (int i=0; i<10; i++) {
+            NSLog(@"%d -通过url加载图片",i);
+        }
+        
+    });
+    NSLog(@"end");
+    
 }
 
 -(void)initData
@@ -88,127 +84,6 @@ NSString *src = @"iPad";
                  };
 }
 
--(void)initXMPP
-{
-     _queue = dispatch_queue_create("com.mcs.xmpp-queue", DISPATCH_QUEUE_CONCURRENT);
-    
-    _xmppStream = [[XMPPStream alloc]init];
-    [_xmppStream addDelegate:self delegateQueue:_queue];
-    _xmppStream.enableBackgroundingOnSocket = YES;
-    
-    XMPPJID * _jid = [XMPPJID jidWithUser:name domain:server resource:src];
-    _xmppStream.myJID = _jid;
-    _xmppStream.hostName = server;
-    _xmppStream.hostPort = 5222;
-    
-    _xmppReconnect = [[XMPPReconnect alloc]init];
-    [_xmppReconnect activate:_xmppStream];
-    [_xmppReconnect addDelegate:self delegateQueue:_queue];
-    
-}
-
-
-#pragma mark XMPPStreamDelegate
--(void)xmppStreamWillConnect:(XMPPStream *)sender
-{
-    /*
-    GCDAsyncSocket * socket = [sender valueForKey:@"asyncSocket"];
-    
-    [socket performBlock:^{
-        [socket enableBackgroundingOnSocket];
-    }];*/
-    
-   /*
-    CFReadStreamSetProperty([socket getCFReadStream], kCFStreamNetworkServiceType, kCFStreamNetworkServiceTypeVoIP);
-    CFWriteStreamSetProperty([socket getCFWriteStream], kCFStreamNetworkServiceType, kCFStreamNetworkServiceTypeVoIP);*/
-}
-
--(void)xmppStream:(XMPPStream *)sender socketDidConnect:(GCDAsyncSocket *)socket
-{
-    NSLog(@"########:%s",__func__);
-
-}
-
--(void)xmppStreamDidConnect:(XMPPStream *)sender
-{
-    NSLog(@"########:%s",__func__);
-    NSError * error = nil;
-    [sender authenticateWithPassword:pwd error:&error];
-    if (error) {
-        NSLog(@"authent error");
-    }
-}
-
--(void)xmppStreamConnectDidTimeout:(XMPPStream *)sender
-{
-    NSLog(@"########:%s",__func__);
-}
-
--(void)xmppStreamDidAuthenticate:(XMPPStream *)sender
-{
-    NSLog(@"########:%s",__func__);
-    XMPPPresence * presence = [XMPPPresence presenceWithType:@"available"];
-    [sender sendElement:presence];
-}
-
--(void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error
-{
-    NSLog(@"########:%s",__func__);
-}
-
--(void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
-{
-     NSLog(@"########:%s",__func__);
-    NSString * from = message.fromStr;
-    NSString * to = message.toStr;
-    NSString * msg = [[message elementForName:@"body"]stringValue];
-    
-    NSLog(@"\n%@ \nrec msg : %@ \nfrom  : %@",to,msg,from);
-    
-    [self sendMessage:@"haha ,u ok!" toUser:from];
-    
-}
-
--(void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message
-{
-    NSLog(@"########:%s",__func__);
-}
-
--(void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error
-{
-    NSLog(@"########:%s",__func__);
-}
-
-/*发送消息，我们需要根据 XMPP 协议，将数据放到 <message /> 标签内，例如：
-<message type="chat" to="xiaoming@example.com">
-　　<body>Hello World!<body />
-<message />
- */
-
-- (void)sendMessage:(NSString *) msg toUser:(NSString *) user {
-    NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
-    [body setStringValue:msg];
-    
-    NSXMLElement *message = [NSXMLElement elementWithName:@"message"];
-    [message addAttributeWithName:@"type" stringValue:@"chat"];
-    [message addAttributeWithName:@"to" stringValue:user];
-    [message addChild:body];
-    [_xmppStream sendElement:message];
-}
-
-#pragma mark XMPPReconnectDelegate
--(void)xmppReconnect:(XMPPReconnect *)sender didDetectAccidentalDisconnect:(SCNetworkConnectionFlags)connectionFlags
-{
-    NSLog(@"########:%s",__func__);
-}
-
--(BOOL)xmppReconnect:(XMPPReconnect *)sender shouldAttemptAutoReconnect:(SCNetworkConnectionFlags)connectionFlags
-{
-    NSLog(@"########:%s",__func__);
-    return  YES;
-}
-
-
 #pragma mark
 
 -(void)exitAction:(UIButton*)sender
@@ -222,7 +97,7 @@ NSString *src = @"iPad";
     
     __weak typeof(self)weakSelf = self;
     UIAlertAction * action2 =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-#if 0
+#if 1
         LoginVCSwift * vc = [[LoginVCSwift alloc]init];
 #else
         LoginViewController *vc = [[LoginViewController alloc]init];
@@ -237,15 +112,42 @@ NSString *src = @"iPad";
 }
 
 
--(void)testVC
+-(void)testBtnAction
 {
     NSLog(@"click...");
+
+    //php-test
+    AFHTTPSessionManager * _m = [[AFHTTPSessionManager alloc]init];
+    _m.requestSerializer = [AFHTTPRequestSerializer serializer];
+    AFJSONResponseSerializer * _jsonser = [AFJSONResponseSerializer serializer];
+//    _jsonser.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json", @"text/javascript", nil];
+    _m.responseSerializer = _jsonser;
+
+//    [_m GET:@"http://localhost/test.php" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+//        
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSLog(@"%@",responseObject);
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"%@",[error description]);
+//    }];
     
-    NSError * error = nil;
+    [_m POST:@"http://localhost/testpost.php" parameters:@{@"name":@"111"} progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
     
-    if (![_xmppStream isConnected]) {
-        [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error];
-    }
+    
+    //xmpp test
+    /*
+    [[XMPPManager share]connectServerWithuser:test_username password:test_userpwd success:^{
+        NSLog(@"success");
+    } andfail:^{
+         NSLog(@"fail");
+    }];*/
+
     
     /*
     ViewController * vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"ViewControllerSBID"];

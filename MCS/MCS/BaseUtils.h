@@ -12,7 +12,8 @@
 
 +(instancetype)share;
 
--(void)startMonitorNet;//开始监测网络状态
+-(void)startMonitorNet:(void(^)())changed;//开始监测网络状态
+
 +(BOOL)isReachable;//判断网络已连接
 
 
