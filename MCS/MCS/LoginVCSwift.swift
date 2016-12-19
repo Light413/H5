@@ -145,7 +145,6 @@ import Alamofire
             
 
            MBHUD.dismiss()
-            
         }
     
 //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.8) {
