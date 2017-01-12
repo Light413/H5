@@ -56,8 +56,6 @@
     [self initSubviews];
 
     [self addAnnotations];
-
-    [MBHUD showStatueInView:self.view WithMsg:@"Locating..."];
 }
 
 -(void)initSubviews
@@ -128,6 +126,11 @@
 }
 
 #pragma mark - MKMapViewDelegate
+-(void)mapViewWillStartLocatingUser:(MKMapView *)mapView
+{
+    [MBHUD showStatueInView:self.view WithMsg:@"Locating..."];
+}
+
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     NSLog(@"%s",__FUNCTION__);
@@ -136,11 +139,13 @@
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     [MBHUD dismiss];
+    NSLog(@"%s",__FUNCTION__);
 }
 -(void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
     [MBHUD showErrorInView:self.view WithMsg:@"locate failure"];
     [MBHUD dismiss];
+    NSLog(@"%s",__FUNCTION__);
 }
 -(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray<MKAnnotationView *> *)views
 {

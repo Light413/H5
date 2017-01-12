@@ -40,4 +40,9 @@ typedef void(^requestFailureBlock)(NSURLSessionDataTask *task, NSError *error);
 +(NSURLSessionTask*)doPostWithTask:(RequestTaskHandle *)taskHandle;
 
 
++(NSURLSessionTask*)doGetWithTask:(RequestTaskHandle *)taskHandle;
+
+
+
+
 @end

@@ -8,14 +8,13 @@
 
 #import "WarnInfoListVC.h"
 
-#define cellBgGrapColor [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:1]
-#define cellBgLightColor [UIColor colorWithRed:1.000 green:1.000 blue:1.000 alpha:1]
-
-static NSString * cellReuseIdentifierId = @"warnHandleCellIdentifierId";
+static NSString * cellReuseIdentifierId =      @"warnHandleCellIdentifierId";
 static NSString * warnHandleCellIdentifierId = @"warnHandleCellIdentifierId";
 
 @interface WarnInfoListVC ()
-
+{
+    BOOL _firstFlag;
+}
 @end
 
 @implementation WarnInfoListVC
@@ -23,7 +22,22 @@ static NSString * warnHandleCellIdentifierId = @"warnHandleCellIdentifierId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _firstFlag = YES;
+    
     [self initSubviews];
+    [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 10, 0)];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (_firstFlag) {
+        _firstFlag = NO;
+        [self loadDataFromServer];
+        NSLog(@"++++++++++++ %s",__func__);
+    }
+
 }
 
 -(void)initSubviews
@@ -32,6 +46,24 @@ static NSString * warnHandleCellIdentifierId = @"warnHandleCellIdentifierId";
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.tableView.tableFooterView = [[UIView alloc]init];
+}
+
+-(void)loadDataFromServer
+{
+    #warning ....test
+    [MBHUD showStatueInView:self.view WithMsg:@"Loading..."];
+    [self.dataArray removeAllObjects];
+    [self.tableView reloadData];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 1.0), dispatch_get_main_queue(), ^{
+        NSInteger rad = arc4random() % 15 + 2;
+        for (int i =0; i < rad; i++) {
+            [self.dataArray addObject:@""];
+        }
+        [self.tableView reloadData];
+
+        [MBHUD dismiss];
+    });
 }
 
 #pragma mark - Table view data source
@@ -51,7 +83,7 @@ static NSString * warnHandleCellIdentifierId = @"warnHandleCellIdentifierId";
     // Configure the cell...
     
     
-    cell.backgroundColor = indexPath.row %2 ? kTableViewCellBgColorDeep:cellBgLightColor;
+    cell.backgroundColor = indexPath.row %2 ? kTableViewCellBgColorDeep:kTableViewCellBgColorLight;
 //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -61,10 +93,12 @@ static NSString * warnHandleCellIdentifierId = @"warnHandleCellIdentifierId";
 {
     return 50;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 50;
+    return 40;
 }
+
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -85,14 +119,5 @@ static NSString * warnHandleCellIdentifierId = @"warnHandleCellIdentifierId";
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

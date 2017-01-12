@@ -32,30 +32,28 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     [self initSubviews];
  
     //....
-    UIDevice * dev = [UIDevice currentDevice];
-    
     UIButton * testBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     testBtn.frame = CGRectMake(CURRNET_SCREEN_WIDTH - 80 - 100, 30, 50, 55);
     [testBtn setTitle:@"TEST" forState:UIControlStateNormal];
     [testBtn addTarget:self action:@selector(testBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:testBtn];
+//    [self.view addSubview:testBtn];
 
-    dispatch_queue_t serialQueue=dispatch_queue_create("serial", NULL);
-    //将读取plist文档的线程加入串行线程队列serialQueue中并执行
-    dispatch_async(serialQueue, ^{
-        for (int i=0; i<10; i++) {
-            NSLog(@"%d - 读取plist文档并获取url",i);
-        }
-        
-    });
-    //将通过url加载图片的线程加入串行线程队列serialQueue中，并等在这前一个加入串行线程队列的读取plist文档线程执行完毕后执行
-    dispatch_async(serialQueue, ^{
-        for (int i=0; i<10; i++) {
-            NSLog(@"%d -通过url加载图片",i);
-        }
-        
-    });
-    NSLog(@"end");
+//    dispatch_queue_t serialQueue=dispatch_queue_create("serial", NULL);
+//    //将读取plist文档的线程加入串行线程队列serialQueue中并执行
+//    dispatch_async(serialQueue, ^{
+//        for (int i=0; i<10; i++) {
+//            NSLog(@"%d - 读取plist文档并获取url",i);
+//        }
+//        
+//    });
+//    //将通过url加载图片的线程加入串行线程队列serialQueue中，并等在这前一个加入串行线程队列的读取plist文档线程执行完毕后执行
+//    dispatch_async(serialQueue, ^{
+//        for (int i=0; i<10; i++) {
+//            NSLog(@"%d -通过url加载图片",i);
+//        }
+//        
+//    });
+//    NSLog(@"end");
     
 }
 
@@ -66,7 +64,8 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     
     //....test data
     _vcDic = @{
-               @"id_hbdt":@"GanttViewController",
+//               @"id_hbdt":@"GanttViewController",
+               @"id_hbdt":@"FleetInfoBoardWedVC",
                @"id_ssjk":@"MonitorViewController",
                @"id_wxkz":@"MaintainViewController",
                @"id_gzqx":@"",
@@ -97,7 +96,7 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     
     __weak typeof(self)weakSelf = self;
     UIAlertAction * action2 =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-#if 1
+#if 0
         LoginVCSwift * vc = [[LoginVCSwift alloc]init];
 #else
         LoginViewController *vc = [[LoginViewController alloc]init];
@@ -116,6 +115,10 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
 {
     NSLog(@"click...");
 
+    
+    return;
+    
+    
     //php-test
     AFHTTPSessionManager * _m = [[AFHTTPSessionManager alloc]init];
     _m.requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -258,7 +261,7 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     }
 
     Class cls = NSClassFromString(str);
-    UIViewController * vc = [cls new];
+    UIViewController * vc = [[cls alloc]init];
     vc.title = d[@"title"];
     [self.navigationController pushViewController:vc animated:YES];
 }

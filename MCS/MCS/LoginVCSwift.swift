@@ -17,7 +17,7 @@ import Alamofire
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initSubviews()
+        initSubviews()
         
         var _offset:CGFloat!;
         
@@ -27,13 +27,13 @@ import Alamofire
 
            if (keyboard.intersects((self.bgview?.frame)!))
            {
-            let _k = keyboard.minY
-            let _b = self.bgview.frame.maxY
-             _offset = _b - _k + 20
-            
-            UIView.animate(withDuration: 0.25, animations: { 
-                self.bgview.frame = CGRect.init(x: self.bgview.frame.minX, y: self.bgview.frame.minY - _offset, width: self.bgview.frame.width, height: self.bgview.frame.height)
-            })
+                let _k = keyboard.minY
+                let _b = self.bgview.frame.maxY
+                 _offset = _b - _k + 20
+                
+                UIView.animate(withDuration: 0.25, animations: { 
+                    self.bgview.frame = CGRect.init(x: self.bgview.frame.minX, y: self.bgview.frame.minY - _offset, width: self.bgview.frame.width, height: self.bgview.frame.height)
+                })
             }
         }
         
@@ -107,11 +107,12 @@ import Alamofire
         button.setTitle("Login", for: .normal)
         bgview.addSubview(button);
         
+        ///...test
         username.text = "userswift"
         userpwd.text = "123456"
     }
     
-    //MARK: -
+    //MARK: - action
     func tapAction(tap:UITapGestureRecognizer) {
         if username.isFirstResponder{
             username.resignFirstResponder()
@@ -138,7 +139,7 @@ import Alamofire
                 case .success:
                     print("###response successful")
                     print(response.result.value);
-                
+                self.dismiss(animated: true, completion: nil)
                 case .failure(let error):
                     print(error)
             }

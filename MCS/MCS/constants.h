@@ -29,12 +29,15 @@
 
 
 #define DefaultBgColor [UIColor colorWithRed:30/255.0 green:170/255.0 blue:240/255.0 alpha:1]
-#define kTableViewCellBgColorDeep [UIColor colorWithRed:0.855 green:0.929 blue:0.965 alpha:1]
+#define kTableViewCellBgColorDeep   [UIColor colorWithRed:0.855 green:0.929 blue:0.965 alpha:1]
+#define kTableViewCellBgColorLight  [UIColor colorWithRed:1.000 green:1.000 blue:1.000 alpha:1]
+
 
 #define CURRNET_SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define CURRENT_SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 
 #import "BaseUtils.h"
 #import "UIViewExt.h"
+#import "TestData.h"
 
 #endif /* constants_h */

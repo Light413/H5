@@ -24,7 +24,8 @@
     _webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, CURRENT_SCREEN_HEIGHT - 64)];
     [self.view addSubview:_webview];
     
-    NSString * str= [[NSBundle mainBundle]pathForResource:@"web" ofType:@"html"];
+//    NSString * str= [[NSBundle mainBundle]pathForResource:@"web" ofType:@"html"];
+    NSString * str= @"http://192.168.6.59:8080/mcs/warnMonitor/flightInfoBorad";
     [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
     [MBHUD showStatueInView:self.view WithMsg:@"loading..."];
     

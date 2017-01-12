@@ -120,7 +120,6 @@
 
 
 
-
 #pragma mark 
 -(void)click
 {
@@ -261,8 +260,6 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 
-
- 
 
     
 //    UIPopoverController * pop = [[UIPopoverController alloc]initWithContentViewController:self];

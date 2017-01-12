@@ -18,6 +18,7 @@
 
 #import "constants.h"
 #import "MBHUD.h"
+#import "HttpManager.h"
 
 
 //#import "CocoaLumberjack.h"

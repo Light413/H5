@@ -179,20 +179,32 @@
     [MBHUD showStatueInView:self.view WithMsg:@"正在登陆..."];
     
 
-    NSDictionary *_d = [NSDictionary dictionaryWithObjectsAndKeys:@"wangyiwen",@"userName",@"069684",@"password", nil];
+//    NSDictionary *_d = [NSDictionary dictionaryWithObjectsAndKeys:@"wangyiwen",@"userName",@"069684",@"password", nil];
     
-    RequestTaskHandle * task = [RequestTaskHandle taskWith:@"/adp-osm/rest/login" parms:_d andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-
-         [MBHUD dismiss];
-
-         [self dismissViewControllerAnimated:YES completion:nil];
+//    RequestTaskHandle * task = [RequestTaskHandle taskWith:@"/adp-osm/rest/login" parms:_d andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//         [MBHUD dismiss];
+//
+//         [self dismissViewControllerAnimated:YES completion:nil];
+//        
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        
+//    }];
+    
+    //http://192.168.6.60:8080/adp-tools/rest/fleetStatus/list?tenantCode=CCA
+    
+    RequestTaskHandle * task = [RequestTaskHandle taskWith:@"/adp-tools/rest/fleetStatus/list?tenantCode=CCA" parms:nil andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [MBHUD dismiss];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     
     
-    [HttpManager doPostWithTask:task];
+    [HttpManager doGetWithTask:task];
 }
 
 - (void)didReceiveMemoryWarning {

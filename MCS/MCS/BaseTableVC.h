@@ -10,6 +10,6 @@
 
 @interface BaseTableVC : UITableViewController
 
-@property(nonatomic,strong)NSArray * dataArray;
+@property(nonatomic,strong)NSMutableArray * dataArray;
 
 @end

@@ -57,6 +57,8 @@
 
 -(NSString *)baseUrl
 {
+    return @"http://192.168.6.60:8080";
+    
     return @"http://osm.myfleets.com";
 }
 
@@ -90,6 +92,39 @@
 {
     return [[self share] doPostWithTask:taskHandle];
 }
+
+//...
+-(NSURLSessionDataTask*)doGetWithTask:(RequestTaskHandle *)taskHandle
+{
+    NSParameterAssert(taskHandle.url);
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    return [_httpSessionManager GET:taskHandle.url parameters:taskHandle.params progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (taskHandle.success) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[AFNetworkActivityIndicatorManager sharedManager]decrementActivityCount];
+                taskHandle.success(task,responseObject);
+            });
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (taskHandle.failure) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[AFNetworkActivityIndicatorManager sharedManager]decrementActivityCount];
+                taskHandle.failure(task,error);
+            });
+        }
+
+    }];
+}
+
++(NSURLSessionTask*)doGetWithTask:(RequestTaskHandle *)taskHandle
+{
+    return [[self share] doGetWithTask:taskHandle];
+}
+
+
 
 
 

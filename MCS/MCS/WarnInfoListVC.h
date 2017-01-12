@@ -10,6 +10,6 @@
 
 @interface WarnInfoListVC : BaseTableVC
 
-
+-(void)loadDataFromServer;
 
 @end

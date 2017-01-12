@@ -19,7 +19,7 @@
 
 @interface FleetIInfoCell : UICollectionViewCell
 
-@property(nonatomic,assign)NSInteger fleetStatus;
+//@property(nonatomic,assign)NSInteger fleetStatus;
 
 @property(nonatomic,assign) id<FleetInfoCellEventDelegate>delegate;
 
@@ -35,9 +35,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *start;
 @property (weak, nonatomic) IBOutlet UILabel *arrive;
 @property (weak, nonatomic) IBOutlet UILabel *planTime;
-@property (weak, nonatomic) IBOutlet UILabel *status;
 
+@property (weak, nonatomic) IBOutlet UIButton *status;
 
+-(void)setCellWith:(NSDictionary*)dic;
 
 
 

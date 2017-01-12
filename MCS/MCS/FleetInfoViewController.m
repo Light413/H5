@@ -8,32 +8,89 @@
 
 #import "FleetInfoViewController.h"
 #import "FleetIInfoCell.h"
+#import "FleetInfoListCell.h"
 
 #import "BaseNavigationVC.h"
 #import <objc/runtime.h>
 
- static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifier";
+#import "WarnHandleVC.h"
 
-@interface FleetInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,FleetInfoCellEventDelegate>
+
+#define cellBgGrapColor [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:1]
+#define cellBgLightColor [UIColor colorWithRed:1.000 green:1.000 blue:1.000 alpha:1]
+
+static NSString * fleetInfoListCellReuseIdentifier = @"FleetInfoListCellReuseIdentifier";
+
+static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifier";
+
+@interface FleetInfoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,FleetInfoCellEventDelegate>
 {
     UICollectionView * _collectionView;
+    UITableView * _tableView;
     
+    NSArray * _dataArray;
 }
+
 @end
 
 @implementation FleetInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+#warning //...
     [self initSubviews];
     
 //    Method old = class_getInstanceMethod([BaseNavigationVC class], @selector(viewControllerBackAction:));
 //    Method new = class_getInstanceMethod([self class], @selector(testBack));
-//    
 //    method_exchangeImplementations(old, new);
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recNotification:) name:@"kNotification_change_style" object:nil];
+
+    [self loadData];
 }
 
+-(void)loadData
+{
+    NSData * _data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"list" ofType:@"json"]];
+    
+    id _obj = [NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingMutableContainers error:nil];
+    if (_obj && [_obj isKindOfClass:[NSArray class]]) {
+        _dataArray = _obj;
+    }
+    
+    return;
+    
+    [MBHUD showStatueInView:self.view WithMsg:@"Loading..."];
+    RequestTaskHandle * task = [RequestTaskHandle taskWith:@"/adp-tools/rest/fleetStatus/list?tenantCode=CCA" parms:nil andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [MBHUD dismiss];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+    
+    
+    [HttpManager doGetWithTask:task];
+}
+
+//切换列表显示
+-(void)recNotification:(NSNotification*)notifaction
+{
+    BOOL _b = [notifaction.object boolValue];
+    
+    if (_b) {
+        _tableView.hidden = NO;
+        _collectionView.hidden = YES;
+    }
+    else
+    {
+        _tableView.hidden = YES;
+        _collectionView.hidden = NO;
+    }
+}
 
 -(void)initSubviews
 {
@@ -44,44 +101,118 @@
     float _offsetx = (CURRNET_SCREEN_WIDTH - 250 * 4 - 0)/2.0;
     
     _collectionView =[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, CURRENT_SCREEN_HEIGHT - 64) collectionViewLayout:layout];
+     [self.view addSubview:_collectionView];
     [_collectionView setContentInset:UIEdgeInsetsMake(20, _offsetx, 20, _offsetx)];
     _collectionView.delegate = self;
-    
     _collectionView.dataSource = self;
-
     [_collectionView registerNib:[UINib nibWithNibName:@"FleetIInfoCell" bundle:nil]forCellWithReuseIdentifier:collectionCellReuseIdentifier];
     _collectionView.backgroundColor = [UIColor whiteColor];
+   
     
-    [self.view addSubview:_collectionView];
+    _tableView = [[UITableView alloc]initWithFrame:_collectionView.frame style:UITableViewStylePlain];
+    
+    _tableView.hidden = YES;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [_tableView registerNib:[UINib nibWithNibName:@"FleetInfoListCell" bundle:nil] forCellReuseIdentifier:fleetInfoListCellReuseIdentifier];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:_tableView];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+//    [self initSubviews];
+    
+}
+#pragma mark - tablview methods
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _dataArray.count;;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary * dic = [_dataArray objectAtIndex:indexPath.row];
+    
+    FleetInfoListCell * cell = [tableView dequeueReusableCellWithIdentifier:fleetInfoListCellReuseIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
+    
+    [cell setCellWith:dic];
+    
+    cell.backgroundColor = indexPath.row %2 ? kTableViewCellBgColorDeep:cellBgLightColor;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    
+    return cell;
 }
 
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 50;
+}
 
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return [[[NSBundle mainBundle]loadNibNamed:@"FleetInfoListHeader" owner:self options:nil]lastObject];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    UIStoryboard * sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    //    NSString *  str = [index integerValue] == 1 ? @"FleetFaultDesVCSBID" : @"FleetStatueInfoVCSBID";
+//    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"FleetFaultDesVCSBID"];
+//    if(vc)
+//        [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+#pragma mark - UICollectionView delegate methods
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 20;
+    return _dataArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary * dic = [_dataArray objectAtIndex:indexPath.row];
+    
     FleetIInfoCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionCellReuseIdentifier forIndexPath:indexPath];
     cell.delegate = self;
     
-    cell.fleetStatus  = arc4random()%7;
+//    cell.fleetStatus  = arc4random()%7;
     //...时间和一些其他数据填充
+    
+    [cell setCellWith:dic];
+    
     
     return cell;
 }
 
 
 #pragma mark FleetInfoCellEventDelegate
--(void)faultAnalysis:(id)index
+-(void)faultAnalysis:(id)index //
 {
-    UIStoryboard * sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSString *  str = [index integerValue] == 1 ? @"FleetFaultDesVCSBID" : @"FleetStatueInfoVCSBID";
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:str];
-    if(vc)
+    UIViewController * vc;
+    if ([index integerValue] == 1) {
+       vc = [[FleetFaultSummaryVC alloc]init];
+    }
+    
+    else
+    {
+        UIStoryboard * sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        vc = [sb instantiateViewControllerWithIdentifier:@"FleetStatueInfoVCSBID"];
+    }
+    
     [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 
@@ -90,14 +221,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

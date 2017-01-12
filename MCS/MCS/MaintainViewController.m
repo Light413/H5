@@ -35,7 +35,7 @@
     [seg setTintColor:DefaultBgColor];
     seg.backgroundColor = [UIColor whiteColor];
     
-//    [seg addTarget:self action:@selector(changeVC:) forControlEvents:UIControlEventValueChanged];
+    [seg addTarget:self action:@selector(changeVC:) forControlEvents:UIControlEventValueChanged];
 
     
     [self.view addSubview:seg];
@@ -48,9 +48,10 @@
     pop.popoverContentSize = CGSizeMake(50, 50);
     [pop presentPopoverFromRect:seg.bounds inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     */
+    //popview
+    CalendarView * view = [[CalendarView alloc]initWithFrame:CGRectMake(0, 0, 300, 400)];
     
     BaseViewController * vc = [[BaseViewController alloc]init];
-
     vc.modalPresentationStyle = UIModalPresentationPopover;
     vc.popoverPresentationController.sourceView = seg;
     vc.popoverPresentationController.sourceRect = seg.bounds;

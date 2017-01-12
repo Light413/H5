@@ -15,6 +15,9 @@
     FleetMapVC * _fleetMap;
     UIViewController * _lastSelectVc;
     NSArray * _VCArray;
+    
+    UIBarButtonItem * _rightBarButtonItem;
+    BOOL _isfirst;
 }
 @end
 
@@ -23,8 +26,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _isfirst = YES;
     [self initSubviews];
+}
 
+-(UIBarButtonItem*)barButtonItem
+{
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:[UIImage imageNamed:@"icon_coll_style"] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"icon_list_style"] forState:UIControlStateSelected];
+    btn.frame = CGRectMake(0, 0, 40, 40);
+    [btn addTarget:self action:@selector(changeListDispStye:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+
+    return barButtonItem;
 }
 
 -(void)initSubviews
@@ -40,19 +55,45 @@
     _fleetInfoVC.view.frame = self.view.bounds;
     [self addChildViewController:_fleetInfoVC];
     [self.view addSubview:_fleetInfoVC.view];
-    _warnHandleVC = [[WarnHandleVC alloc]init];
-    _warnHandleVC.view.frame = self.view.bounds;
-    [self addChildViewController:_warnHandleVC];
-    _fleetMap = [[FleetMapVC alloc]init];
-    _fleetMap.view.frame = self.view.bounds;
-    [self addChildViewController:_fleetMap];
-    
     _lastSelectVc = _fleetInfoVC;
-    _VCArray = @[_fleetInfoVC,_warnHandleVC,_fleetMap];
+
+    //right Item
+    _rightBarButtonItem = [self barButtonItem];
+    self.navigationItem.rightBarButtonItem = _rightBarButtonItem;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    if (_isfirst) {
+        _isfirst = NO;
+        
+        _warnHandleVC = [[WarnHandleVC alloc]init];
+        _warnHandleVC.view.frame = self.view.bounds;
+        [self addChildViewController:_warnHandleVC];
+        
+        _fleetMap = [[FleetMapVC alloc]init];
+        _fleetMap.view.frame = self.view.bounds;
+        [self addChildViewController:_fleetMap];
+
+        _VCArray = @[_fleetInfoVC,_warnHandleVC,_fleetMap];
+    }
+
+}
+
+
+-(void)changeListDispStye:(UIButton*)button
+{
+    button.selected = !button.selected;
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"kNotification_change_style" object:@(button.selected)];
 }
 
 -(void)changeVC:(UISegmentedControl*)seg
 {
+    self.navigationItem.rightBarButtonItem = seg.selectedSegmentIndex==0?_rightBarButtonItem:nil;
+    
     UIViewController * des = (UIViewController *)(_VCArray[seg.selectedSegmentIndex]);
     [self transitionFromViewController:_lastSelectVc toViewController:des duration:0.5 options:UIViewAnimationOptionCurveLinear animations:nil completion:^(BOOL _b){
         _lastSelectVc = des;

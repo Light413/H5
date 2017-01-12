@@ -108,6 +108,9 @@
 		A10A364E1DAB987800CE568B /* SVGKLayeredImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A35E71DAB987800CE568B /* SVGKLayeredImageView.m */; };
 		A10A364F1DAB987800CE568B /* SVGKPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A35EA1DAB987800CE568B /* SVGKPattern.m */; };
 		A10A36501DAB987800CE568B /* SVGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A35EC1DAB987800CE568B /* SVGUtils.m */; };
+		A1415A3B1E13A8A200A482B9 /* FleetInfoListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1415A3A1E13A8A200A482B9 /* FleetInfoListHeader.xib */; };
+		A1415A441E13AE2300A482B9 /* FleetInfoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1415A421E13AE2300A482B9 /* FleetInfoListCell.m */; };
+		A1415A451E13AE2300A482B9 /* FleetInfoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1415A431E13AE2300A482B9 /* FleetInfoListCell.xib */; };
 		A156326F1DB49F830021C215 /* FleetMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A156326E1DB49F830021C215 /* FleetMapVC.m */; };
 		A15632711DB4A1210021C215 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15632701DB4A1210021C215 /* MapKit.framework */; };
 		A15632731DB4A8FD0021C215 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15632721DB4A8FD0021C215 /* CoreLocation.framework */; };
@@ -132,8 +135,19 @@
 		A18FA1BF1D926D000017DF49 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A18FA1BE1D926D000017DF49 /* UIViewExt.m */; };
 		A19211EA1DE81B01004029BA /* XMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A19211E91DE81B01004029BA /* XMPPManager.m */; };
 		A19277CA1DE7FDA500A990E5 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A19277C91DE7FDA500A990E5 /* libresolv.tbd */; };
+		A1943EB01E25C64E00CBABEE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1943EAF1E25C64E00CBABEE /* WebKit.framework */; };
+		A1943EB41E2638DA00CBABEE /* FaultDescribleInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1943EB21E2638D900CBABEE /* FaultDescribleInfoCell.m */; };
+		A1943EB51E2638DA00CBABEE /* FaultDescribleInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1943EB31E2638D900CBABEE /* FaultDescribleInfoCell.xib */; };
+		A1943EB91E26390300CBABEE /* FaultDescribleWarnListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1943EB71E26390300CBABEE /* FaultDescribleWarnListCell.m */; };
+		A1943EBA1E26390300CBABEE /* FaultDescribleWarnListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1943EB81E26390300CBABEE /* FaultDescribleWarnListCell.xib */; };
+		A197B4471E27878F00E75286 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A197B4421E27878F00E75286 /* CalendarView.m */; };
+		A197B4481E27878F00E75286 /* CalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A197B4441E27878F00E75286 /* CalendarViewCell.m */; };
+		A197B4491E27878F00E75286 /* PickerCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A197B4461E27878F00E75286 /* PickerCalendarView.m */; };
 		A19B6C3A1D90DFB20026FA2C /* GanttViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19B6C391D90DFB20026FA2C /* GanttViewController.m */; };
 		A19B6C3D1D90DFD50026FA2C /* GanttView.m in Sources */ = {isa = PBXBuildFile; fileRef = A19B6C3C1D90DFD50026FA2C /* GanttView.m */; };
+		A19BEF081E248ACD003D8158 /* FleetFaultSummaryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A19BEF061E248ACD003D8158 /* FleetFaultSummaryVC.m */; };
+		A19BEF0F1E24B311003D8158 /* FleetInfoBoardWedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A19BEF0E1E24B311003D8158 /* FleetInfoBoardWedVC.m */; };
+		A19BEF121E24CF22003D8158 /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = A19BEF111E24CF22003D8158 /* list.json */; };
 		A19CA2C91DADDA9000AA2428 /* FleetInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19CA2C81DADDA9000AA2428 /* FleetInfoViewController.m */; };
 		A19CA2CD1DADE39C00AA2428 /* FleetIInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19CA2CB1DADE39C00AA2428 /* FleetIInfoCell.m */; };
 		A19CA2CE1DADE39C00AA2428 /* FleetIInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19CA2CC1DADE39C00AA2428 /* FleetIInfoCell.xib */; };
@@ -172,6 +186,8 @@
 		A1D437351DD19CE4007DC05B /* MWilldoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D437331DD19CE4007DC05B /* MWilldoVC.xib */; };
 		A1D437391DD19D0A007DC05B /* MWOVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D437371DD19D0A007DC05B /* MWOVC.m */; };
 		A1D4373A1DD19D0A007DC05B /* MWOVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D437381DD19D0A007DC05B /* MWOVC.xib */; };
+		A1D475531E0CE720004A7044 /* leftarr.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D475511E0CE720004A7044 /* leftarr.png */; };
+		A1D475541E0CE720004A7044 /* rightarr.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D475521E0CE720004A7044 /* rightarr.png */; };
 		A1D5CD501DCC27E300794B3B /* LoginVCSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5CD4F1DCC27E300794B3B /* LoginVCSwift.swift */; };
 		A1D5CD531DCC502300794B3B /* MonitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D5CD521DCC502300794B3B /* MonitorViewController.m */; };
 		A1D5CD561DCC640100794B3B /* WarnHandleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D5CD551DCC640100794B3B /* WarnHandleVC.m */; };
@@ -450,6 +466,10 @@
 		A10A35EA1DAB987800CE568B /* SVGKPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGKPattern.m; sourceTree = "<group>"; };
 		A10A35EB1DAB987800CE568B /* SVGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGUtils.h; sourceTree = "<group>"; };
 		A10A35EC1DAB987800CE568B /* SVGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGUtils.m; sourceTree = "<group>"; };
+		A1415A3A1E13A8A200A482B9 /* FleetInfoListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FleetInfoListHeader.xib; sourceTree = "<group>"; };
+		A1415A411E13AE2300A482B9 /* FleetInfoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FleetInfoListCell.h; sourceTree = "<group>"; };
+		A1415A421E13AE2300A482B9 /* FleetInfoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FleetInfoListCell.m; sourceTree = "<group>"; };
+		A1415A431E13AE2300A482B9 /* FleetInfoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FleetInfoListCell.xib; sourceTree = "<group>"; };
 		A156326D1DB49F830021C215 /* FleetMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FleetMapVC.h; sourceTree = "<group>"; };
 		A156326E1DB49F830021C215 /* FleetMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FleetMapVC.m; sourceTree = "<group>"; };
 		A15632701DB4A1210021C215 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -482,10 +502,29 @@
 		A19211E81DE81B01004029BA /* XMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPManager.h; sourceTree = "<group>"; };
 		A19211E91DE81B01004029BA /* XMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPManager.m; sourceTree = "<group>"; };
 		A19277C91DE7FDA500A990E5 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		A1943EAF1E25C64E00CBABEE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		A1943EB11E2638D900CBABEE /* FaultDescribleInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaultDescribleInfoCell.h; sourceTree = "<group>"; };
+		A1943EB21E2638D900CBABEE /* FaultDescribleInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaultDescribleInfoCell.m; sourceTree = "<group>"; };
+		A1943EB31E2638D900CBABEE /* FaultDescribleInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaultDescribleInfoCell.xib; sourceTree = "<group>"; };
+		A1943EB61E26390300CBABEE /* FaultDescribleWarnListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaultDescribleWarnListCell.h; sourceTree = "<group>"; };
+		A1943EB71E26390300CBABEE /* FaultDescribleWarnListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaultDescribleWarnListCell.m; sourceTree = "<group>"; };
+		A1943EB81E26390300CBABEE /* FaultDescribleWarnListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaultDescribleWarnListCell.xib; sourceTree = "<group>"; };
+		A197B4411E27878F00E75286 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
+		A197B4421E27878F00E75286 /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
+		A197B4431E27878F00E75286 /* CalendarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewCell.h; sourceTree = "<group>"; };
+		A197B4441E27878F00E75286 /* CalendarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewCell.m; sourceTree = "<group>"; };
+		A197B4451E27878F00E75286 /* PickerCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCalendarView.h; sourceTree = "<group>"; };
+		A197B4461E27878F00E75286 /* PickerCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerCalendarView.m; sourceTree = "<group>"; };
 		A19B6C381D90DFB20026FA2C /* GanttViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanttViewController.h; sourceTree = "<group>"; };
 		A19B6C391D90DFB20026FA2C /* GanttViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanttViewController.m; sourceTree = "<group>"; };
 		A19B6C3B1D90DFD50026FA2C /* GanttView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanttView.h; sourceTree = "<group>"; };
 		A19B6C3C1D90DFD50026FA2C /* GanttView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanttView.m; sourceTree = "<group>"; };
+		A19BEF051E248ACD003D8158 /* FleetFaultSummaryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FleetFaultSummaryVC.h; sourceTree = "<group>"; };
+		A19BEF061E248ACD003D8158 /* FleetFaultSummaryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FleetFaultSummaryVC.m; sourceTree = "<group>"; };
+		A19BEF0D1E24B311003D8158 /* FleetInfoBoardWedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FleetInfoBoardWedVC.h; sourceTree = "<group>"; };
+		A19BEF0E1E24B311003D8158 /* FleetInfoBoardWedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FleetInfoBoardWedVC.m; sourceTree = "<group>"; };
+		A19BEF101E24C289003D8158 /* TestData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestData.h; sourceTree = "<group>"; };
+		A19BEF111E24CF22003D8158 /* list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
 		A19CA2C71DADDA9000AA2428 /* FleetInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FleetInfoViewController.h; sourceTree = "<group>"; };
 		A19CA2C81DADDA9000AA2428 /* FleetInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FleetInfoViewController.m; sourceTree = "<group>"; };
 		A19CA2CA1DADE39C00AA2428 /* FleetIInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FleetIInfoCell.h; sourceTree = "<group>"; };
@@ -551,6 +590,8 @@
 		A1D437361DD19D0A007DC05B /* MWOVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWOVC.h; sourceTree = "<group>"; };
 		A1D437371DD19D0A007DC05B /* MWOVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWOVC.m; sourceTree = "<group>"; };
 		A1D437381DD19D0A007DC05B /* MWOVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWOVC.xib; sourceTree = "<group>"; };
+		A1D475511E0CE720004A7044 /* leftarr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftarr.png; sourceTree = "<group>"; };
+		A1D475521E0CE720004A7044 /* rightarr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightarr.png; sourceTree = "<group>"; };
 		A1D5CD4E1DCC27E200794B3B /* MCS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MCS-Bridging-Header.h"; sourceTree = "<group>"; };
 		A1D5CD4F1DCC27E300794B3B /* LoginVCSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCSwift.swift; sourceTree = "<group>"; };
 		A1D5CD511DCC502300794B3B /* MonitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitorViewController.h; sourceTree = "<group>"; };
@@ -579,6 +620,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1943EB01E25C64E00CBABEE /* WebKit.framework in Frameworks */,
 				A19277CA1DE7FDA500A990E5 /* libresolv.tbd in Frameworks */,
 				A1813C221DAA1CAB00BBB01B /* libxml2.tbd in Frameworks */,
 				A15632731DB4A8FD0021C215 /* CoreLocation.framework in Frameworks */,
@@ -613,6 +655,7 @@
 		50BEF9FFE69FFC7B1434E4CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1943EAF1E25C64E00CBABEE /* WebKit.framework */,
 				A19277C91DE7FDA500A990E5 /* libresolv.tbd */,
 				A15632721DB4A8FD0021C215 /* CoreLocation.framework */,
 				A15632701DB4A1210021C215 /* MapKit.framework */,
@@ -1004,6 +1047,19 @@
 			name = xmpp;
 			sourceTree = "<group>";
 		};
+		A197B4401E27878E00E75286 /* PickerCalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				A197B4411E27878F00E75286 /* CalendarView.h */,
+				A197B4421E27878F00E75286 /* CalendarView.m */,
+				A197B4431E27878F00E75286 /* CalendarViewCell.h */,
+				A197B4441E27878F00E75286 /* CalendarViewCell.m */,
+				A197B4451E27878F00E75286 /* PickerCalendarView.h */,
+				A197B4461E27878F00E75286 /* PickerCalendarView.m */,
+			);
+			path = PickerCalendarView;
+			sourceTree = "<group>";
+		};
 		A1A69D4C1D7EB7800068CA53 /* others */ = {
 			isa = PBXGroup;
 			children = (
@@ -1064,6 +1120,7 @@
 				A1A7FDF11D7D1AB00024EEF4 /* main.m */,
 				A1B460391D7E88000008D554 /* PrefixHeader.pch */,
 				A1B4603A1D7E8F400008D554 /* constants.h */,
+				A19BEF101E24C289003D8158 /* TestData.h */,
 				A1B4604A1D7E95350008D554 /* Localizable.strings */,
 				A162548E1DC9AF3000307435 /* menu.plist */,
 			);
@@ -1145,6 +1202,16 @@
 				A1D5CD5B1DCC7CA900794B3B /* WarnHandleCell.m */,
 				A1D5CD5C1DCC7CA900794B3B /* WarnHandleCell.xib */,
 				A1D5CD5F1DCC8B0200794B3B /* WarnHandleHeader.xib */,
+				A1415A3A1E13A8A200A482B9 /* FleetInfoListHeader.xib */,
+				A1415A411E13AE2300A482B9 /* FleetInfoListCell.h */,
+				A1415A421E13AE2300A482B9 /* FleetInfoListCell.m */,
+				A1415A431E13AE2300A482B9 /* FleetInfoListCell.xib */,
+				A1943EB11E2638D900CBABEE /* FaultDescribleInfoCell.h */,
+				A1943EB21E2638D900CBABEE /* FaultDescribleInfoCell.m */,
+				A1943EB31E2638D900CBABEE /* FaultDescribleInfoCell.xib */,
+				A1943EB61E26390300CBABEE /* FaultDescribleWarnListCell.h */,
+				A1943EB71E26390300CBABEE /* FaultDescribleWarnListCell.m */,
+				A1943EB81E26390300CBABEE /* FaultDescribleWarnListCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1152,6 +1219,7 @@
 		A1B4603D1D7E90E30008D554 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A197B4401E27878E00E75286 /* PickerCalendarView */,
 				A19211E71DE81ACB004029BA /* xmpp */,
 				A18FA1BC1D926CE90017DF49 /* category */,
 				A183E2BF1D86567800246600 /* QRScane */,
@@ -1200,6 +1268,7 @@
 				A1C113691DACE6A2002BEB82 /* webViewController.m */,
 				A1C113621DAC7FFE002BEB82 /* SVGViewController.h */,
 				A1C113631DAC7FFE002BEB82 /* SVGViewController.m */,
+				A19BEF111E24CF22003D8158 /* list.json */,
 				A1AF0DFF1D93832C00B604A5 /* html */,
 				A1AF0DFE1D93754E00B604A5 /* grid */,
 			);
@@ -1223,6 +1292,8 @@
 				A1C46BCF1DD5B06F00CFE0EC /* FleetFaultDesVC.m */,
 				A1C46BD31DD5C9AB00CFE0EC /* FleetStatueInfoVC.h */,
 				A1C46BD41DD5C9AC00CFE0EC /* FleetStatueInfoVC.m */,
+				A19BEF051E248ACD003D8158 /* FleetFaultSummaryVC.h */,
+				A19BEF061E248ACD003D8158 /* FleetFaultSummaryVC.m */,
 			);
 			name = healthMonitor;
 			sourceTree = "<group>";
@@ -1231,18 +1302,30 @@
 			isa = PBXGroup;
 			children = (
 				A1C46BC51DD5939700CFE0EC /* healthMonitor */,
+				A1D4754A1E0CC3D2004A7044 /* maintain */,
 				A16254861DC98EA000307435 /* HomeViewController.h */,
 				A16254871DC98EA000307435 /* HomeViewController.m */,
-				A1D4372E1DD179D8007DC05B /* MaintainViewController.h */,
-				A1D4372F1DD179D8007DC05B /* MaintainViewController.m */,
 				A1D437311DD19CE4007DC05B /* MWilldoVC.h */,
 				A1D437321DD19CE4007DC05B /* MWilldoVC.m */,
 				A1D437331DD19CE4007DC05B /* MWilldoVC.xib */,
 				A1D437361DD19D0A007DC05B /* MWOVC.h */,
 				A1D437371DD19D0A007DC05B /* MWOVC.m */,
 				A1D437381DD19D0A007DC05B /* MWOVC.xib */,
+				A19BEF0D1E24B311003D8158 /* FleetInfoBoardWedVC.h */,
+				A19BEF0E1E24B311003D8158 /* FleetInfoBoardWedVC.m */,
 			);
 			name = main;
+			sourceTree = "<group>";
+		};
+		A1D4754A1E0CC3D2004A7044 /* maintain */ = {
+			isa = PBXGroup;
+			children = (
+				A1D475511E0CE720004A7044 /* leftarr.png */,
+				A1D475521E0CE720004A7044 /* rightarr.png */,
+				A1D4372E1DD179D8007DC05B /* MaintainViewController.h */,
+				A1D4372F1DD179D8007DC05B /* MaintainViewController.m */,
+			);
+			name = maintain;
 			sourceTree = "<group>";
 		};
 		A1D72B261DC6D58D0027A960 /* Login */ = {
@@ -1391,12 +1474,15 @@
 				A162548F1DC9AF3000307435 /* menu.plist in Resources */,
 				A1AF0E061D93832C00B604A5 /* index.html in Resources */,
 				A17F21A41DB06BBB00D20204 /* loginBackground.jpg in Resources */,
+				A1D475541E0CE720004A7044 /* rightarr.png in Resources */,
 				A1D5CD601DCC8B0200794B3B /* WarnHandleHeader.xib in Resources */,
 				A1D72B361DC725730027A960 /* loginbg.jpg in Resources */,
+				A1D475531E0CE720004A7044 /* leftarr.png in Resources */,
 				A1B4604B1D7E95350008D554 /* Localizable.strings in Resources */,
 				A188143A1DB5E960002B749D /* shoplist-navi@2x.png in Resources */,
 				A1D4373A1DD19D0A007DC05B /* MWOVC.xib in Resources */,
 				A1AF0E091D93832C00B604A5 /* mui.min.js in Resources */,
+				A19BEF121E24CF22003D8158 /* list.json in Resources */,
 				A1C113661DAC8FCC002BEB82 /* CSS.svg in Resources */,
 				A162548D1DC9949B00307435 /* HomeCollectionViewCell.xib in Resources */,
 				A1D638F61DBE09E1008A8FC8 /* web.html in Resources */,
@@ -1406,10 +1492,14 @@
 				A1D5CD5E1DCC7CA900794B3B /* WarnHandleCell.xib in Resources */,
 				A1AF0E0D1D93C08E00B604A5 /* docs.css in Resources */,
 				A1A7FDFD1D7D1AB00024EEF4 /* Assets.xcassets in Resources */,
+				A1943EBA1E26390300CBABEE /* FaultDescribleWarnListCell.xib in Resources */,
 				A1AF0E051D93832C00B604A5 /* checkDetail.html in Resources */,
 				A1D72B381DC733BD0027A960 /* LoginViewController.xib in Resources */,
+				A1943EB51E2638DA00CBABEE /* FaultDescribleInfoCell.xib in Resources */,
 				A1A7FDFB1D7D1AB00024EEF4 /* Main.storyboard in Resources */,
+				A1415A3B1E13A8A200A482B9 /* FleetInfoListHeader.xib in Resources */,
 				A1D3AB681DB76A79006CF96C /* air-icon.png in Resources */,
+				A1415A451E13AE2300A482B9 /* FleetInfoListCell.xib in Resources */,
 				A1D437351DD19CE4007DC05B /* MWilldoVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1575,8 +1665,10 @@
 				A10A35F61DAB987800CE568B /* CSSStyleRule.m in Sources */,
 				A10A35FB1DAB987800CE568B /* DocumentFragment.m in Sources */,
 				A18FA1BF1D926D000017DF49 /* UIViewExt.m in Sources */,
+				A19BEF081E248ACD003D8158 /* FleetFaultSummaryVC.m in Sources */,
 				A10A35FF1DAB987800CE568B /* EntityReference.m in Sources */,
 				A10A362A1DAB987800CE568B /* SVGSwitchElement.m in Sources */,
+				A19BEF0F1E24B311003D8158 /* FleetInfoBoardWedVC.m in Sources */,
 				A10A361F1DAB987800CE568B /* SVGGradientElement.m in Sources */,
 				A10A36031DAB987800CE568B /* NodeList.m in Sources */,
 				A1B4604E1D7E96E10008D554 /* MBHUD.m in Sources */,
@@ -1590,6 +1682,7 @@
 				A1D5CD591DCC714500794B3B /* BaseTableVC.m in Sources */,
 				A10A36491DAB987800CE568B /* SVGKSource.m in Sources */,
 				A10A36151DAB987800CE568B /* SVGRect.m in Sources */,
+				A197B4481E27878F00E75286 /* CalendarViewCell.m in Sources */,
 				A19CA2CD1DADE39C00AA2428 /* FleetIInfoCell.m in Sources */,
 				A1836A4A1DAF87F700850FC0 /* FleetStatusLineView.m in Sources */,
 				A10A363F1DAB987800CE568B /* CAShapeLayerWithHitTest.m in Sources */,
@@ -1615,6 +1708,7 @@
 				A10A36111DAB987800CE568B /* SVGLength.m in Sources */,
 				A1A7FDF81D7D1AB00024EEF4 /* ViewController.m in Sources */,
 				A162548C1DC9949B00307435 /* HomeCollectionViewCell.m in Sources */,
+				A197B4491E27878F00E75286 /* PickerCalendarView.m in Sources */,
 				A10A35F01DAB987800CE568B /* CharacterData.m in Sources */,
 				A1A69D4F1D7EB7940068CA53 /* Reachability.m in Sources */,
 				A10A35F71DAB987800CE568B /* CSSStyleSheet.m in Sources */,
@@ -1638,6 +1732,7 @@
 				A10A36061DAB987800CE568B /* StyleSheetList.m in Sources */,
 				A10A36191DAB987800CE568B /* SVGUseElement.m in Sources */,
 				A10A36441DAB987800CE568B /* SVGKSourceNSData.m in Sources */,
+				A1943EB91E26390300CBABEE /* FaultDescribleWarnListCell.m in Sources */,
 				A1C113641DAC7FFE002BEB82 /* SVGViewController.m in Sources */,
 				A10A36291DAB987800CE568B /* SVGSVGElement.m in Sources */,
 				A10A36501DAB987800CE568B /* SVGUtils.m in Sources */,
@@ -1646,12 +1741,15 @@
 				A1D437391DD19D0A007DC05B /* MWOVC.m in Sources */,
 				A10A360D1DAB987800CE568B /* SVGElementInstance.m in Sources */,
 				A10A363C1DAB987800CE568B /* CALayerWithChildHitTest.m in Sources */,
+				A197B4471E27878F00E75286 /* CalendarView.m in Sources */,
 				A10A360A1DAB987800CE568B /* SVGClipPathElement.m in Sources */,
 				A183E2C51D8657FD00246600 /* GGQRScanView.m in Sources */,
 				A10A35F41DAB987800CE568B /* CSSRuleList.m in Sources */,
 				A10A36381DAB987800CE568B /* SVGKParser.m in Sources */,
 				A10A35ED1DAB987800CE568B /* AppleSucksDOMImplementation.m in Sources */,
+				A1943EB41E2638DA00CBABEE /* FaultDescribleInfoCell.m in Sources */,
 				A10A36321DAB987800CE568B /* SVGKParserDefsAndUse.m in Sources */,
+				A1415A441E13AE2300A482B9 /* FleetInfoListCell.m in Sources */,
 				A1A69D551D7EBA970068CA53 /* HttpManager.m in Sources */,
 				A10A36231DAB987800CE568B /* SVGLineElement.m in Sources */,
 				A1D5CD531DCC502300794B3B /* MonitorViewController.m in Sources */,

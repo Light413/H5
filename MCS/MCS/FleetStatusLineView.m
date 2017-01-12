@@ -121,7 +121,7 @@
         }
         
         UIBezierPath * tmp = [UIBezierPath bezierPath];
-        [tmp addArcWithCenter:CGPointMake(_h, self.height - _ff) radius:2 startAngle:0 endAngle:360 clockwise:1];
+        [tmp addArcWithCenter:CGPointMake(_h, self.height - _ff) radius:1.0 startAngle:0 endAngle:360 clockwise:1];
         [path appendPath:tmp];
     }
 
@@ -133,10 +133,10 @@
     }
     
     shapLayer = [CAShapeLayer layer];
-    shapLayer.strokeColor = [UIColor colorWithRed:30/255.0 green:170/255.0 blue:240/255.0 alpha:1].CGColor;
+    shapLayer.strokeColor = [UIColor colorWithRed:30/255.0 green:170/255.0 blue:240/255.0 alpha:0.8]. CGColor;
     shapLayer.fillColor = [UIColor clearColor].CGColor;
     shapLayer.fillRule = kCAFillRuleEvenOdd;
-    shapLayer.lineWidth = 2.0f;
+    shapLayer.lineWidth = 1.5f;
     shapLayer.path = path.CGPath;
     shapLayer.strokeEnd = 1;
     [self.layer addSublayer:shapLayer];
@@ -149,10 +149,11 @@
 -(void)drawRect:(CGRect)rect
 {
     float _ff = 30;
+    float alaph = 0.2;
     CGContextRef ctx =  UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(ctx, 1.5f);
-    CGContextSetRGBStrokeColor(ctx, 221/255.0, 221/255.0, 230/255.0, 1);
-    CGContextSetRGBFillColor(ctx, 221/255.0, 221/255.0, 221/255.0, 1);
+    CGContextSetRGBStrokeColor(ctx, 221/255.0, 221/255.0, 230/255.0, alaph);
+    CGContextSetRGBFillColor(ctx, 221/255.0, 221/255.0, 221/255.0, alaph);
     
     CGPoint point[9] = {};
     point[0] = CGPointMake(10, self.height - _ff);
@@ -179,7 +180,7 @@
             point[i+3] = CGPointMake(5 + _w * cnt, self.height - _ff);
         }
         
-        CGContextAddArc(ctx, 5 + _w * cnt , self.height - _ff, 3, 0, 360, 0);
+        CGContextAddArc(ctx, 5 + _w * cnt , self.height - _ff, 2.0, 0, 360, 0);
         CGContextFillPath(ctx);
     }
 
