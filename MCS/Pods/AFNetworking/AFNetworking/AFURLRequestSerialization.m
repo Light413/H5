@@ -354,6 +354,8 @@ forHTTPHeaderField:(NSString *)field
 
     NSURL *url = [NSURL URLWithString:URLString];
 
+    NSLog(@"++++++++++++this url  :%@",URLString);
+    
     NSParameterAssert(url);
 
     NSMutableURLRequest *mutableRequest = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -502,6 +504,8 @@ forHTTPHeaderField:(NSString *)field
     if ([self.HTTPMethodsEncodingParametersInURI containsObject:[[request HTTPMethod] uppercaseString]]) {
         if (query && query.length > 0) {
             mutableRequest.URL = [NSURL URLWithString:[[mutableRequest.URL absoluteString] stringByAppendingFormat:mutableRequest.URL.query ? @"&%@" : @"?%@", query]];
+            NSLog(@"***************** this url has parms : %@",mutableRequest.URL);
+            
         }
     } else {
         // #2864: an empty string is a valid x-www-form-urlencoded payload

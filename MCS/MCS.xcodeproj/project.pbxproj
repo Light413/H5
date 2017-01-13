@@ -201,6 +201,17 @@
 		A1D72B321DC6E0B50027A960 /* LoginInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D72B311DC6E0B50027A960 /* LoginInfoView.xib */; };
 		A1D72B361DC725730027A960 /* loginbg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1D72B351DC725730027A960 /* loginbg.jpg */; };
 		A1D72B381DC733BD0027A960 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D72B371DC733BD0027A960 /* LoginViewController.xib */; };
+		A1E2CCE81E286FB6005D75C4 /* arrow_left_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E2CCE61E286FB5005D75C4 /* arrow_left_icon.png */; };
+		A1E2CCE91E286FB6005D75C4 /* arrow_right_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E2CCE71E286FB5005D75C4 /* arrow_right_icon.png */; };
+		A1E2CCF51E28A5D2005D75C4 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2CCEC1E28A5D2005D75C4 /* SVIndefiniteAnimatedView.m */; };
+		A1E2CCF61E28A5D2005D75C4 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2CCEE1E28A5D2005D75C4 /* SVProgressAnimatedView.m */; };
+		A1E2CCF71E28A5D2005D75C4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1E2CCF01E28A5D2005D75C4 /* SVProgressHUD.bundle */; };
+		A1E2CCF81E28A5D2005D75C4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2CCF21E28A5D2005D75C4 /* SVProgressHUD.m */; };
+		A1E2CCF91E28A5D2005D75C4 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2CCF41E28A5D2005D75C4 /* SVRadialGradientLayer.m */; };
+		A1E2CCFD1E28B32C005D75C4 /* CustomMultipleButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2CCFC1E28B32C005D75C4 /* CustomMultipleButtons.m */; };
+		A1E2CD001E28E0A4005D75C4 /* NSString+ValueConVert.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2CCFF1E28E0A4005D75C4 /* NSString+ValueConVert.m */; };
+		A1E2CD021E28E196005D75C4 /* detail.json in Resources */ = {isa = PBXBuildFile; fileRef = A1E2CD011E28E196005D75C4 /* detail.json */; };
+		A1E2CD051E28E263005D75C4 /* NSDate+StrValueFromStamp.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2CD041E28E263005D75C4 /* NSDate+StrValueFromStamp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -612,6 +623,25 @@
 		A1D72B311DC6E0B50027A960 /* LoginInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginInfoView.xib; sourceTree = "<group>"; };
 		A1D72B351DC725730027A960 /* loginbg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginbg.jpg; sourceTree = "<group>"; };
 		A1D72B371DC733BD0027A960 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		A1E2CCE61E286FB5005D75C4 /* arrow_left_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_left_icon.png; sourceTree = "<group>"; };
+		A1E2CCE71E286FB5005D75C4 /* arrow_right_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_icon.png; sourceTree = "<group>"; };
+		A1E2CCEB1E28A5D2005D75C4 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		A1E2CCEC1E28A5D2005D75C4 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		A1E2CCED1E28A5D2005D75C4 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		A1E2CCEE1E28A5D2005D75C4 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		A1E2CCEF1E28A5D2005D75C4 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		A1E2CCF01E28A5D2005D75C4 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		A1E2CCF11E28A5D2005D75C4 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		A1E2CCF21E28A5D2005D75C4 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		A1E2CCF31E28A5D2005D75C4 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		A1E2CCF41E28A5D2005D75C4 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		A1E2CCFB1E28B32C005D75C4 /* CustomMultipleButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMultipleButtons.h; sourceTree = "<group>"; };
+		A1E2CCFC1E28B32C005D75C4 /* CustomMultipleButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMultipleButtons.m; sourceTree = "<group>"; };
+		A1E2CCFE1E28E0A4005D75C4 /* NSString+ValueConVert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ValueConVert.h"; sourceTree = "<group>"; };
+		A1E2CCFF1E28E0A4005D75C4 /* NSString+ValueConVert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ValueConVert.m"; sourceTree = "<group>"; };
+		A1E2CD011E28E196005D75C4 /* detail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = detail.json; sourceTree = "<group>"; };
+		A1E2CD031E28E263005D75C4 /* NSDate+StrValueFromStamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+StrValueFromStamp.h"; sourceTree = "<group>"; };
+		A1E2CD041E28E263005D75C4 /* NSDate+StrValueFromStamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+StrValueFromStamp.m"; sourceTree = "<group>"; };
 		A50972EE26AB714E7830BD34 /* libPods-MCSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MCSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1056,6 +1086,8 @@
 				A197B4441E27878F00E75286 /* CalendarViewCell.m */,
 				A197B4451E27878F00E75286 /* PickerCalendarView.h */,
 				A197B4461E27878F00E75286 /* PickerCalendarView.m */,
+				A1E2CCE61E286FB5005D75C4 /* arrow_left_icon.png */,
+				A1E2CCE71E286FB5005D75C4 /* arrow_right_icon.png */,
 			);
 			path = PickerCalendarView;
 			sourceTree = "<group>";
@@ -1219,6 +1251,7 @@
 		A1B4603D1D7E90E30008D554 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A1E2CCFA1E28B29C005D75C4 /* customs */,
 				A197B4401E27878E00E75286 /* PickerCalendarView */,
 				A19211E71DE81ACB004029BA /* xmpp */,
 				A18FA1BC1D926CE90017DF49 /* category */,
@@ -1248,6 +1281,7 @@
 			children = (
 				A1B4604C1D7E96E10008D554 /* MBHUD.h */,
 				A1B4604D1D7E96E10008D554 /* MBHUD.m */,
+				A1E2CCEA1E28A5D1005D75C4 /* SVProgressHUD */,
 			);
 			name = Hud;
 			sourceTree = "<group>";
@@ -1269,6 +1303,7 @@
 				A1C113621DAC7FFE002BEB82 /* SVGViewController.h */,
 				A1C113631DAC7FFE002BEB82 /* SVGViewController.m */,
 				A19BEF111E24CF22003D8158 /* list.json */,
+				A1E2CD011E28E196005D75C4 /* detail.json */,
 				A1AF0DFF1D93832C00B604A5 /* html */,
 				A1AF0DFE1D93754E00B604A5 /* grid */,
 			);
@@ -1338,6 +1373,36 @@
 				A1D5CD4E1DCC27E200794B3B /* MCS-Bridging-Header.h */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		A1E2CCEA1E28A5D1005D75C4 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A1E2CCEB1E28A5D2005D75C4 /* SVIndefiniteAnimatedView.h */,
+				A1E2CCEC1E28A5D2005D75C4 /* SVIndefiniteAnimatedView.m */,
+				A1E2CCED1E28A5D2005D75C4 /* SVProgressAnimatedView.h */,
+				A1E2CCEE1E28A5D2005D75C4 /* SVProgressAnimatedView.m */,
+				A1E2CCEF1E28A5D2005D75C4 /* SVProgressHUD-Prefix.pch */,
+				A1E2CCF01E28A5D2005D75C4 /* SVProgressHUD.bundle */,
+				A1E2CCF11E28A5D2005D75C4 /* SVProgressHUD.h */,
+				A1E2CCF21E28A5D2005D75C4 /* SVProgressHUD.m */,
+				A1E2CCF31E28A5D2005D75C4 /* SVRadialGradientLayer.h */,
+				A1E2CCF41E28A5D2005D75C4 /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		A1E2CCFA1E28B29C005D75C4 /* customs */ = {
+			isa = PBXGroup;
+			children = (
+				A1E2CCFB1E28B32C005D75C4 /* CustomMultipleButtons.h */,
+				A1E2CCFC1E28B32C005D75C4 /* CustomMultipleButtons.m */,
+				A1E2CCFE1E28E0A4005D75C4 /* NSString+ValueConVert.h */,
+				A1E2CCFF1E28E0A4005D75C4 /* NSString+ValueConVert.m */,
+				A1E2CD031E28E263005D75C4 /* NSDate+StrValueFromStamp.h */,
+				A1E2CD041E28E263005D75C4 /* NSDate+StrValueFromStamp.m */,
+			);
+			name = customs;
 			sourceTree = "<group>";
 		};
 		AC5CCE17B0EBD65E11B8777C /* Pods */ = {
@@ -1471,8 +1536,10 @@
 				A1D72B321DC6E0B50027A960 /* LoginInfoView.xib in Resources */,
 				A1D3AB661DB74A90006CF96C /* FleetAnnotationView.xib in Resources */,
 				A1AF0E0B1D93C07000B604A5 /* index_d.html in Resources */,
+				A1E2CCE91E286FB6005D75C4 /* arrow_right_icon.png in Resources */,
 				A162548F1DC9AF3000307435 /* menu.plist in Resources */,
 				A1AF0E061D93832C00B604A5 /* index.html in Resources */,
+				A1E2CCE81E286FB6005D75C4 /* arrow_left_icon.png in Resources */,
 				A17F21A41DB06BBB00D20204 /* loginBackground.jpg in Resources */,
 				A1D475541E0CE720004A7044 /* rightarr.png in Resources */,
 				A1D5CD601DCC8B0200794B3B /* WarnHandleHeader.xib in Resources */,
@@ -1482,6 +1549,7 @@
 				A188143A1DB5E960002B749D /* shoplist-navi@2x.png in Resources */,
 				A1D4373A1DD19D0A007DC05B /* MWOVC.xib in Resources */,
 				A1AF0E091D93832C00B604A5 /* mui.min.js in Resources */,
+				A1E2CD021E28E196005D75C4 /* detail.json in Resources */,
 				A19BEF121E24CF22003D8158 /* list.json in Resources */,
 				A1C113661DAC8FCC002BEB82 /* CSS.svg in Resources */,
 				A162548D1DC9949B00307435 /* HomeCollectionViewCell.xib in Resources */,
@@ -1493,6 +1561,7 @@
 				A1AF0E0D1D93C08E00B604A5 /* docs.css in Resources */,
 				A1A7FDFD1D7D1AB00024EEF4 /* Assets.xcassets in Resources */,
 				A1943EBA1E26390300CBABEE /* FaultDescribleWarnListCell.xib in Resources */,
+				A1E2CCF71E28A5D2005D75C4 /* SVProgressHUD.bundle in Resources */,
 				A1AF0E051D93832C00B604A5 /* checkDetail.html in Resources */,
 				A1D72B381DC733BD0027A960 /* LoginViewController.xib in Resources */,
 				A1943EB51E2638DA00CBABEE /* FaultDescribleInfoCell.xib in Resources */,
@@ -1662,6 +1731,7 @@
 				A10A36041DAB987800CE568B /* ProcessingInstruction.m in Sources */,
 				A10A363A1DAB987800CE568B /* SVGKPointsAndPathsParser.m in Sources */,
 				A10A36431DAB987800CE568B /* SVGKSourceLocalFile.m in Sources */,
+				A1E2CD051E28E263005D75C4 /* NSDate+StrValueFromStamp.m in Sources */,
 				A10A35F61DAB987800CE568B /* CSSStyleRule.m in Sources */,
 				A10A35FB1DAB987800CE568B /* DocumentFragment.m in Sources */,
 				A18FA1BF1D926D000017DF49 /* UIViewExt.m in Sources */,
@@ -1679,6 +1749,7 @@
 				A19B6C3D1D90DFD50026FA2C /* GanttView.m in Sources */,
 				A10A36371DAB987800CE568B /* SVGKParserSVG.m in Sources */,
 				A10A363D1DAB987800CE568B /* CALayerWithClipRender.m in Sources */,
+				A1E2CCF51E28A5D2005D75C4 /* SVIndefiniteAnimatedView.m in Sources */,
 				A1D5CD591DCC714500794B3B /* BaseTableVC.m in Sources */,
 				A10A36491DAB987800CE568B /* SVGKSource.m in Sources */,
 				A10A36151DAB987800CE568B /* SVGRect.m in Sources */,
@@ -1706,9 +1777,11 @@
 				A10A35F21DAB987800CE568B /* CSSPrimitiveValue.m in Sources */,
 				A10A35FD1DAB987800CE568B /* DOMHelperUtilities.m in Sources */,
 				A10A36111DAB987800CE568B /* SVGLength.m in Sources */,
+				A1E2CCF61E28A5D2005D75C4 /* SVProgressAnimatedView.m in Sources */,
 				A1A7FDF81D7D1AB00024EEF4 /* ViewController.m in Sources */,
 				A162548C1DC9949B00307435 /* HomeCollectionViewCell.m in Sources */,
 				A197B4491E27878F00E75286 /* PickerCalendarView.m in Sources */,
+				A1E2CCF91E28A5D2005D75C4 /* SVRadialGradientLayer.m in Sources */,
 				A10A35F01DAB987800CE568B /* CharacterData.m in Sources */,
 				A1A69D4F1D7EB7940068CA53 /* Reachability.m in Sources */,
 				A10A35F71DAB987800CE568B /* CSSStyleSheet.m in Sources */,
@@ -1751,6 +1824,7 @@
 				A10A36321DAB987800CE568B /* SVGKParserDefsAndUse.m in Sources */,
 				A1415A441E13AE2300A482B9 /* FleetInfoListCell.m in Sources */,
 				A1A69D551D7EBA970068CA53 /* HttpManager.m in Sources */,
+				A1E2CCFD1E28B32C005D75C4 /* CustomMultipleButtons.m in Sources */,
 				A10A36231DAB987800CE568B /* SVGLineElement.m in Sources */,
 				A1D5CD531DCC502300794B3B /* MonitorViewController.m in Sources */,
 				A10A35FA1DAB987800CE568B /* Document.m in Sources */,
@@ -1783,6 +1857,8 @@
 				A10A360F1DAB987800CE568B /* SVGGElement.m in Sources */,
 				A10A36471DAB987800CE568B /* SVGKImage.m in Sources */,
 				A1A7FDF21D7D1AB00024EEF4 /* main.m in Sources */,
+				A1E2CCF81E28A5D2005D75C4 /* SVProgressHUD.m in Sources */,
+				A1E2CD001E28E0A4005D75C4 /* NSString+ValueConVert.m in Sources */,
 				A1D437301DD179D8007DC05B /* MaintainViewController.m in Sources */,
 				A10A360C1DAB987800CE568B /* SVGDocument.m in Sources */,
 				A10A36301DAB987800CE568B /* SVGKExporterUIImage.m in Sources */,

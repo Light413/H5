@@ -57,9 +57,7 @@
 
 -(NSString *)baseUrl
 {
-    return @"http://192.168.6.60:8080";
-    
-    return @"http://osm.myfleets.com";
+    return kServerBaseUrl;
 }
 
 

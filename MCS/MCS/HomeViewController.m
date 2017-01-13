@@ -16,7 +16,8 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     UICollectionView * _collectionView;
     NSArray * _menuArray;
     NSDictionary * _vcDic;
-    NSDictionary * _limiDic;
+    
+    NSDictionary * _userLimitsDic;
 
 }
 
@@ -62,9 +63,8 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     NSString *path = [[NSBundle mainBundle]pathForResource:@"menu" ofType:@"plist"];
     _menuArray = [NSArray arrayWithContentsOfFile:path];
     
-    //....test data
+#warning //....test data
     _vcDic = @{
-//               @"id_hbdt":@"GanttViewController",
                @"id_hbdt":@"FleetInfoBoardWedVC",
                @"id_ssjk":@"MonitorViewController",
                @"id_wxkz":@"MaintainViewController",
@@ -75,10 +75,11 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
                @"id_paiban":@"",
                @"id_more":@""
                };
-    _limiDic = @{
+    
+    _userLimitsDic = @{
                  @"id_hbdt":@"1",
                  @"id_ssjk":@"1",
-                 @"id_wxkz":@"1",
+                 @"id_wxkz":@"0",
                  @"id_more":@"0"
                  };
 }
@@ -239,9 +240,7 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
 {
     NSDictionary * dic = _menuArray[indexPath.row];
     HomeCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionCellReuseIdentifier forIndexPath:indexPath];
-//    cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
-//    cell.layer.borderWidth = 1;
-    BOOL limit = [_limiDic[dic[@"id"]]boolValue];
+    BOOL limit = [_userLimitsDic[dic[@"id"]]boolValue];
     NSString * iconname = limit?dic[@"icon_y"]:dic[@"icon_n"];
     [cell setIcon:iconname limit:limit title:dic[@"title"]];
     
@@ -254,7 +253,7 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     NSString * str= _vcDic[d[@"id"]];
     if(!str)return;
     
-    if(![_limiDic[d[@"id"]]boolValue])
+    if(![_userLimitsDic[d[@"id"]]boolValue])
     {
         [MBHUD showTextInView:self.view WithMsg:@"No limits"];
         return;

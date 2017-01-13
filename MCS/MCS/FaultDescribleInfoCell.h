@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CalendarView.h"
+#import "BaseViewController.h"
 
-@interface FaultDescribleInfoCell : UITableViewCell
+@interface FaultDescribleInfoCell : UITableViewCell <CalendarViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *bgview;
 
 @property (weak, nonatomic) IBOutlet UITextField *fleetNum_tf;

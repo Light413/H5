@@ -21,7 +21,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    [self addTopSubview];
+//    [self addTopSubview];
+    
+    CustomMultipleButtons * btns = [[CustomMultipleButtons alloc]initWithFrame:CGRectMake(0, 8, CURRNET_SCREEN_WIDTH, 50)];
+    
+    [self.view addSubview:btns];
     
     _warnInfoListVC =  [[WarnInfoListVC alloc]init];
     [self addChildViewController:_warnInfoListVC];

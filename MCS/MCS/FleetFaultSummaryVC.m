@@ -11,7 +11,9 @@
 #include "FaultDescribleWarnListCell.h"
 
 @interface FleetFaultSummaryVC ()
-
+{
+    NSDictionary * _dataDic;
+}
 @end
 
 @implementation FleetFaultSummaryVC
@@ -24,10 +26,28 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"FaultDescribleInfoCell" bundle:nil] forCellReuseIdentifier:@"FaultDescribleInfoCellReuseID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"FaultDescribleWarnListCell" bundle:nil] forCellReuseIdentifier:@"FaultDescribleWarnListCellReuseID"];
     
-    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundView = nil;
     self.tableView.backgroundColor = [UIColor colorWithRed:0.961 green:0.973 blue:0.980 alpha:1];
+    
+    [self loadData];
+}
+
+-(void)loadData
+{
+    RequestTaskHandle * task = [RequestTaskHandle taskWith:kFaultSummaryUrl parms:self.dic andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
+            _dataDic = responseObject;
+        }
+        
+        [MBHUD dismiss];
+        [self.tableView reloadData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [MBHUD showTextInView:self.view WithMsg:@"Failed from server"];
+    }];
+    
+    [HttpManager doGetWithTask:task];
 }
 
 
@@ -59,6 +79,7 @@
 
     if (indexPath.section == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"FaultDescribleInfoCellReuseID" forIndexPath:indexPath];
+        [((FaultDescribleInfoCell*)cell) setCellWith:_dataDic[@"faultSummary"]];
     }
     else if (indexPath.section == 1)
     {

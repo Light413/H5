@@ -10,10 +10,9 @@
 #define TestData_h
 
 
-#define kTestFleetInfoBoard    @"http://192.168.6.59:8080/mcs/warnMonitor/flightInfoBorad"
+//#define kTestFleetInfoBoard    @"http://192.168.6.59:8080/mcs/warnMonitor/flightInfoBorad"
 
-//@"http://smart.imsp.cn/mcs/warnMonitor/flightInfoBorad"
-
+#define kTestFleetInfoBoard     @"http://smart.imsp.cn/mcs/warnMonitor/flightInfoBorad"
 
 
 

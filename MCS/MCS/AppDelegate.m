@@ -44,6 +44,10 @@
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil]];
     }
     
+    //SVProgressHUD 设置
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithWhite:0.1f alpha:0.8f]];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     
 }
 

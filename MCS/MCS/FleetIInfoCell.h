@@ -13,6 +13,7 @@
 
 -(void)faultAnalysis :(id)obj;//故障分析
 
+-(void)fleetInfoCellClickedWith:(id)obj atIndex:(id)index;
 
 @end
 
@@ -38,7 +39,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *status;
 
--(void)setCellWith:(NSDictionary*)dic;
+@property(nonatomic,assign)NSInteger cellIndex;
+
+-(void)setCellWith:(NSDictionary*)dic andIndex:(NSInteger)index;
 
 
 

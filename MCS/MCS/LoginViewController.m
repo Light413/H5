@@ -176,6 +176,9 @@
 }
 
 - (void)loginAction:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    return;
+    
     [MBHUD showStatueInView:self.view WithMsg:@"正在登陆..."];
     
 
@@ -192,7 +195,7 @@
 //    }];
     
     //http://192.168.6.60:8080/adp-tools/rest/fleetStatus/list?tenantCode=CCA
-    
+    /*
     RequestTaskHandle * task = [RequestTaskHandle taskWith:@"/adp-tools/rest/fleetStatus/list?tenantCode=CCA" parms:nil andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         [MBHUD dismiss];
@@ -205,6 +208,8 @@
     
     
     [HttpManager doGetWithTask:task];
+     */
+    
 }
 
 - (void)didReceiveMemoryWarning {

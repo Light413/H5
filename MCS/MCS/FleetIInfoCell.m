@@ -22,22 +22,16 @@
     [super awakeFromNib];
     self.layer.borderColor = [UIColor colorWithRed:0.792 green:0.792 blue:0.792 alpha:0.3].CGColor;
     self.layer.borderWidth = 0.5;
-    
-//    _lineView.layer.borderColor = [UIColor greenColor].CGColor;
-//    _lineView.layer.borderWidth = 1.0;
-    
- //   _iconImg.layer.masksToBounds = YES;
-   // _iconImg.layer.cornerRadius = 32.5;
-    
+
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(checkFault:)];
     [_iconImg addGestureRecognizer:tap];
     _timeDataArray = [[NSMutableArray alloc]init];
 }
 
--(void)checkFault :(UITapGestureRecognizer *)ges
+-(void)checkFault:(UITapGestureRecognizer *)ges
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(faultAnalysis:)]) {
-        [self.delegate performSelector:@selector(faultAnalysis:) withObject:@1];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(fleetInfoCellClickedWith:atIndex:)]) {
+        [self.delegate performSelector:@selector(fleetInfoCellClickedWith:atIndex:) withObject:@(1) withObject:@(self.cellIndex)];
     }
 }
 
@@ -86,8 +80,12 @@
     [_lineView setFleetStatus:_timeDataArray.count withTime:_timeDataArray];
 }
 
--(void)setCellWith:(NSDictionary *)dic
+-(void)setCellWith:(NSDictionary *)dic andIndex:(NSInteger)index
 {
+    self.cellIndex = index;
+    
+    NSLog(@"self.cellIndex......... %@",@(self.cellIndex));
+    
     self.planeNo.text = dic[@"tailNo"]?dic[@"tailNo"]:@"";
     
     self.flightNum.text = dic[@"flightNumber"]?dic[@"flightNumber"]:@"";
@@ -131,7 +129,7 @@
     self.planTime.text = [NSString stringWithFormat:@"%@",[self stringFromData:eta]];
     
     NSString * flightStatus = dic[@"flightStatus"];
-    NSLog(@"......... %@",flightStatus);
+//    NSLog(@"......... %@",flightStatus);
     NSString * statueStr = [NSString stringWithFormat:@"%@",dic[@"flightStatus"]?dic[@"flightStatus"]:@""];
     
     [self.status setTitle:@"正常" forState:UIControlStateNormal];
@@ -144,6 +142,7 @@
 -(void)prepareForReuse
 {
     self.iconImg.userInteractionEnabled = NO;
+    self.cellIndex = 0;
 }
 
 -(BOOL)isNull:(id)obj

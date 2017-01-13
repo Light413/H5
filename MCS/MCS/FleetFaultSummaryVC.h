@@ -10,4 +10,6 @@
 
 @interface FleetFaultSummaryVC : BaseTableVC
 
+@property(nonatomic)NSDictionary * dic;
+
 @end

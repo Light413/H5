@@ -51,18 +51,20 @@ static NSString * warnHandleCellIdentifierId = @"warnHandleCellIdentifierId";
 -(void)loadDataFromServer
 {
     #warning ....test
-    [MBHUD showStatueInView:self.view WithMsg:@"Loading..."];
+//    [MBHUD showStatueInView:self.view WithMsg:@"Loading..."];
+    [SVProgressHUD showWithStatus:@"Loading..."];
+    
     [self.dataArray removeAllObjects];
     [self.tableView reloadData];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 1.0), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.5), dispatch_get_main_queue(), ^{
         NSInteger rad = arc4random() % 15 + 2;
         for (int i =0; i < rad; i++) {
             [self.dataArray addObject:@""];
         }
         [self.tableView reloadData];
 
-        [MBHUD dismiss];
+        [SVProgressHUD dismiss];
     });
 }
 
@@ -91,7 +93,7 @@ static NSString * warnHandleCellIdentifierId = @"warnHandleCellIdentifierId";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 60;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

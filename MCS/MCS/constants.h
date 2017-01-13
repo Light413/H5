@@ -36,8 +36,23 @@
 #define CURRNET_SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define CURRENT_SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 
+#pragma mark - URL Constant
+#define     kServerBaseUrl          @"http://192.168.3.212:8088"
+#define     kFleetStatueInfoUrl     @"/adp-tools/rest/fleetStatus/list"
+#define     kFaultSummaryUrl        @"/adp-tools/rest/recordSummary/faultSummary/detail"
+
+
+
+
 #import "BaseUtils.h"
 #import "UIViewExt.h"
 #import "TestData.h"
 
 #endif /* constants_h */
+
+
+
+
+
+
+

@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "CustomMultipleButtons.h"
 
 @interface WarnHandleVC : BaseViewController
 

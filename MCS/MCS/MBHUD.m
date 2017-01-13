@@ -31,6 +31,8 @@
 
 -(void)showInView:(UIView *)view WithMsg:(NSString *)msg
 {
+    view.multipleTouchEnabled = NO;
+    
     hud = [[MBProgressHUD alloc]initWithView:view];
     hud.removeFromSuperViewOnHide = YES;
     [view addSubview:hud];
@@ -66,6 +68,7 @@
 
 -(void)dismiss
 {
+    hud.superview.userInteractionEnabled = YES;
     [hud hide:YES];
 }
 

@@ -48,6 +48,7 @@
     pop.popoverContentSize = CGSizeMake(50, 50);
     [pop presentPopoverFromRect:seg.bounds inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     */
+    
     //popview
     CalendarView * view = [[CalendarView alloc]initWithFrame:CGRectMake(0, 0, 300, 400)];
     
@@ -55,7 +56,9 @@
     vc.modalPresentationStyle = UIModalPresentationPopover;
     vc.popoverPresentationController.sourceView = seg;
     vc.popoverPresentationController.sourceRect = seg.bounds;
-    vc.preferredContentSize = CGSizeMake(200, 200);
+    vc.preferredContentSize = CGSizeMake(300, 400);
+    vc.view = view;
+    
     vc.view.maskView.backgroundColor = [UIColor lightGrayColor];
     vc.view.maskView.bounds =CGRectMake(0, 0, 600, 600);
     

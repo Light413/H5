@@ -95,23 +95,23 @@ static NSString * calendarCollectionCellIdentifier = @"calendarCollectionCellIde
     _collectionView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_collectionView];
     
-    self.layer.borderColor = [UIColor greenColor].CGColor;
-    self.layer.borderWidth = 0.6;
+    self.layer.borderColor = [UIColor darkGrayColor].CGColor;
+//    self.layer.borderWidth = 0.6;
 }
 
 -(UIView*)addHeadView
 {
     #ifdef NeedHeadView
-    CGFloat _height = 50.0;
-    CGFloat _textFontSize = 16.0;
+    CGFloat _height = 60.0;
+    CGFloat _btnWidth = 60.0,_btnHeight = _height;
+    CGFloat _textFontSize = 17.0;
     
     UIView * bgview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), _height)];
     bgview.tag = 10;
     [self addSubview:bgview];
     
     UIButton * leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setTitle:@"上月" forState:UIControlStateNormal];
-    [leftBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [leftBtn setImage:[UIImage imageNamed:@"arrow_left_icon"] forState:UIControlStateNormal];
     [bgview addSubview:leftBtn];
     leftBtn.translatesAutoresizingMaskIntoConstraints = NO;
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:_textFontSize];
@@ -119,13 +119,17 @@ static NSString * calendarCollectionCellIdentifier = @"calendarCollectionCellIde
     leftBtn.tag = 100;
     
     UIButton * rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBtn setTitle:@"下月" forState:UIControlStateNormal];
-    [rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [rightBtn setImage:[UIImage imageNamed:@"arrow_right_icon"] forState:UIControlStateNormal];
     [bgview addSubview:rightBtn];
     rightBtn.translatesAutoresizingMaskIntoConstraints = NO;
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:_textFontSize];
     [rightBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     rightBtn.tag = 101;
+    
+    [leftBtn setImageEdgeInsets:UIEdgeInsetsMake((_height - 30)/2.0, (_btnWidth - 30)/2.0, (_height - 30)/2.0, (_btnWidth - 30)/2.0)];
+    [leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [rightBtn setImageEdgeInsets:leftBtn.imageEdgeInsets];
+    [rightBtn setTitleEdgeInsets:leftBtn.titleEdgeInsets];
     
     UIButton * todayBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [todayBtn setTitle:@"今天" forState:UIControlStateNormal];
@@ -137,16 +141,18 @@ static NSString * calendarCollectionCellIdentifier = @"calendarCollectionCellIde
     
      UILabel *_dispDateLab = [[UILabel alloc]init];
     _dispDateLab.translatesAutoresizingMaskIntoConstraints = NO;
-    _dispDateLab.font = [UIFont systemFontOfSize:16];
+    _dispDateLab.font = [UIFont systemFontOfSize:_textFontSize];
     _dispDateLab.textAlignment = NSTextAlignmentCenter;
     _dispDateLab.tag = 102;
     [bgview addSubview:_dispDateLab];
     
-    NSArray * _v = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[leftBtn(_height)]" options:NSLayoutFormatAlignAllTop metrics:[NSDictionary dictionaryWithObjectsAndKeys:@(_height),@"_height", nil] views:NSDictionaryOfVariableBindings(leftBtn)];
-    NSArray * _h = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[leftBtn(60)]-[_dispDateLab(100)]-[rightBtn(==leftBtn)]-[todayBtn]|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(leftBtn,rightBtn,_dispDateLab,todayBtn)];
+    NSArray * _v = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[leftBtn(_btnHeight)]" options:NSLayoutFormatAlignAllTop metrics:[NSDictionary dictionaryWithObjectsAndKeys:@(_btnHeight),@"_btnHeight", nil] views:NSDictionaryOfVariableBindings(leftBtn)];
+    NSArray * _h = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[leftBtn(_btnWidth)]-[_dispDateLab(100)]-[rightBtn(==leftBtn)]-[todayBtn]|" options:NSLayoutFormatAlignAllCenterY metrics:[NSDictionary dictionaryWithObjectsAndKeys:@(_btnWidth),@"_btnWidth", nil] views:NSDictionaryOfVariableBindings(leftBtn,rightBtn,_dispDateLab,todayBtn)];
+    
+    [bgview addConstraint:[NSLayoutConstraint constraintWithItem:leftBtn attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:rightBtn attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
+    
     [bgview addConstraints:_v];
     [bgview addConstraints:_h];
-//    [bgview addConstraint:[NSLayoutConstraint constraintWithItem:bgview attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_dispDateLab attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     return bgview;
 
     #else
