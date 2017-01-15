@@ -10,7 +10,13 @@
 
 @interface FleetFaultDesVC ()
 {
-    BOOL _section2IsSelected;
+    BOOL _section_1_IsOpened;//section_1是否展开
+    BOOL _section_1_formatter_msg;//section_1报文格式
+    
+    NSInteger _section_2_cellType;
+    
+    CustomMultipleButtons * _section1_headerView;
+    CustomMultipleButtons * _section2_headerView;
 }
 
 @end
@@ -19,32 +25,55 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"故障描述";
+    self.title = @"告警描述";
     
-    _section2IsSelected = NO;
+    _section_1_IsOpened = NO;
+    _section_1_formatter_msg = YES;
+    _section_2_cellType = 1;
+    
+    [self initSubviews];
 }
+
+-(void)initSubviews
+{
+    _section1_headerView = [[CustomMultipleButtons alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, 50) buttonTitles:@[@"格式化报文",@"原始报文"] selectedHandler:^(NSInteger index) {
+        _section_1_formatter_msg = index==1?YES:NO;
+        
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+    }];
+    
+    _section2_headerView = [[CustomMultipleButtons alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, 50) buttonTitles:@[@"可能的故障原因",@"排故手册",@"最低设备清单",@"上传文件"] selectedHandler:^(NSInteger index) {
+        _section_2_cellType = index==1?1:2;
+        
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
+    }];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+
+
+#pragma mark -
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 4;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section ==0) {
+    if (section ==0 || section ==1) {
         return 1;
     }
-    if (section ==1 && _section2IsSelected) {
-        return 1;
-    }
-    else if (section ==2)
-        return 3;
+    else if(section ==2)
+        
+#warning ....test
+        return _section_2_cellType ==1? 3 : 1;
     else if (section ==3)
-        return 5;
+        return 3;
     
     return 0;
 }
@@ -56,10 +85,12 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"cell1_IdentifierId" forIndexPath:indexPath];
     }
     if (indexPath.section ==1) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"cell2_IdentifierId" forIndexPath:indexPath];
+        NSString * cellId = _section_1_formatter_msg ? @"cell2_IdentifierId" : @"cell21_IdentifierId";
+        cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     }
     if (indexPath.section ==2) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"cell3_IdentifierId" forIndexPath:indexPath];
+        NSString * cellId = _section_2_cellType == 1 ? @"cell3_IdentifierId":@"cell31_IdentifierId";
+        cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     }
     if (indexPath.section ==3) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"cell4_IdentifierId" forIndexPath:indexPath];
@@ -80,7 +111,7 @@
     }
     else if (indexPath.section ==1)
     {
-        return 220;
+        return _section_1_IsOpened ? 180:0;
     }
     else if (indexPath.section ==2)
     {
@@ -95,12 +126,16 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 40;
+    if (section == 1) {
+        return _section_1_IsOpened?50:1;
+    }
+    return 50;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section ==1) {
-        return 10;
+    if (section == 0) {
+        return 40;
     }
     return 1;
 }
@@ -114,8 +149,21 @@
         l.textColor = [UIColor darkGrayColor];
         return l;
     }
-    else if (section == 1)
+    else if (section == 1 && _section_1_IsOpened)
     {
+        return _section1_headerView;
+    }
+    else if (section == 2)
+    {
+        return  _section2_headerView;
+    }
+    
+    return nil;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (section ==0) {
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, 40);
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -131,32 +179,13 @@
         btn.tag = 1;
         [btn addTarget:self action:@selector(sectionBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         
-        btn.selected = _section2IsSelected;
+        btn.selected = _section_1_IsOpened;
         return btn;
     }
-    else if (section == 2)
-    {
-        UIView * _v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, 40)];
-        _v.backgroundColor = [UIColor colorWithRed:0.961 green:0.973 blue:0.980 alpha:1];
-        UISegmentedControl * seg = [[UISegmentedControl alloc]initWithItems:@[@"可能的故障原因",@"排故手册",@"最低设备清单",@"上传文件"]];
-        //seg.backgroundColor = [UIColor colorWithRed:0.961 green:0.973 blue:0.980 alpha:1];
-        //seg.tintColor = [UIColor colorWithRed:0.961 green:0.973 blue:0.980 alpha:1];
-        
-        seg.selectedSegmentIndex = 0;
-        seg.frame = CGRectMake(5, 0, 600, 40);
-        [_v addSubview:seg];
-        return _v;
-    }
-    
-    return nil;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    if (section == 1) {
+       else if (section == 1) {
         UIView * _v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, 20)];
         _v.backgroundColor = [UIColor whiteColor];
-        return _v;
+        return nil;
     }
     return nil;
 }
@@ -164,17 +193,8 @@
 -(void)sectionBtnAction :(UIButton *)btn
 {
     btn.selected = !btn.selected;
-    _section2IsSelected = !_section2IsSelected;
+    _section_1_IsOpened = !_section_1_IsOpened;
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:btn.tag] withRowAnimation:UITableViewRowAnimationFade];
-}
-
-
-- (IBAction)sectionBtn_format:(UIButton *)sender {
-    
-}
-
-- (IBAction)sectionBtn_origin:(UIButton *)sender {
-    
 }
 
 

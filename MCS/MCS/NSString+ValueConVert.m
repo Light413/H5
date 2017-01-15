@@ -12,8 +12,8 @@
 
 +(NSString *)stringFromObj:(id)value
 {
-    if (!value) {
-        value = @"";
+    if (!value || [value isKindOfClass:[NSNull class]]) {
+        value = @"N/A";
     }
     
     return [NSString stringWithFormat:@"%@",value];

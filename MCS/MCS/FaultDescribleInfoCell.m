@@ -78,15 +78,15 @@
 -(void)setCellWith:(NSDictionary *)dic
 {
     self.fleetNum_tf.text = dic[@"tailNo"];
-    self.time_tf.text = [NSString stringFromObj:dic[@"lastReportTime"]];
-//    [self.flightsegments_btn setTitle:dic[@"leg"] forState:UIControlStateNormal];
+    self.time_tf.text = [NSDate stringFromTimeStamp:dic[@"lastReportTime"] andFormatter:@"yyyy-MM-dd"];
+    [self.flightsegments_btn setTitle:[NSString stringFromObj:dic[@"leg"]] forState:UIControlStateNormal];
     
     self.fleetNum_lab.text = dic[@"tailNo"];
     self.flightNum_lab.text = dic[@"flightNumber"];
-    self.arri_des.text = dic[@"arrCNN"];
-//    self.flightStartTime_lab.text = dic[@"legStartTime"];
-//    self.reportEndTime_lab.text = dic[@"lastReportTime"];
-//    self.segment_lab.text = dic[@"leg"];
+    self.arri_des.text = [NSString stringWithFormat:@"%@/%@",dic[@"dep"],dic[@"arr"]] ;
+    self.flightStartTime_lab.text = [NSDate stringFromTimeStamp:dic[@"legStartTime"] andFormatter:@"yyyy-MM-dd HH:mm"];
+    self.reportEndTime_lab.text = [NSDate stringFromTimeStamp:dic[@"lastReportTime"] andFormatter:@"yyyy-MM-dd HH:mm"];
+    self.segment_lab.text = [NSString stringFromObj:dic[@"leg"]];
 }
 
 

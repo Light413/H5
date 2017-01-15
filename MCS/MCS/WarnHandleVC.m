@@ -21,11 +21,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-//    [self addTopSubview];
+    [self initSubviews];
+
+}
+
+
+-(void)initSubviews
+{
+    CustomMultipleButtons * multipleBtnView = [[CustomMultipleButtons alloc]initWithFrame:CGRectMake(0, 8, CURRNET_SCREEN_WIDTH, 50) buttonTitles:@[@"告警条目",@"其他告警",@"超限告警"] selectedHandler:^(NSInteger index) {
+        NSLog(@"++++++++++++ : %d",index);
+        [_warnInfoListVC loadDataFromServer];
+    }];
     
-    CustomMultipleButtons * btns = [[CustomMultipleButtons alloc]initWithFrame:CGRectMake(0, 8, CURRNET_SCREEN_WIDTH, 50)];
-    
-    [self.view addSubview:btns];
+    [self.view addSubview:multipleBtnView];
     
     _warnInfoListVC =  [[WarnInfoListVC alloc]init];
     [self addChildViewController:_warnInfoListVC];
@@ -34,6 +42,10 @@
     [self.view addSubview:_warnInfoListVC.view];
 }
 
+
+
+
+/*
 -(void)addTopSubview
 {
     UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(0, 8, CURRNET_SCREEN_WIDTH, 50)];
@@ -80,7 +92,7 @@
     [_warnInfoListVC loadDataFromServer];
     
 }
-
+*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

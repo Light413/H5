@@ -30,15 +30,15 @@
     bgview.tag = 1001;
     [self addSubview:bgview];
     
-    NSArray * btnTitle = @[@"告警条目",@"其他告警",@"超限告警"];
-    for (int i =0; i < 3; i++) {
+    NSArray * btnTitle = _buttonTitles;
+    for (int i =0; i < btnTitle.count; i++) {
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(10 + i * 150, 10, 150, CGRectGetHeight(bgview.frame)-10);
         [btn setTitle:btnTitle[i] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
         [btn setTitleColor:[UIColor colorWithRed:0.173 green:0.545 blue:0.757 alpha:1] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateSelected];
-        btn.tag = 20 + i;
+        btn.tag = 1 + i;
         [btn addTarget:self action:@selector(btnChangeListAction:) forControlEvents:UIControlEventTouchUpInside];
         btn.titleLabel.font = [UIFont systemFontOfSize:15];
         btn.selected = i == 0 ?YES : NO;
@@ -49,8 +49,11 @@
 
 -(instancetype)initWithFrame:(CGRect)frame buttonTitles:(NSArray*)titles selectedHandler: (MultipleButtonsSelectedBlock)handler
 {
-    NSAssert(titles.count < 1, @"button's number can't be nil");
+    NSAssert(titles.count > 0, @"button's number can't be nil");
     _buttonTitles = titles;
+    if (handler) {
+        _selectedBlock = handler;
+    }
     
     return [self initWithFrame:frame];
 }
@@ -70,19 +73,15 @@
     }
     btn.selected = YES;
     btn.backgroundColor = [UIColor whiteColor];
-    
-    //...
-    
+
+    if (self.selectedBlock) {
+        self.selectedBlock(btn.tag);
+    }
     
 }
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
+
+
+

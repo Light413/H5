@@ -212,6 +212,11 @@
 		A1E2CD001E28E0A4005D75C4 /* NSString+ValueConVert.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2CCFF1E28E0A4005D75C4 /* NSString+ValueConVert.m */; };
 		A1E2CD021E28E196005D75C4 /* detail.json in Resources */ = {isa = PBXBuildFile; fileRef = A1E2CD011E28E196005D75C4 /* detail.json */; };
 		A1E2CD051E28E263005D75C4 /* NSDate+StrValueFromStamp.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2CD041E28E263005D75C4 /* NSDate+StrValueFromStamp.m */; };
+		AD1291F01E2B960500CDC0FB /* WarnDescribleFaultInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1291EF1E2B960500CDC0FB /* WarnDescribleFaultInfoCell.m */; };
+		AD1291F31E2B961300CDC0FB /* WarnDescribleMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1291F21E2B961300CDC0FB /* WarnDescribleMsgCell.m */; };
+		AD1291F61E2B963900CDC0FB /* WarnDescribleMsg2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1291F51E2B963900CDC0FB /* WarnDescribleMsg2Cell.m */; };
+		AD1291F91E2B966300CDC0FB /* WarnDescribleFaultReasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1291F81E2B966300CDC0FB /* WarnDescribleFaultReasonCell.m */; };
+		AD1291FC1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1291FB1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -643,6 +648,16 @@
 		A1E2CD031E28E263005D75C4 /* NSDate+StrValueFromStamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+StrValueFromStamp.h"; sourceTree = "<group>"; };
 		A1E2CD041E28E263005D75C4 /* NSDate+StrValueFromStamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+StrValueFromStamp.m"; sourceTree = "<group>"; };
 		A50972EE26AB714E7830BD34 /* libPods-MCSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MCSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD1291EE1E2B960500CDC0FB /* WarnDescribleFaultInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnDescribleFaultInfoCell.h; sourceTree = "<group>"; };
+		AD1291EF1E2B960500CDC0FB /* WarnDescribleFaultInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDescribleFaultInfoCell.m; sourceTree = "<group>"; };
+		AD1291F11E2B961300CDC0FB /* WarnDescribleMsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnDescribleMsgCell.h; sourceTree = "<group>"; };
+		AD1291F21E2B961300CDC0FB /* WarnDescribleMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDescribleMsgCell.m; sourceTree = "<group>"; };
+		AD1291F41E2B963900CDC0FB /* WarnDescribleMsg2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnDescribleMsg2Cell.h; sourceTree = "<group>"; };
+		AD1291F51E2B963900CDC0FB /* WarnDescribleMsg2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDescribleMsg2Cell.m; sourceTree = "<group>"; };
+		AD1291F71E2B966300CDC0FB /* WarnDescribleFaultReasonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnDescribleFaultReasonCell.h; sourceTree = "<group>"; };
+		AD1291F81E2B966300CDC0FB /* WarnDescribleFaultReasonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDescribleFaultReasonCell.m; sourceTree = "<group>"; };
+		AD1291FA1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnDescribleOthersFaultCell.h; sourceTree = "<group>"; };
+		AD1291FB1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDescribleOthersFaultCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1244,6 +1259,16 @@
 				A1943EB61E26390300CBABEE /* FaultDescribleWarnListCell.h */,
 				A1943EB71E26390300CBABEE /* FaultDescribleWarnListCell.m */,
 				A1943EB81E26390300CBABEE /* FaultDescribleWarnListCell.xib */,
+				AD1291EE1E2B960500CDC0FB /* WarnDescribleFaultInfoCell.h */,
+				AD1291EF1E2B960500CDC0FB /* WarnDescribleFaultInfoCell.m */,
+				AD1291F11E2B961300CDC0FB /* WarnDescribleMsgCell.h */,
+				AD1291F21E2B961300CDC0FB /* WarnDescribleMsgCell.m */,
+				AD1291F41E2B963900CDC0FB /* WarnDescribleMsg2Cell.h */,
+				AD1291F51E2B963900CDC0FB /* WarnDescribleMsg2Cell.m */,
+				AD1291F71E2B966300CDC0FB /* WarnDescribleFaultReasonCell.h */,
+				AD1291F81E2B966300CDC0FB /* WarnDescribleFaultReasonCell.m */,
+				AD1291FA1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.h */,
+				AD1291FB1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1747,6 +1772,7 @@
 				A10A36071DAB987800CE568B /* Text.m in Sources */,
 				A10A361B1DAB987800CE568B /* SVGCircleElement.m in Sources */,
 				A19B6C3D1D90DFD50026FA2C /* GanttView.m in Sources */,
+				AD1291F91E2B966300CDC0FB /* WarnDescribleFaultReasonCell.m in Sources */,
 				A10A36371DAB987800CE568B /* SVGKParserSVG.m in Sources */,
 				A10A363D1DAB987800CE568B /* CALayerWithClipRender.m in Sources */,
 				A1E2CCF51E28A5D2005D75C4 /* SVIndefiniteAnimatedView.m in Sources */,
@@ -1772,6 +1798,7 @@
 				A10A35FE1DAB987800CE568B /* Element.m in Sources */,
 				A10A36001DAB987800CE568B /* MediaList.m in Sources */,
 				A1C46BD51DD5C9AC00CFE0EC /* FleetStatueInfoVC.m in Sources */,
+				AD1291FC1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.m in Sources */,
 				A10A35F91DAB987800CE568B /* CSSValueList.m in Sources */,
 				A1C1136A1DACE6A2002BEB82 /* webViewController.m in Sources */,
 				A10A35F21DAB987800CE568B /* CSSPrimitiveValue.m in Sources */,
@@ -1787,6 +1814,7 @@
 				A10A35F71DAB987800CE568B /* CSSStyleSheet.m in Sources */,
 				A10A361C1DAB987800CE568B /* SVGDescriptionElement.m in Sources */,
 				A1A69D521D7EBA120068CA53 /* BaseUtils.m in Sources */,
+				AD1291F01E2B960500CDC0FB /* WarnDescribleFaultInfoCell.m in Sources */,
 				A10A36181DAB987800CE568B /* SVGTransform.m in Sources */,
 				A10A361D1DAB987800CE568B /* SVGElement.m in Sources */,
 				A10A362B1DAB987800CE568B /* SVGTextElement.m in Sources */,
@@ -1799,6 +1827,7 @@
 				A10A35EF1DAB987800CE568B /* CDATASection.m in Sources */,
 				A1D437341DD19CE4007DC05B /* MWilldoVC.m in Sources */,
 				A1D5CD561DCC640100794B3B /* WarnHandleVC.m in Sources */,
+				AD1291F31E2B961300CDC0FB /* WarnDescribleMsgCell.m in Sources */,
 				A10A362D1DAB987800CE568B /* TinySVGTextAreaElement.m in Sources */,
 				A1B460441D7E92BE0008D554 /* BaseViewController.m in Sources */,
 				A183E2C21D8657DC00246600 /* GGQRScanController.m in Sources */,
@@ -1831,6 +1860,7 @@
 				A10A36021DAB987800CE568B /* Node.m in Sources */,
 				A10A36451DAB987800CE568B /* SVGKSourceString.m in Sources */,
 				A10A364C1DAB987800CE568B /* SVGKFastImageView.m in Sources */,
+				AD1291F61E2B963900CDC0FB /* WarnDescribleMsg2Cell.m in Sources */,
 				A10A364D1DAB987800CE568B /* SVGKImageView.m in Sources */,
 				A10A36311DAB987800CE568B /* SVGKImage+CGContext.m in Sources */,
 				A1C46BD11DD5B06F00CFE0EC /* FleetFaultDesVC.m in Sources */,

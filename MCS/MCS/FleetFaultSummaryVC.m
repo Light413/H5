@@ -13,6 +13,7 @@
 @interface FleetFaultSummaryVC ()
 {
     NSDictionary * _dataDic;
+    NSArray * _alarmListDataArray;
 }
 @end
 
@@ -29,12 +30,23 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundView = nil;
     self.tableView.backgroundColor = [UIColor colorWithRed:0.961 green:0.973 blue:0.980 alpha:1];
-    
+
     [self loadData];
 }
 
 -(void)loadData
 {
+    NSData * _data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"detail" ofType:@"json"]];
+    
+    id _obj = [NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingMutableContainers error:nil];
+    if (_obj && [_obj isKindOfClass:[NSDictionary class]]) {
+        _dataDic = _obj;
+        _alarmListDataArray = _obj[@"RSAlarmEventList"];
+        [self.tableView reloadData];
+    }
+    
+    return;
+    
     RequestTaskHandle * task = [RequestTaskHandle taskWith:kFaultSummaryUrl parms:self.dic andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
@@ -59,7 +71,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section) {
-        return 5;
+        return _alarmListDataArray.count;
     }
     return 1;
 }
@@ -70,7 +82,7 @@
     if (section) {
         return 80;
     }
-    return 0;
+    return 1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -83,12 +95,13 @@
     }
     else if (indexPath.section == 1)
     {
+        NSDictionary * dic = _alarmListDataArray[indexPath.row];
         cell = [tableView dequeueReusableCellWithIdentifier:@"FaultDescribleWarnListCellReuseID" forIndexPath:indexPath];
          cell.backgroundColor = indexPath.row %2 ? kTableViewCellBgColorDeep:kTableViewCellBgColorLight;
+        
+        [((FaultDescribleWarnListCell*)cell) setCellWith:dic];
     }
 
-
-    
     return cell;
 }
 
@@ -106,7 +119,6 @@
         UIButton * leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         leftBtn.frame = CGRectMake(30, 0, 50, 40);
         [leftBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-//        [leftBtn setTitle:@"<" forState:UIControlStateNormal];
         [leftBtn setImage:[UIImage imageNamed:@"icon_last"] forState:UIControlStateNormal];
         [leftBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
         leftBtn.tag = 100;
@@ -116,7 +128,6 @@
         UIButton * rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         rightBtn.frame = CGRectMake(CGRectGetMaxX(leftBtn.frame)+20, 0, CGRectGetWidth(leftBtn.frame), CGRectGetHeight(leftBtn.frame));
         [rightBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-//        [rightBtn setTitle:@">" forState:UIControlStateNormal];
         [rightBtn setImage:[UIImage imageNamed:@"icon_next"] forState:UIControlStateNormal];
          [rightBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
         rightBtn.tag = 101;

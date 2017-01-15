@@ -83,9 +83,7 @@
 -(void)setCellWith:(NSDictionary *)dic andIndex:(NSInteger)index
 {
     self.cellIndex = index;
-    
-    NSLog(@"self.cellIndex......... %@",@(self.cellIndex));
-    
+
     self.planeNo.text = dic[@"tailNo"]?dic[@"tailNo"]:@"";
     
     self.flightNum.text = dic[@"flightNumber"]?dic[@"flightNumber"]:@"";
@@ -96,7 +94,7 @@
     if (![self isNull:priority]) {
         self.iconImg.userInteractionEnabled = YES;
         switch ([priority integerValue]) {
-            case 1:
+            case 1://级别最高
                 imgindex = 5;
                 break;
             case 10:
@@ -157,14 +155,7 @@
 
 -(NSString*)stringFromData:(NSString*)eta needTime:(BOOL)_b
 {
-    if ([self isNull:eta]) {
-        return @"";
-    }
-    
-    NSDate * date = [NSDate dateWithTimeIntervalSince1970:[eta doubleValue]/1000];
-    NSDateFormatter * _formatter = [[NSDateFormatter alloc]init];
-    [_formatter setDateFormat:_b?@"HH:mm":@"MM-dd HH:mm"];
-    return [_formatter stringFromDate:date];
+    return [NSDate stringFromTimeStamp:eta andFormatter:_b?@"HH:mm":@"MM-dd HH:mm"];
 }
 
 @end

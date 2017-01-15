@@ -52,14 +52,14 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
 
 -(void)loadData
 {
-//    NSData * _data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"list" ofType:@"json"]];
-//    
-//    id _obj = [NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingMutableContainers error:nil];
-//    if (_obj && [_obj isKindOfClass:[NSArray class]]) {
-//        _dataArray = _obj;
-//    }
-//    
-//    return;
+    NSData * _data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"list" ofType:@"json"]];
+    
+    id _obj = [NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingMutableContainers error:nil];
+    if (_obj && [_obj isKindOfClass:[NSArray class]]) {
+        _dataArray = _obj;
+    }
+    
+    return;
     
     [MBHUD showStatueInView:self.view WithMsg:@"Loading..."];
 
@@ -151,6 +151,18 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     // Configure the cell...
     
     [cell setCellWith:dic];
+    cell.cellButtonBlock = ^(NSInteger index){
+        NSDictionary * dic = [_dataArray objectAtIndex:index];
+        NSDictionary * parms = [NSDictionary dictionaryWithObjectsAndKeys:dic[@"legId"]?dic[@"legId"]:@"",@"legId",dic[@"tailNo"]?dic[@"tailNo"]:@"",@"tailNo",@"CCA",@"tenantCode", nil];
+        
+        UIViewController * vc;
+        if (1) {
+            vc = [[FleetFaultSummaryVC alloc]initWithStyle:UITableViewStyleGrouped];
+            ((FleetFaultSummaryVC*)vc).dic = parms;
+        }
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    };
     
     cell.backgroundColor = indexPath.row %2 ? kTableViewCellBgColorDeep:cellBgLightColor;
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -209,7 +221,7 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
 
     UIViewController * vc;
     if ([obj integerValue] == 1) {
-       vc = [[FleetFaultSummaryVC alloc]init];
+       vc = [[FleetFaultSummaryVC alloc]initWithStyle:UITableViewStyleGrouped];
         ((FleetFaultSummaryVC*)vc).dic = parms;
     }
     

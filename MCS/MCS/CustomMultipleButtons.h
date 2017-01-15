@@ -14,4 +14,7 @@ typedef void(^MultipleButtonsSelectedBlock)(NSInteger);
 
 @property(nonatomic,copy)MultipleButtonsSelectedBlock selectedBlock;
 
+//索引从1开始
+-(instancetype)initWithFrame:(CGRect)frame buttonTitles:(NSArray*)titles selectedHandler: (MultipleButtonsSelectedBlock)handler;
+
 @end

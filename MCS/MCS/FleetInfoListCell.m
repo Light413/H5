@@ -21,6 +21,12 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)clickAlertBtnAction:(id)sender {
+    
+    if (self.cellButtonBlock) {
+        self.cellButtonBlock(0);
+    }
+}
 
 -(void)setCellWith:(NSDictionary *)dic
 {
@@ -48,19 +54,19 @@
 
         switch ([priority integerValue]) {
             case 1:
-                self.alertLevel.backgroundColor = [UIColor colorWithRed:0.980 green:0.349 blue:0.322 alpha:1];
+                self.alertLevel.backgroundColor = kAlarmLevelColor_1;
                 break;
             case 10:
-                self.alertLevel.backgroundColor =[UIColor colorWithRed:0.976 green:0.651 blue:0.255 alpha:1];
+                self.alertLevel.backgroundColor = kAlarmLevelColor_2;
                 break;
             case 120:
-                self.alertLevel.backgroundColor =[UIColor colorWithRed:0.969 green:0.992 blue:0.220 alpha:1];
+                self.alertLevel.backgroundColor = kAlarmLevelColor_3;
                 break;
             case 200:
-                self.alertLevel.backgroundColor =[UIColor colorWithRed:0.816 green:0.820 blue:0.820 alpha:1];
+                self.alertLevel.backgroundColor = kAlarmLevelColor_4;
                 break;
             case 1000:
-                self.alertLevel.backgroundColor =[UIColor colorWithRed:0.231 green:0.592 blue:0.914 alpha:1];
+                self.alertLevel.backgroundColor = kAlarmLevelColor_5;
                 break;
             default: break;
         }

@@ -10,4 +10,17 @@
 
 @interface NSDate (StrValueFromStamp)
 
+
+/**
+ 时间戳转化字符串
+
+ @param stamp
+ @param formatter 日期字符串格式（yyyy-MM-dd）
+ @return
+ */
++(NSString*)stringFromTimeStamp:(NSString*)stamp
+                   andFormatter:(NSString*)formatter;
+
+
+
 @end
