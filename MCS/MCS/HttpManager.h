@@ -10,8 +10,8 @@
 
 #import "AFNetworking.h"
 
-typedef void(^requestSucessBlock)(NSURLSessionDataTask *task, id responseObject);
-typedef void(^requestFailureBlock)(NSURLSessionDataTask *task, NSError *error);
+typedef void(^requestSucessBlock)(NSURLSessionDataTask * task, id responseObject);
+typedef void(^requestFailureBlock)(NSURLSessionDataTask * task, NSError * error);
 
 @interface RequestTaskHandle : NSObject
 @property(nonatomic,copy)NSString * url;

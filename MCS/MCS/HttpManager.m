@@ -38,6 +38,8 @@
         NSString * _baseUrl = [self baseUrl];
         _httpSessionManager = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString: _baseUrl]];
         _httpSessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        AFJSONResponseSerializer * response = [AFJSONResponseSerializer serializer];
+        response.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json", @"text/javascript",@"text/plain", nil];
         _httpSessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
         
     }

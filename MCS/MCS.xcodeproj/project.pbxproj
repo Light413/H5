@@ -168,6 +168,7 @@
 		A1AF0E091D93832C00B604A5 /* mui.min.js in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E041D93832C00B604A5 /* mui.min.js */; };
 		A1AF0E0B1D93C07000B604A5 /* index_d.html in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0A1D93C07000B604A5 /* index_d.html */; };
 		A1AF0E0D1D93C08E00B604A5 /* docs.css in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0C1D93C08E00B604A5 /* docs.css */; };
+		A1B377631E2E0A6700BDFB27 /* UIButton+ExternValue.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B377621E2E0A6700BDFB27 /* UIButton+ExternValue.m */; };
 		A1B460411D7E929D0008D554 /* BaseNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B460401D7E929D0008D554 /* BaseNavigationVC.m */; };
 		A1B460441D7E92BE0008D554 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B460431D7E92BE0008D554 /* BaseViewController.m */; };
 		A1B4604B1D7E95350008D554 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1B4604A1D7E95350008D554 /* Localizable.strings */; };
@@ -212,10 +213,12 @@
 		A1E2CD001E28E0A4005D75C4 /* NSString+ValueConVert.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2CCFF1E28E0A4005D75C4 /* NSString+ValueConVert.m */; };
 		A1E2CD021E28E196005D75C4 /* detail.json in Resources */ = {isa = PBXBuildFile; fileRef = A1E2CD011E28E196005D75C4 /* detail.json */; };
 		A1E2CD051E28E263005D75C4 /* NSDate+StrValueFromStamp.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2CD041E28E263005D75C4 /* NSDate+StrValueFromStamp.m */; };
+		A1F448711E2CBE8300F218B8 /* MapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F448701E2CBE8300F218B8 /* MapAnnotationView.m */; };
+		A1F448731E2CBE9900F218B8 /* MapAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F448721E2CBE9900F218B8 /* MapAnnotationView.xib */; };
+		A1FA97021E308EC80003996D /* WarnDescribleFaultReasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FA97001E308EC80003996D /* WarnDescribleFaultReasonCell.m */; };
 		AD1291F01E2B960500CDC0FB /* WarnDescribleFaultInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1291EF1E2B960500CDC0FB /* WarnDescribleFaultInfoCell.m */; };
 		AD1291F31E2B961300CDC0FB /* WarnDescribleMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1291F21E2B961300CDC0FB /* WarnDescribleMsgCell.m */; };
 		AD1291F61E2B963900CDC0FB /* WarnDescribleMsg2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1291F51E2B963900CDC0FB /* WarnDescribleMsg2Cell.m */; };
-		AD1291F91E2B966300CDC0FB /* WarnDescribleFaultReasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1291F81E2B966300CDC0FB /* WarnDescribleFaultReasonCell.m */; };
 		AD1291FC1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1291FB1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.m */; };
 /* End PBXBuildFile section */
 
@@ -574,6 +577,8 @@
 		A1AF0E041D93832C00B604A5 /* mui.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mui.min.js; sourceTree = "<group>"; };
 		A1AF0E0A1D93C07000B604A5 /* index_d.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index_d.html; sourceTree = "<group>"; };
 		A1AF0E0C1D93C08E00B604A5 /* docs.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = docs.css; sourceTree = "<group>"; };
+		A1B377611E2E0A6700BDFB27 /* UIButton+ExternValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ExternValue.h"; sourceTree = "<group>"; };
+		A1B377621E2E0A6700BDFB27 /* UIButton+ExternValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ExternValue.m"; sourceTree = "<group>"; };
 		A1B460391D7E88000008D554 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		A1B4603A1D7E8F400008D554 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		A1B4603F1D7E929D0008D554 /* BaseNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationVC.h; sourceTree = "<group>"; };
@@ -647,6 +652,11 @@
 		A1E2CD011E28E196005D75C4 /* detail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = detail.json; sourceTree = "<group>"; };
 		A1E2CD031E28E263005D75C4 /* NSDate+StrValueFromStamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+StrValueFromStamp.h"; sourceTree = "<group>"; };
 		A1E2CD041E28E263005D75C4 /* NSDate+StrValueFromStamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+StrValueFromStamp.m"; sourceTree = "<group>"; };
+		A1F4486F1E2CBE8300F218B8 /* MapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotationView.h; sourceTree = "<group>"; };
+		A1F448701E2CBE8300F218B8 /* MapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotationView.m; sourceTree = "<group>"; };
+		A1F448721E2CBE9900F218B8 /* MapAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapAnnotationView.xib; sourceTree = "<group>"; };
+		A1FA96FF1E308EC80003996D /* WarnDescribleFaultReasonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnDescribleFaultReasonCell.h; sourceTree = "<group>"; };
+		A1FA97001E308EC80003996D /* WarnDescribleFaultReasonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDescribleFaultReasonCell.m; sourceTree = "<group>"; };
 		A50972EE26AB714E7830BD34 /* libPods-MCSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MCSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD1291EE1E2B960500CDC0FB /* WarnDescribleFaultInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnDescribleFaultInfoCell.h; sourceTree = "<group>"; };
 		AD1291EF1E2B960500CDC0FB /* WarnDescribleFaultInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDescribleFaultInfoCell.m; sourceTree = "<group>"; };
@@ -654,8 +664,6 @@
 		AD1291F21E2B961300CDC0FB /* WarnDescribleMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDescribleMsgCell.m; sourceTree = "<group>"; };
 		AD1291F41E2B963900CDC0FB /* WarnDescribleMsg2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnDescribleMsg2Cell.h; sourceTree = "<group>"; };
 		AD1291F51E2B963900CDC0FB /* WarnDescribleMsg2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDescribleMsg2Cell.m; sourceTree = "<group>"; };
-		AD1291F71E2B966300CDC0FB /* WarnDescribleFaultReasonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnDescribleFaultReasonCell.h; sourceTree = "<group>"; };
-		AD1291F81E2B966300CDC0FB /* WarnDescribleFaultReasonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDescribleFaultReasonCell.m; sourceTree = "<group>"; };
 		AD1291FA1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnDescribleOthersFaultCell.h; sourceTree = "<group>"; };
 		AD1291FB1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDescribleOthersFaultCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1265,10 +1273,13 @@
 				AD1291F21E2B961300CDC0FB /* WarnDescribleMsgCell.m */,
 				AD1291F41E2B963900CDC0FB /* WarnDescribleMsg2Cell.h */,
 				AD1291F51E2B963900CDC0FB /* WarnDescribleMsg2Cell.m */,
-				AD1291F71E2B966300CDC0FB /* WarnDescribleFaultReasonCell.h */,
-				AD1291F81E2B966300CDC0FB /* WarnDescribleFaultReasonCell.m */,
+				A1FA96FF1E308EC80003996D /* WarnDescribleFaultReasonCell.h */,
+				A1FA97001E308EC80003996D /* WarnDescribleFaultReasonCell.m */,
 				AD1291FA1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.h */,
 				AD1291FB1E2B968100CDC0FB /* WarnDescribleOthersFaultCell.m */,
+				A1F4486F1E2CBE8300F218B8 /* MapAnnotationView.h */,
+				A1F448701E2CBE8300F218B8 /* MapAnnotationView.m */,
+				A1F448721E2CBE9900F218B8 /* MapAnnotationView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1426,6 +1437,8 @@
 				A1E2CCFF1E28E0A4005D75C4 /* NSString+ValueConVert.m */,
 				A1E2CD031E28E263005D75C4 /* NSDate+StrValueFromStamp.h */,
 				A1E2CD041E28E263005D75C4 /* NSDate+StrValueFromStamp.m */,
+				A1B377611E2E0A6700BDFB27 /* UIButton+ExternValue.h */,
+				A1B377621E2E0A6700BDFB27 /* UIButton+ExternValue.m */,
 			);
 			name = customs;
 			sourceTree = "<group>";
@@ -1510,12 +1523,12 @@
 		A1A7FDE51D7D1AAF0024EEF4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Light;
 				TargetAttributes = {
 					A1A7FDEC1D7D1AB00024EEF4 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 9B5F6V769Z;
+						DevelopmentTeam = 8R29X3H9MY;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -1574,6 +1587,7 @@
 				A188143A1DB5E960002B749D /* shoplist-navi@2x.png in Resources */,
 				A1D4373A1DD19D0A007DC05B /* MWOVC.xib in Resources */,
 				A1AF0E091D93832C00B604A5 /* mui.min.js in Resources */,
+				A1F448731E2CBE9900F218B8 /* MapAnnotationView.xib in Resources */,
 				A1E2CD021E28E196005D75C4 /* detail.json in Resources */,
 				A19BEF121E24CF22003D8158 /* list.json in Resources */,
 				A1C113661DAC8FCC002BEB82 /* CSS.svg in Resources */,
@@ -1756,6 +1770,7 @@
 				A10A36041DAB987800CE568B /* ProcessingInstruction.m in Sources */,
 				A10A363A1DAB987800CE568B /* SVGKPointsAndPathsParser.m in Sources */,
 				A10A36431DAB987800CE568B /* SVGKSourceLocalFile.m in Sources */,
+				A1F448711E2CBE8300F218B8 /* MapAnnotationView.m in Sources */,
 				A1E2CD051E28E263005D75C4 /* NSDate+StrValueFromStamp.m in Sources */,
 				A10A35F61DAB987800CE568B /* CSSStyleRule.m in Sources */,
 				A10A35FB1DAB987800CE568B /* DocumentFragment.m in Sources */,
@@ -1772,7 +1787,6 @@
 				A10A36071DAB987800CE568B /* Text.m in Sources */,
 				A10A361B1DAB987800CE568B /* SVGCircleElement.m in Sources */,
 				A19B6C3D1D90DFD50026FA2C /* GanttView.m in Sources */,
-				AD1291F91E2B966300CDC0FB /* WarnDescribleFaultReasonCell.m in Sources */,
 				A10A36371DAB987800CE568B /* SVGKParserSVG.m in Sources */,
 				A10A363D1DAB987800CE568B /* CALayerWithClipRender.m in Sources */,
 				A1E2CCF51E28A5D2005D75C4 /* SVIndefiniteAnimatedView.m in Sources */,
@@ -1829,6 +1843,7 @@
 				A1D5CD561DCC640100794B3B /* WarnHandleVC.m in Sources */,
 				AD1291F31E2B961300CDC0FB /* WarnDescribleMsgCell.m in Sources */,
 				A10A362D1DAB987800CE568B /* TinySVGTextAreaElement.m in Sources */,
+				A1FA97021E308EC80003996D /* WarnDescribleFaultReasonCell.m in Sources */,
 				A1B460441D7E92BE0008D554 /* BaseViewController.m in Sources */,
 				A183E2C21D8657DC00246600 /* GGQRScanController.m in Sources */,
 				A10A36061DAB987800CE568B /* StyleSheetList.m in Sources */,
@@ -1843,6 +1858,7 @@
 				A1D437391DD19D0A007DC05B /* MWOVC.m in Sources */,
 				A10A360D1DAB987800CE568B /* SVGElementInstance.m in Sources */,
 				A10A363C1DAB987800CE568B /* CALayerWithChildHitTest.m in Sources */,
+				A1B377631E2E0A6700BDFB27 /* UIButton+ExternValue.m in Sources */,
 				A197B4471E27878F00E75286 /* CalendarView.m in Sources */,
 				A10A360A1DAB987800CE568B /* SVGClipPathElement.m in Sources */,
 				A183E2C51D8657FD00246600 /* GGQRScanView.m in Sources */,
@@ -1959,8 +1975,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -2005,8 +2023,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -2026,6 +2046,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2035,13 +2056,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0FA297197692DBC9B6005221 /* Pods-MCS.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: enterprise@gener-tech.com (9H83KWVVEG)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9B5F6V769Z;
+				DEVELOPMENT_TEAM = 8R29X3H9MY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2075,14 +2097,14 @@
 				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Light99.MCS;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gener-tech.mcs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MCS/MCS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -2090,13 +2112,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93C10E5B4A1F1DF7B71875CC /* Pods-MCS.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9B5F6V769Z;
+				DEVELOPMENT_TEAM = 8R29X3H9MY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2130,12 +2153,13 @@
 				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Light99.MCS;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gener-tech.mcs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MCS/MCS-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

@@ -7,8 +7,15 @@
 //
 
 #import "BaseTableVC.h"
+#import "FleetFaultDesVC.h"
 
 @interface WarnInfoListVC : BaseTableVC
+
+/*
+ 1.告警条目 2.其他告警 3.超限告警
+ */
+@property(nonatomic,assign)NSInteger warnType;
+
 
 -(void)loadDataFromServer;
 

@@ -11,16 +11,12 @@
 
 @protocol FleetInfoCellEventDelegate <NSObject>
 
--(void)faultAnalysis :(id)obj;//故障分析
-
 -(void)fleetInfoCellClickedWith:(id)obj atIndex:(id)index;
 
 @end
 
 
 @interface FleetIInfoCell : UICollectionViewCell
-
-//@property(nonatomic,assign)NSInteger fleetStatus;
 
 @property(nonatomic,assign) id<FleetInfoCellEventDelegate>delegate;
 

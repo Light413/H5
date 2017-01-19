@@ -20,6 +20,8 @@
 @property(nonatomic,copy)NSString * subtitle;
 @property(nonatomic,strong)UIImage * image;
 
+@property(nonatomic,assign)NSInteger  index;//数据源中的索引
+
 @end
 @implementation MAnimation
 
@@ -27,16 +29,16 @@
 
 //定义弹出子视图
 @interface M2Animation : NSObject<MKAnnotation>
+
 @property(nonatomic)CLLocationCoordinate2D coordinate;
-
 @property(nonatomic,copy)NSString * title;
-
 @property(nonatomic,copy)NSString * subtitle;
 @property(nonatomic,strong)UIImage * image;
+@property(nonatomic)NSDictionary * dic;
+
 @end
 
 @implementation M2Animation
-
 
 @end
 
@@ -45,6 +47,9 @@
 {
     MKMapView *_mapView;
     CLLocationManager * _locationManager;
+    
+     BOOL _firstFlag;
+    NSArray * _dataArray;
 }
 @end
 
@@ -52,10 +57,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    _firstFlag = YES;
+    
     [self initSubviews];
-
-    [self addAnnotations];
 }
 
 -(void)initSubviews
@@ -74,31 +78,72 @@
     [self.view addSubview:_mapView];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (_firstFlag) {
+        _firstFlag = NO;
+        [self loadData];
+    }
+    
+}
+
+-(void)loadData
+{
+    [SVProgressHUD showWithStatus:@"Loading..."];
+
+    RequestTaskHandle * task = [RequestTaskHandle taskWith:kFleetPosListUrl parms:[NSDictionary dictionaryWithObjectsAndKeys:kTeantCode,@"tenantCode", nil] andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
+            _dataArray = responseObject ;
+            [self addAnnotations];
+        }
+        [SVProgressHUD dismiss];;
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD showInfoWithStatus:@"Failed from server"];
+    }];
+    
+    
+    [HttpManager doGetWithTask:task];
+}
+
+
 -(void)addAnnotations
 {
-    NSArray * arr = @[@{@"lat":@"31.269513",@"lng":@"121.467243"},
-                      @{@"lat":@"31.227016",@"lng":@"121.546065"},
-                      @{@"lat":@"31.257545",@"lng":@"121.471326"},
-                      @{@"lat":@"31.322225",@"lng":@"121.414984"},
-                      @{@"lat":@"31.236305",@"lng":@"121.482249"},
-                      @{@"lat":@"39.934475",@"lng":@"116.42074"},
-                      @{@"lat":@"39.964565",@"lng":@"116.300008"},
-                      ];
-    
-    for (int i =0; i < arr.count; i++) {
-        NSDictionary * dic  =arr[i];
-        CLLocationCoordinate2D location1=CLLocationCoordinate2DMake([dic[@"lat"]doubleValue], [dic[@"lng"]doubleValue]);
+    for (int i =0; i < _dataArray.count; i++) {
+        NSDictionary * dic  =_dataArray[i];
+        double lat= [dic[@"lastLatitude"]doubleValue];
+        double log = [dic[@"lastLongitude"]doubleValue];
+        if ((NSInteger)lat == 0 && (NSInteger)log == 0) {
+            continue;
+        }
+
+        CLLocationCoordinate2D location1=CLLocationCoordinate2DMake(lat, log);
         MAnimation *a1=[[MAnimation alloc]init];
-//        a1.title=@"蓝天绿地商务广场";
-//        a1.subtitle=@"地址：共和新路1301号b幢 坐标：121.467243,31.269513";
         a1.coordinate=location1;
-//        a1.image = [UIImage imageNamed:@"shoplist-navi"];
-        a1.image = [UIImage imageNamed:@"plane_5"];
+        a1.index = i;
+        
+        //警告等级
+        NSString * priority = dic[@"alarmGrade"];///null/1/10/120/200/1000
+        NSInteger imgindex = 0;
+        if (![priority isKindOfClass:[NSNull class]]) {
+            switch ([priority integerValue]) {
+                case 1://级别最高
+                    imgindex = 5; break;
+                case 10: imgindex = 4;break;
+                case 120:imgindex = 3;break;
+                case 200:imgindex = 2;break;
+                case 1000:imgindex = 1;break;
+                default: break;
+            }
+        }
+
+        a1.image = [UIImage imageNamed:[NSString stringWithFormat:@"smai_plane_%ld",imgindex]];
         [_mapView addAnnotation:a1];
     }
-
-    [self fetchNearbyInfo];
 }
+
+
 
 //搜索附近信息
 - (void)fetchNearbyInfo
@@ -128,7 +173,7 @@
 #pragma mark - MKMapViewDelegate
 -(void)mapViewWillStartLocatingUser:(MKMapView *)mapView
 {
-    [MBHUD showStatueInView:self.view WithMsg:@"Locating..."];
+    NSLog(@"%s",__FUNCTION__);
 }
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
@@ -138,29 +183,25 @@
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    [MBHUD dismiss];
+
     NSLog(@"%s",__FUNCTION__);
 }
 -(void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
-    [MBHUD showErrorInView:self.view WithMsg:@"locate failure"];
-    [MBHUD dismiss];
+//    [MBHUD showErrorInView:self.view WithMsg:@"locate failure"];
+//    [MBHUD dismiss];
     NSLog(@"%s",__FUNCTION__);
-}
--(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray<MKAnnotationView *> *)views
-{
-NSLog(@"%s",__FUNCTION__);
-
 }
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-NSLog(@"%s",__FUNCTION__);
     if ([view.annotation isKindOfClass:[MAnimation class]]) {
         MAnimation * annotation1 = view.annotation;
         M2Animation * annotation2 = [[M2Animation alloc]init];
         annotation2.coordinate = annotation1.coordinate;
         
+        NSInteger index = annotation1.index;
+        annotation2.dic = [_dataArray objectAtIndex:index];
         [mapView addAnnotation:annotation2];
     }
 }
@@ -189,29 +230,42 @@ NSLog(@"%s",__FUNCTION__);
 
         annotationView.annotation = annotation;
         annotationView.image = ((MAnimation*)annotation).image;
+        NSInteger index = ((MAnimation*)annotation).index;
+        
+        NSDictionary * dic = [_dataArray objectAtIndex:index];
+        double angle = [dic[@"rotation"]doubleValue];
+        
+        annotationView.transform = CGAffineTransformMakeRotation(angle + 90.0);
         return annotationView;
     }
     else if([annotation isKindOfClass:[M2Animation class]])
     {
-        FleetAnnotationView * v = [FleetAnnotationView annotationViewFromMap:mapView];
+//        FleetAnnotationView * v = [FleetAnnotationView annotationViewFromMap:mapView];
+//        v.annotation = annotation;
+//        v.fleetStatus = 3;
+//        v.delegate = self;
+        
+        MapAnnotationView * v = [MapAnnotationView annotationViewFromMap:mapView];
         v.annotation = annotation;
-        v.fleetStatus = 3;
-        v.delegate = self;
+        NSDictionary * dic = ((M2Animation*)annotation).dic;
+        [v fillDataWith:dic];
+        
         return v;
     }
     else
     return nil;
 }
 
-#pragma mark FleetInfoCellEventDelegate
--(void)faultAnalysis:(id)index
-{
-    UIStoryboard * sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSString *  str = [index integerValue] == 1 ? @"FleetFaultDesVCSBID" : @"FleetStatueInfoVCSBID";
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:str];
-    if(vc)
-        [self.navigationController pushViewController:vc animated:YES];
-}
+
+//#pragma mark FleetInfoCellEventDelegate
+//-(void)faultAnalysis:(id)index
+//{
+//    UIStoryboard * sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    NSString *  str = [index integerValue] == 1 ? @"FleetFaultDesVCSBID" : @"FleetStatueInfoVCSBID";
+//    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:str];
+//    if(vc)
+//        [self.navigationController pushViewController:vc animated:YES];
+//}
 
 
 

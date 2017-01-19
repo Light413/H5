@@ -52,28 +52,27 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
 
 -(void)loadData
 {
-    NSData * _data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"list" ofType:@"json"]];
+//    NSData * _data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"list" ofType:@"json"]];
+//    
+//    id _obj = [NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingMutableContainers error:nil];
+//    if (_obj && [_obj isKindOfClass:[NSArray class]]) {
+//        _dataArray = _obj;
+//    }
+//    
+//    return;
     
-    id _obj = [NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingMutableContainers error:nil];
-    if (_obj && [_obj isKindOfClass:[NSArray class]]) {
-        _dataArray = _obj;
-    }
-    
-    return;
-    
-    [MBHUD showStatueInView:self.view WithMsg:@"Loading..."];
-
-    RequestTaskHandle * task = [RequestTaskHandle taskWith:kFleetStatueInfoUrl parms:[NSDictionary dictionaryWithObjectsAndKeys:@"CCA",@"tenantCode", nil] andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+    [SVProgressHUD showWithStatus:@"Loading..."];
+    RequestTaskHandle * task = [RequestTaskHandle taskWith:kFleetStatueInfoUrl parms:[NSDictionary dictionaryWithObjectsAndKeys:kTeantCode,@"tenantCode", nil] andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
             _dataArray = responseObject;
         }
-        [MBHUD dismiss];
+        [SVProgressHUD dismiss];
         
         [_collectionView reloadData];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [MBHUD showTextInView:self.view WithMsg:@"Failed from server"];
+        [SVProgressHUD showInfoWithStatus:@"Failed from server"];
     }];
     
     
@@ -139,7 +138,7 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 60;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -153,7 +152,7 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     [cell setCellWith:dic];
     cell.cellButtonBlock = ^(NSInteger index){
         NSDictionary * dic = [_dataArray objectAtIndex:index];
-        NSDictionary * parms = [NSDictionary dictionaryWithObjectsAndKeys:dic[@"legId"]?dic[@"legId"]:@"",@"legId",dic[@"tailNo"]?dic[@"tailNo"]:@"",@"tailNo",@"CCA",@"tenantCode", nil];
+        NSDictionary * parms = [NSDictionary dictionaryWithObjectsAndKeys:dic[@"legId"]?dic[@"legId"]:@"",@"legId",dic[@"tailNo"]?dic[@"tailNo"]:@"",@"tailNo",kTeantCode,@"tenantCode", nil];
         
         UIViewController * vc;
         if (1) {
@@ -213,11 +212,10 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
 
 #pragma mark FleetInfoCellEventDelegate
 
- //http://192.168.6.60:8080@"/adp-tools/rest/recordSummary/faultSummary/detail?legId=402886c65991f4d3015991f9495b1a9c&tailNo=B-2510&tenantCode=CCA"
 -(void)fleetInfoCellClickedWith:(id)obj atIndex:(id)index
 {
     NSDictionary * dic = [_dataArray objectAtIndex:[index integerValue]];
-    NSDictionary * parms = [NSDictionary dictionaryWithObjectsAndKeys:dic[@"legId"]?dic[@"legId"]:@"",@"legId",dic[@"tailNo"]?dic[@"tailNo"]:@"",@"tailNo",@"CCA",@"tenantCode", nil];
+    NSDictionary * parms = [NSDictionary dictionaryWithObjectsAndKeys:dic[@"legId"]?dic[@"legId"]:@"",@"legId",dic[@"tailNo"]?dic[@"tailNo"]:@"",@"tailNo",kTeantCode,@"tenantCode", nil];
 
     UIViewController * vc;
     if ([obj integerValue] == 1) {

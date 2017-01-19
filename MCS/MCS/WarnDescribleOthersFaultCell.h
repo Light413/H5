@@ -10,4 +10,9 @@
 
 @interface WarnDescribleOthersFaultCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *codeLable;
+
+
+
+
 @end

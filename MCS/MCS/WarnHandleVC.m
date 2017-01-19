@@ -29,7 +29,7 @@
 -(void)initSubviews
 {
     CustomMultipleButtons * multipleBtnView = [[CustomMultipleButtons alloc]initWithFrame:CGRectMake(0, 8, CURRNET_SCREEN_WIDTH, 50) buttonTitles:@[@"告警条目",@"其他告警",@"超限告警"] selectedHandler:^(NSInteger index) {
-        NSLog(@"++++++++++++ : %d",index);
+        _warnInfoListVC.warnType = index;
         [_warnInfoListVC loadDataFromServer];
     }];
     
@@ -38,7 +38,7 @@
     _warnInfoListVC =  [[WarnInfoListVC alloc]init];
     [self addChildViewController:_warnInfoListVC];
     _warnInfoListVC.view.frame = CGRectMake(0, 58, CURRNET_SCREEN_WIDTH, CURRENT_SCREEN_HEIGHT-64-60);
-    
+    _warnInfoListVC.warnType = 1;
     [self.view addSubview:_warnInfoListVC.view];
 }
 

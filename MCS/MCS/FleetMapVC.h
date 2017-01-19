@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "FleetAnnotationView.h"
-
+#import "MapAnnotationView.h"
 
 @interface FleetMapVC : BaseViewController
 

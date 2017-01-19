@@ -19,11 +19,11 @@
 -(void)setCellWith:(NSDictionary*)dic
 {
     NSDictionary * tmp = [dic[@"detail"]firstObject];
-    self.titleLable.text = tmp[@"code"];
-    self.msgLable.text = tmp[@"message"];
+    self.titleLable.text = [NSString stringFromObj:tmp[@"code"]];
+    self.msgLable.text = [NSString stringFromObj:tmp[@"message"]];
     self.phaseLable.text = [NSString stringFromObj:tmp[@"phaseName"]] ;
 //    self.intermittenceLab.text = tmp[@"message"];
-    self.statusLable.text = tmp[@"faultStatus"];
+    self.statusLable.text = [NSString stringFromObj:tmp[@"faultStatus"]];
     self.sourceLable.text = [NSString stringFromObj:tmp[@"detailStatus"]];
     self.timeLable.text = [NSDate stringFromTimeStamp:tmp[@"faultOccurrenceDate"] andFormatter:@"MM-dd HH:mm"];
     

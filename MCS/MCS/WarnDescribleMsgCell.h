@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WarnDescribleMsgCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UITextView *msg;
 
 @end

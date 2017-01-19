@@ -36,18 +36,8 @@
 }
 
 - (IBAction)btn_status:(UIButton *)sender {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(faultAnalysis:)]) {
-        [self.delegate performSelector:@selector(faultAnalysis:) withObject:@2];
-    }
+        [self.delegate performSelector:@selector(fleetInfoCellClickedWith:atIndex:) withObject:@(2) withObject:@(self.cellIndex)];
 }
-
-
-//-(void)setFleetStatus:(NSInteger)fleetStatus
-//{
-//    timeArr = @[@"09:50",@"09:55",@"10:15",@"10:55",@"11:10",@"12:05"];
-//
-//    [_lineView setFleetStatus:fleetStatus withTime:timeArr];
-//}
 
 //时间进度
 -(void)setFleetStatus:(NSDictionary *)dic

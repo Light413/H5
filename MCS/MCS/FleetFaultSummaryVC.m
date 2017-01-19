@@ -36,6 +36,7 @@
 
 -(void)loadData
 {
+#if 0
     NSData * _data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"detail" ofType:@"json"]];
     
     id _obj = [NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingMutableContainers error:nil];
@@ -46,11 +47,14 @@
     }
     
     return;
+#endif
     
     RequestTaskHandle * task = [RequestTaskHandle taskWith:kFaultSummaryUrl parms:self.dic andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
             _dataDic = responseObject;
+            _alarmListDataArray = responseObject[@"RSAlarmEventList"];
+            [self.tableView reloadData];
         }
         
         [MBHUD dismiss];

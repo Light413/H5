@@ -55,7 +55,6 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
 //        
 //    });
 //    NSLog(@"end");
-    
 }
 
 -(void)initData

@@ -26,7 +26,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *alarmLevelLable;
 
+@property (nonatomic, copy)void(^cellButtonBlock)(NSInteger);
 
+-(void)setCellWith:(NSDictionary *)dic;
 
 
 @end

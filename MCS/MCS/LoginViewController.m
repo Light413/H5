@@ -194,7 +194,6 @@
 //        
 //    }];
     
-    //http://192.168.6.60:8080/adp-tools/rest/fleetStatus/list?tenantCode=CCA
     /*
     RequestTaskHandle * task = [RequestTaskHandle taskWith:@"/adp-tools/rest/fleetStatus/list?tenantCode=CCA" parms:nil andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         

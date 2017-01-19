@@ -14,6 +14,10 @@
 #import "WarnDescribleFaultReasonCell.h"
 #import "WarnDescribleOthersFaultCell.h"
 
+
+#include "FaultDescribleWarnListCell.h"
+
 @interface FleetFaultDesVC : BaseTableVC
 
+@property(nonatomic)NSDictionary *  dic;
 @end
