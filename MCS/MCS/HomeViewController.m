@@ -64,7 +64,7 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
     
 #warning //....test data
     _vcDic = @{
-               @"id_hbdt":@"FleetInfoBoardWedVC",
+               @"id_hbdt":@"WebViewVC",
                @"id_ssjk":@"MonitorViewController",
                @"id_wxkz":@"MaintainViewController",
                @"id_gzqx":@"",
@@ -260,6 +260,9 @@ static NSString * collectionCellReuseIdentifier = @"collectionCellReuseIdentifie
 
     Class cls = NSClassFromString(str);
     UIViewController * vc = [[cls alloc]init];
+    if ([vc isKindOfClass:[WebViewVC class]]) {
+        ((WebViewVC*)vc).urlString = kTestFleetInfoBoard;
+    }
     vc.title = d[@"title"];
     [self.navigationController pushViewController:vc animated:YES];
 }

@@ -8,22 +8,23 @@
 
 #import "FleetFaultDesVC.h"
 
+#define reloadSectionWithIndex(index)  [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationNone]
+
 typedef NS_ENUM(NSInteger,WarnDescribleType)
 {
-    WarnDescribleTypeFaultReasonCell,
-     WarnDescribleTypeFaultManualCell,
-    
+    WarnDescribleTypeFaultReasonCell_1,
+    WarnDescribleTypeFaultManualCell_2,
+    WarnDescribleTypeDevicesListCell_3
 };
 
 static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleFaultReasonCellReuseIdentifier";
+
 
 @interface FleetFaultDesVC ()
 {
     BOOL _section_1_IsOpened;//section_1是否展开
     BOOL _section_1_formatter_msg;//section_1报文格式
-    
-    NSInteger _section_2_cellType;
-    
+
     CustomMultipleButtons * _section1_headerView;
     CustomMultipleButtons * _section2_headerView;
     
@@ -37,9 +38,14 @@ static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleF
     
     __block NSString * _reportTextStr;
     
+    //可能的故障原因
+    NSInteger _faultReasonSectionCellType;
+    NSMutableArray * _possibleCasesDataArray;
+    NSMutableArray * _possibleManualArray;
     
-    NSMutableArray * _possibleCasesDataArray;//可能的故障原因
-
+    NSString * _possibleReasonUrl;
+    NSString * _possibleManualUrl;
+    NSString * _possibleDeviceListUrl;
 }
 
 @end
@@ -52,11 +58,8 @@ static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleF
     
     _section_1_IsOpened = NO;
     _section_1_formatter_msg = YES;
-    _section_2_cellType = 1;
+    _faultReasonSectionCellType = WarnDescribleTypeFaultReasonCell_1;
 
-    _possibleCasesDataArray = [[NSMutableArray alloc]init];
-
-    
     [self initSubviews];
     [self loadData];
 }
@@ -79,11 +82,21 @@ static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleF
             _totalDataDic = responseObject;
             _faultInfoDic = responseObject[@"faultDetail"];
             _reportSetArray = responseObject[@"alarmEventReportVoSet"];
-            _tablviewSectionNum = _reportSetArray.count + 3;
+            #warning
+            _tablviewSectionNum = 1 + 3;
             
-            NSString * possibleUrl = responseObject[@"causeUrl"];
-            if (possibleUrl) {
-               [weakSelf possibleFault:possibleUrl];
+            if (responseObject[@"causeUrl"]) {
+                _possibleReasonUrl = responseObject[@"causeUrl"];
+            }
+            if (responseObject[@"tsmUrl"]) {
+                _possibleManualUrl = responseObject[@"tsmUrl"];
+            }
+            if (responseObject[@"melUrl"]) {
+                _possibleDeviceListUrl = responseObject[@"melUrl"];
+            }
+
+            if (_possibleReasonUrl) {
+                [weakSelf possibleFault:_possibleReasonUrl isManual:NO];
             }
         }
         dispatch_group_leave(_group);
@@ -128,30 +141,34 @@ static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleF
 }
 
 //可能的故障原因
--(void)possibleFault:(NSString *)url
+-(void)possibleFault:(NSString *)url isManual:(BOOL)is
 {
-    if ([url hasPrefix:@"/"]) {
-        url = [url substringFromIndex:1];
-    }
-    
+    if (!url)return;
+    if ([url hasPrefix:@"/"]) url = [url substringFromIndex:1];
     RequestTaskHandle * task = [RequestTaskHandle taskWith:url parms:nil andSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSArray class]]) {
-            NSMutableArray * _tmpKeyArray = [[NSMutableArray alloc]init];
-            NSArray * obj = responseObject;
-            
-            for (int i =0; i < obj.count; i++) {
-                NSDictionary * dic = [obj objectAtIndex:i];
-                NSString * key = dic[@"taskCode"];
-                if (![_tmpKeyArray  containsObject:key]) {
-                    [_tmpKeyArray addObject:key];
-                    NSMutableDictionary * muldic = [NSMutableDictionary dictionaryWithDictionary:dic];
-                    [muldic setObject:@(1) forKey:@"taskCodeKey"];
-                    [_possibleCasesDataArray addObject:muldic];
-                }
-                [_possibleCasesDataArray addObject:dic];
+            if (is) {
+                _possibleManualArray = [[NSMutableArray alloc]init];
+                [_possibleManualArray addObjectsFromArray:responseObject];
             }
-
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:_tablviewSectionNum - 2] withRowAnimation:UITableViewRowAnimationFade];
+            else
+            {
+                _possibleCasesDataArray = [[NSMutableArray alloc]init];
+                NSMutableArray * _tmpKeyArray = [[NSMutableArray alloc]init];
+                NSArray * obj = responseObject;
+                for (int i =0; i < obj.count; i++) {
+                    NSDictionary * dic = [obj objectAtIndex:i];
+                    NSString * key = dic[@"taskCode"];
+                    if (![_tmpKeyArray  containsObject:key]) {
+                        [_tmpKeyArray addObject:key];
+                        NSMutableDictionary * muldic = [NSMutableDictionary dictionaryWithDictionary:dic];
+                        [muldic setObject:@(1) forKey:@"taskCodeKey"];
+                        [_possibleCasesDataArray addObject:muldic];
+                    }
+                    [_possibleCasesDataArray addObject:dic];
+                }
+            }
+            reloadSectionWithIndex(2);
         }
     } failure:nil];
     
@@ -160,17 +177,41 @@ static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleF
 
 -(void)initSubviews
 {
-    _section1_headerView = [[CustomMultipleButtons alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, 50) buttonTitles:@[@"原始报文"] selectedHandler:^(NSInteger index) {
+    __weak typeof(self)weakSelf = self;
+    _section1_headerView = [[CustomMultipleButtons alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, 40) buttonTitles:@[@"原始报文"] selectedHandler:^(NSInteger index) {
         _section_1_formatter_msg = index==1?YES:NO;
         
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
     }];
     
-    _section2_headerView = [[CustomMultipleButtons alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, 50) buttonTitles:@[@"可能的故障原因",@"排故手册",@"最低设备清单",@"上传文件"] selectedHandler:^(NSInteger index) {
-        _section_2_cellType = index==1?1:2;
+    _section2_headerView = [[CustomMultipleButtons alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, 40) buttonTitles:@[@"可能的故障原因",@"排故手册",@"最低设备清单",@"上传文件"] selectedHandler:^(NSInteger index) {
+        switch (index) {
+            case 1:
+            {
+                _faultReasonSectionCellType = WarnDescribleTypeFaultReasonCell_1;
+                if (!_possibleCasesDataArray) {
+                    [weakSelf possibleFault:_possibleReasonUrl isManual:NO];
+                }
+                else
+                    reloadSectionWithIndex(2);
+                break;
+            }
+            case 2:
+            {
+                _faultReasonSectionCellType = WarnDescribleTypeFaultManualCell_2;
+                if (!_possibleManualArray) {
+                    [weakSelf possibleFault:_possibleManualUrl isManual:YES];
+                }
+                else
+                    reloadSectionWithIndex(2);
+                break;
+            }
+            case 3:_faultReasonSectionCellType = WarnDescribleTypeDevicesListCell_3;
+            case 4:_faultReasonSectionCellType = 55;reloadSectionWithIndex(2);break;
+            default:break;
+        }
 #warning //...
-        
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
+
     }];
    
     [self.tableView registerClass:[WarnDescribleFaultReasonCell class] forCellReuseIdentifier:WarnDescribleFaultReasonCellReuseIdentifier];
@@ -188,6 +229,7 @@ static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleF
 #pragma mark -
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning
     return _tablviewSectionNum;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -202,8 +244,9 @@ static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleF
     else if(section == _tablviewSectionNum - 2)
 #warning ....test
     {
-        switch (_section_2_cellType) {
-            case 1:return _possibleCasesDataArray.count;break;
+        switch (_faultReasonSectionCellType) {
+            case WarnDescribleTypeFaultReasonCell_1:return _possibleCasesDataArray.count;break;
+            case WarnDescribleTypeFaultManualCell_2:return _possibleManualArray.count;break;
             default:return 1; break;
         }
     }
@@ -230,18 +273,36 @@ static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleF
         
     }
     if (indexPath.section == _tablviewSectionNum - 2) {
-        NSString * cellId = _section_2_cellType == 1 ? WarnDescribleFaultReasonCellReuseIdentifier:@"cell31_IdentifierId";
+        __weak typeof(self)weakSelf = self;
+        switch (_faultReasonSectionCellType) {
+            case WarnDescribleTypeFaultReasonCell_1:
+            {
+                 cell = [tableView dequeueReusableCellWithIdentifier:WarnDescribleFaultReasonCellReuseIdentifier forIndexPath:indexPath];
+                NSDictionary * tmp = _possibleCasesDataArray[indexPath.row];
+                [(WarnDescribleFaultReasonCell *)cell setCellWithData:tmp isManula:NO];
+            } break;
+            case WarnDescribleTypeFaultManualCell_2:
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:WarnDescribleFaultReasonCellReuseIdentifier forIndexPath:indexPath];
+                NSDictionary * tmp = _possibleManualArray[indexPath.row];
+                [(WarnDescribleFaultReasonCell *)cell setCellWithData:tmp isManula:YES];
+                ((WarnDescribleFaultReasonCell *)cell).tapActionBlock = ^(NSString * urlStr){
+#warning 有待处理的操作
+//                    WebViewVC * vc = [[WebViewVC alloc]init];
+//                    vc.urlString = urlStr;
+//                    [weakSelf.navigationController pushViewController:vc animated:YES];
+                };
+            } break;
+                
+            default:
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:@"cell31_IdentifierId" forIndexPath:indexPath];
+            }break;
+        }
         
-        WarnDescribleFaultReasonCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-        NSDictionary * tmp = _possibleCasesDataArray[indexPath.row];
-        [cell setCellWithData:tmp];
-        
-#warning <#message#>
-        return cell;
-        
-        
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
     if (indexPath.section ==_tablviewSectionNum - 1) {
         cell.backgroundColor = [UIColor whiteColor];
         
@@ -283,9 +344,9 @@ static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleF
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 1) {
-        return _section_1_IsOpened?50:1;
+        return _section_1_IsOpened?45:1;
     }
-    return 50;
+    return 45;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -300,9 +361,11 @@ static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleF
 {
     if (section ==0 || section ==3) {
         UILabel * l = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, CURRNET_SCREEN_WIDTH, 20)];
-        l.text = section?@"\t\t本航段其它故障": @"\t\t故障分析";
-        l.font = [UIFont boldSystemFontOfSize:16];
-        l.textColor = [UIColor darkGrayColor];
+        NSMutableParagraphStyle * style = [NSMutableParagraphStyle new];
+        style.firstLineHeadIndent = 20;
+        NSAttributedString * attri = [[NSAttributedString alloc]initWithString:section?@"本航段其它故障": @"故障分析" attributes:[NSDictionary dictionaryWithObjectsAndKeys:style,NSParagraphStyleAttributeName,[UIFont boldSystemFontOfSize:16],NSFontAttributeName,[UIColor darkGrayColor],NSForegroundColorAttributeName, nil]];
+        l.attributedText = attri;
+        
         return l;
     }
     else if (section == 1 && _section_1_IsOpened)
@@ -380,29 +443,25 @@ static NSString * WarnDescribleFaultReasonCellReuseIdentifier = @"WarnDescribleF
     __block NSString * textStr = nil;
     
     if (_section_1_IsOpened) {
-        AFHTTPSessionManager *_manager = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:kServerBaseUrl]];
-        _manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-        _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        
-        [_manager GET:kOriginalReportUrl parameters:[NSDictionary dictionaryWithObjectsAndKeys:btn.ID,@"rid", nil] progress:^(NSProgress * _Nonnull downloadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            if ([responseObject isKindOfClass:[NSData class]]) {
-                textData = [NSData dataWithData:[responseObject mutableCopy]];
-                textStr = [[NSString alloc]initWithData:textData encoding:NSUTF8StringEncoding];
-                _reportTextStr = textStr;
-                
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:btn.tag] withRowAnimation:UITableViewRowAnimationFade];
-            }
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            
-        }];
-
+        if (!_reportTextStr) {
+            AFHTTPSessionManager *_manager = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:kServerBaseUrl]];
+            _manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+            _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+            [_manager GET:kOriginalReportUrl parameters:[NSDictionary dictionaryWithObjectsAndKeys:btn.ID,@"rid", nil] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                if ([responseObject isKindOfClass:[NSData class]]) {
+                    textData = [NSData dataWithData:[responseObject mutableCopy]];
+                    textStr = [[NSString alloc]initWithData:textData encoding:NSUTF8StringEncoding];
+                    _reportTextStr = textStr;
+                    reloadSectionWithIndex(btn.tag);
+                }
+            } failure:nil];
+        }
+        else
+            reloadSectionWithIndex(btn.tag);
     }
     
     else
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:btn.tag] withRowAnimation:UITableViewRowAnimationFade];
+     reloadSectionWithIndex(btn.tag);
 }
 
 

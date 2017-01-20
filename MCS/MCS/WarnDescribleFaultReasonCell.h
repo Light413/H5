@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "YYText.h"
+
 @interface WarnDescribleFaultReasonCell : UITableViewCell
 
--(void)setCellWithData:(NSDictionary*)dic ;
+@property(nonatomic,copy)void(^tapActionBlock)(NSString*);
+
+-(void)setCellWithData:(NSDictionary*)dic isManula:(BOOL)ismannual;
 
 
 @end

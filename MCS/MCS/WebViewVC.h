@@ -1,5 +1,5 @@
 //
-//  FleetInfoBoardWedVC.h
+//  WebViewVC.h
 //  MCS
 //
 //  Created by gener on 17/1/10.
@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 
-@interface FleetInfoBoardWedVC : BaseViewController
+@interface WebViewVC : BaseViewController
+
+@property(nonatomic,copy)NSString *  urlString;
 
 @end

@@ -7,17 +7,22 @@
 //
 
 #import "BaseTableVC.h"
+#import "WebViewVC.h"
+
 
 #import "WarnDescribleFaultInfoCell.h"
 #import "WarnDescribleMsgCell.h"
 #import "WarnDescribleMsg2Cell.h"
-#import "WarnDescribleFaultReasonCell.h"
-#import "WarnDescribleOthersFaultCell.h"
 
+#import "WarnDescribleFaultReasonCell.h"
+#import "WarnDescribleDevicesListCell.h"
+
+#import "WarnDescribleOthersFaultCell.h"
 
 #include "FaultDescribleWarnListCell.h"
 
 @interface FleetFaultDesVC : BaseTableVC
 
-@property(nonatomic)NSDictionary *  dic;
+@property(nonatomic)NSDictionary * dic;
+
 @end

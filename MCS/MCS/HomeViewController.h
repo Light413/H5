@@ -14,7 +14,7 @@
 
 #import "ViewController.h"
 #import "LoginViewController.h"
-#import "FleetInfoBoardWedVC.h"
+#import "WebViewVC.h"
 
 #import "XMPPManager.h"
 
