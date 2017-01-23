@@ -21,6 +21,8 @@
 
 #include "FaultDescribleWarnListCell.h"
 
+#import <MBProgressHUD/MBProgressHUD.h>
+
 @interface FleetFaultDesVC : BaseTableVC
 
 @property(nonatomic)NSDictionary * dic;
